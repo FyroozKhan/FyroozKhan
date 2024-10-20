@@ -1,4 +1,4 @@
-<h2> Trainee Internship Project: </h2>
+<h3> Trainee Internship Project: </h3>
 <h3> 1. First Biennial Update Report of Bangladesh 2023 </h3>
 •	Drafted two chapters of this report, including: </br>
     o	Meeting and communicating with government officials from various environment-related departments to gather feedback and understand requirements for reporting </br>
@@ -6,7 +6,7 @@
     o	Creating maps using GIS to visualize changes to climate such as temperatures in specific regions over 10 years </br>
 
 
-<h2> Undergraduate Projects: </h2>
+<h3> Undergraduate Projects: </h3>
 <h3> 1. Regional Plan for Payra-Kuakata Coastal Area (2021-2041)	     --January – March 2021 </h3> 
 •	Developed and proposed a new map for coastal region to identify existing resources and optimize land usage </br>
 •	Performed short-run & long-run economic analysis using Excel and identified potential areas for development using Excel and ArcMap </br>
@@ -20,7 +20,7 @@
 •	Proposed an eco-friendly river park considering the physical features and people’s expectations </br>
 
 
-<h2> Undergraduate Design Projects: </h2>
+<h3> Undergraduate Design Projects: </h3>
 <h3> 1. BUET Calendar Design Competition -2018 </h3>
 Stood 1st in Designing the BUET Campus Calendar using CorelDRAW & Adobe Illustrator Software </br>
 Calendar: https://drive.google.com/drive/u/1/folders/1-B-t5v8RlrwK-gVq-SNHD8DlvEM3tFV7 </br>
