@@ -1,4 +1,4 @@
-<h2> Papers I worked on after graduation: </h2>
+<h2> Research Papers: </h2>
 
 <h3> •	Assessing Walkability in Dhaka's Central Business Districts </h3>
 Khan, F. A., & Tabassum, N. (2024). Transportation Research Interdisciplinary Perspectives, 27, 101184. https://doi.org/10.1016/j.trip.2024.101184
