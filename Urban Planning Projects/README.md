@@ -3,13 +3,13 @@
 •	Drafted two chapters of this report, including: </br>
     o	Meeting and communicating with government officials from various environment-related departments to gather feedback and understand requirements for reporting </br>
     o	Collecting, cleaning, and analyzing climate-related data from government documents using Excel </br>
-    o	Creating maps using GIS to visualize changes to climate such as temperatures in specific regions over 10 years </br>
+    o	Creating maps using GIS to visualize changes to climate such as temperatures in specific regions over 10 years </br> </br>
 
 
 <h3> Undergraduate Projects: </h3>
 <h3> 1. Regional Plan for Payra-Kuakata Coastal Area (2021-2041)	     --January – March 2021 </h3> 
 •	Developed and proposed a new map for coastal region to identify existing resources and optimize land usage </br>
-•	Performed short-run & long-run economic analysis using Excel and identified potential areas for development using Excel and ArcMap </br>
+•	Performed short-run & long-run economic analysis using Excel and identified potential areas for development using Excel and ArcMap </br> 
 
 <h3> 2. Assessing the safety measures adopted by the rural people in accessing essential services during COVID-19: Study in selected villages of Bangladesh         -– October - December 2020 </h3> 
 •	Prepared checklist and questionnaire and collected data about protective measures being used through telephone survey by convenient sampling method; analyzed and communicated data using Tableau and SPSS  </br>
@@ -17,7 +17,7 @@
 
 <h3> 3. Riverfront Development Design Proposal for Reclaimed Land along Turag River       -– July - September 2019 </h3>
 •	Prepared checklist and collected data based on physical survey, focus group discussion, key informant interview and online resources. </br>
-•	Proposed an eco-friendly river park considering the physical features and people’s expectations </br>
+•	Proposed an eco-friendly river park considering the physical features and people’s expectations </br> </br>
 
 
 <h3> Undergraduate Design Projects: </h3>
