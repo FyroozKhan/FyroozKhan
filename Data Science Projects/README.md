@@ -3,7 +3,7 @@ I wrote a blog and made a video on the basic concepts of Probability and Statist
 
 
 <h3> Coursera Projects: </h3>
-Data Visualization and Communication with Tableau | Duke University via Coursera </br>
+Data Visualization and Communication with Tableau | Duke University via Coursera </br> </br>
  Presented a data-driven business process change proposal for increasing the number of test takers
 and test completion using Tableau </br>
  Project: https://public.tableau.com/app/profile/fyrooz.anika/viz/Dognitionmain/Story1 </br>
