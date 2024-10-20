@@ -1,16 +1,16 @@
-Content Creation Folder:
-I wrote a blog and made a video on the basic concepts of Probability and Statistics.
+Content Creation Folder: </br>
+I wrote a blog and made a video on the basic concepts of Probability and Statistics. </br>
 
 
 Coursera Projects:
-1. Data Visualization and Communication with Tableau | Duke University via Coursera
+1. Data Visualization and Communication with Tableau | Duke University via Coursera </br>
  Presented a data-driven business process change proposal for increasing the number of test takers
-and test completion using Tableau
- Project: https://public.tableau.com/app/profile/fyrooz.anika/viz/Dognitionmain/Story1
- Video: https://www.youtube.com/watch?v=yi48ckEYG4o
+and test completion using Tableau </br>
+ Project: https://public.tableau.com/app/profile/fyrooz.anika/viz/Dognitionmain/Story1 </br>
+ Video: https://www.youtube.com/watch?v=yi48ckEYG4o </br>
 
 
-Graduation Projects:
+Graduation Projects: </br>
 
 
 
