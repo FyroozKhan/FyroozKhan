@@ -1,5 +1,5 @@
 <h3> Blog post: A Cinematic Journey through Statistical Distributions	(October 2024) </h3>
-Explained the fundamental concepts of probability and statistics, such as probability distribution, mean, median, mode, variance, standard deviation, and correlation, the importance of probability and statistics in decision making and predicting outcomes with three real-life scenarios. </br> </br>
+Explained the fundamental concepts of probability and statistics, such as probability distribution, mean, median, mode, variance, standard deviation, and correlation, the importance of probability and statistics in decision making and predicting outcomes with three real-life scenarios.
 
 Link: https://medium.com/@f.khan1/the-game-of-chance-a-blog-post-on-probability-and-statistics-cc0f177360b3 </br> </br>
 
