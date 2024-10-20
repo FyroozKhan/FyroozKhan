@@ -1,5 +1,5 @@
 <h2> Content Creation Folder: </h2> 
-I wrote a blog and made a video on the basic concepts of Probability and Statistics. </br> </br>
+Wrote a blog and made a video on the basic concepts of Probability and Statistics. </br> </br>
 
 
 <h2> Coursera Certifications: </h3>
