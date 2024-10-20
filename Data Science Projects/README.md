@@ -2,7 +2,7 @@
 I wrote a blog and made a video on the basic concepts of Probability and Statistics. </br> </br>
 
 
-<h2> Coursera Projects: </h3>
+<h2> Coursera Certifications: </h3>
 <h3> Data Visualization and Communication with Tableau | Duke University via Coursera </h3>
  Presented a data-driven business process change proposal for increasing the number of test takers
 and test completion using Tableau </br>
