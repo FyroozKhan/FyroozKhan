@@ -1,0 +1,2383 @@
+---
+title: "Mental Health Outcomes in Gamers"
+author: "Team 5 -- DATS 6101"
+# date: "today"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    code_folding: hide
+    number_sections: false
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+bibliography: reference.bib
+csl: "apa.csl"
+---
+
+```{r init, include=F}
+library(ezids)
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(stringr)
+library(rstatix)
+library(knitr)
+library(kableExtra)
+library(reshape2)
+library(gridExtra)
+library(patchwork)
+library(randomForest)
+library(smotefamily)
+library(caret)
+```
+
+```{r setup, include=FALSE}
+# some of common options (and the defaults) are: 
+# include=T, eval=T, echo=T, results='hide'/'asis'/'markup',..., collapse=F, warning=T, message=T, error=T, cache=T, fig.width=6, fig.height=4, fig.dim=c(6,4) #inches, fig.align='left'/'center','right', 
+knitr::opts_chunk$set(warning = F, results = "markup", message = F)
+options(scientific=T, digits = 3) 
+```
+
+```{r read-in, include=TRUE}
+df <- read.csv("GamingStudy_data.csv")
+```
+
+# <u>Introduction</u>
+
+This report is follow-up of Team 5's earlier exploration into the effects of video game habits on mental health. Previous analysis through hypothesis tests revealed:
+
+ - Hours spent playing video games affects how much time is spent streaming
+ - There is a significant affect on hours played and mental health outomes
+ - Gamers who play for “fun” have better mental health outcomes; those who play for “winning” and “escaping” do not.
+
+### Reasearch Proposal
+
+Use regressor and classification model to predict mental health outcomes based on gaming habits and certain demographic information.  When possible, inference which variables contribute the most. 
+
+### The Data
+
+This data set (https://www.kaggle.com/datasets/divyansh22/online-gaming-anxiety-data/data) surveyed 13,464 gamers and had them answer questions not only about time spent playing video games, but it also asked questions that are typically seen in psychological diagnosis tests approved in the Diagnostic and Statistical Manual of Mental Disorders (DSM) [@marian_sauter_gaming_2017]. Please note that the terms gamers and surveyors will be used interchangeably in this report.
+
+### Mental Health Inventories and Predictors 
+
+This is the list of mental health indicators.
+
+1. GAD-7 (Generalized Anxiety Disorder, 7 questions)
+
+2. GADE (Generalized Anxiety Disorder, Effect in Life)
+
+3. SWL (Satisfaction with Life)
+
+4. SPIN (Social Phobia Inventories)
+
+This is the list of mental health predictors.
+
+1. Hours: the hours per week playing video games
+
+2. Streams: the hours per week spent streaming video games
+
+3. whyplay: the reason why surveyors play video games
+
+4. Age: the number of years a surveyor is when the survey was completed
+
+5. Gender: the sex of surverors
+
+6. Game Played: the selected game surveyors play the most
+
+# <u>Exploratory Data Analysis (EDA) </u>
+
+Before examaing out models, an abridged reminded of our EDA highlights is needed.
+
+### Assumption of Continuity (Project 1)
+
+In our EDA, we noticed that the data for the psychological inventories was not truly continuous. This was made apparent when attempting logarithmic and scale transformations. However, due to the level of difficulty this course is expecting us to persevere, we are assuming normality for all variables.
+
+### Demographics
+
+First, we need to examine the demographics of surveyors. Since we have age, gender, country of residence, and game played, let's see what we can find out.
+
+``` {r, age}
+age_counts <- as.data.frame(table(df$Age))
+colnames(age_counts) <- c("Age", "SurveyCount")
+age_counts <- age_counts[order(-age_counts$SurveyCount), ]
+
+# Create the plot
+fig <- ggplot(age_counts, aes(x = reorder(Age, -SurveyCount), y = SurveyCount)) +
+  geom_bar(stat = 'identity', fill = '#232A75') +
+  labs(title = 'Age Distribution', 
+       subtitle = '', 
+       x = 'Age', 
+       y = 'Total Respondents') +
+  scale_x_discrete(guide = guide_axis(n.dodge = 2)) +
+  theme_minimal()  +
+ theme(plot.title = element_text(hjust = 0.5))
+
+# Print the figure
+print(fig)
+
+```
+
+The age histogram tells us that gamers who are 18 years old make up most of the surveyors, followed by 19 and 20 year old gamers. This means age is extremely right skewed.
+
+``` {r, genderplot}
+gender_counts <- as.data.frame(table(df$Gender))
+colnames(gender_counts) <- c("Gender", "SurveyCount")
+gender_counts <- gender_counts[order(-gender_counts$SurveyCount), ]
+
+# Create the plot
+fig <- ggplot(gender_counts, aes(x = reorder(Gender, -SurveyCount), y = SurveyCount)) +
+  geom_bar(stat = 'identity', fill = '#232A75') +
+  labs(title = 'Gender Distribution', 
+       subtitle = '', 
+       x = '', 
+       y = 'Total Respondents') +
+  scale_x_discrete(guide = guide_axis(n.dodge = 2)) +
+  theme_minimal()  +
+ theme(plot.title = element_text(hjust = 0.5))
+
+# Print the figure
+print(fig)
+```
+
+The respondents/surveyors are almost entirely males. This is another, significant right-skewed variable.
+
+``` {r, countryplot}
+Residence_counts <- as.data.frame(table(df$Residence))
+colnames(Residence_counts) <- c("Residence", "SurveyCount")
+Residence_counts <- Residence_counts[order(-Residence_counts$SurveyCount), ]
+
+# Keep only the top 10 residences
+top_10_residences <- head(Residence_counts, 10)
+
+# Create the plot
+fig <- ggplot(top_10_residences, aes(x = reorder(Residence, -SurveyCount), y = SurveyCount)) +
+  geom_bar(stat = 'identity', fill = '#232A75') +
+  geom_text(aes(label = SurveyCount), vjust = -0.5, color = 'white') +
+  labs(title = 'Top 10 Residences Distribution', 
+       x = '', 
+       y = 'Total Surveyors') +
+  scale_x_discrete(guide = guide_axis(n.dodge = 2)) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+# Print the figure
+print(fig)
+```
+
+Interestingly, we see that most of the surveyors reside in the United States of America. Since there were a lot of countries available for selection in the survey, we limited the histogram to only show the top 10 countries.
+
+``` {r, gameplot}
+game_counts <- as.data.frame(table(df$Game))
+colnames(game_counts) <- c("Game", "SurveyCount")
+game_counts <- game_counts[order(-game_counts$SurveyCount), ]
+
+# Create the plot
+fig <- ggplot(game_counts, aes(x = reorder(Game, -SurveyCount), y = SurveyCount)) +
+  geom_bar(stat = 'identity', fill = '#232A75') +
+  labs(title = 'Game Distribution', 
+       subtitle = '', 
+       x = '', 
+       y = 'Total Surveyors') +
+  scale_x_discrete(guide = guide_axis(n.dodge = 2)) +
+  theme_minimal()  +
+ theme(plot.title = element_text(hjust = 0.5))
+# Print the figure
+print(fig)
+```
+
+Finally, we see that the game most played is League of Legends, a multi-player battle arena video game. While this also makes this variable right-skewed, it also informs us that the data analyzed for this project is applicable primarily for gamers who engage in multi-player/online mediums. League of Legends happens to be the best represented in our data.
+
+To summarize the demographics of our data, we are mostly looking at 18 year old males that reside in the United States and play League of Legends.
+
+```{r, gad_dist}
+ggplot(data = df, aes(x = GAD_T)) +
+  geom_histogram(binwidth = 1,
+                 color = "red",
+                 fill = "blue",
+                 alpha = .7) + # opacity
+  labs(x = "GAD Total Score", y = "Frequency", title = "GAD Distribution") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+### Ordinal for Psychological Inventories
+
+Given that our most import dependent variables (GAD_T, SWL_T, SPIN_T) are discrete counts of scores rather than continious numbers, we covert the scores to ordinal factors based on clinical definitions. [@greenspace_mental_health_social_2020; @yun_satisfaction_2019; @sapra_using_2020].
+
+``` {r, ord}
+# Function to convert GAD_T to ordinal variable
+convert_GAD <- function(score) {
+  if (is.na(score)) return(NA)  # Handle NA values
+  if (score >= 0 & score <= 4) {
+    return("minimal anxiety")
+  } else if (score >= 5 & score <= 9) {
+    return("mild anxiety")
+  } else if (score >= 10 & score <= 14) {
+    return("moderate anxiety")
+  } else if (score >= 15 & score <= 21) {
+    return("severe anxiety")
+  } else {
+    return(NA)  # Handles scores outside defined range
+  }
+}
+
+# Function to convert SWL_T to ordinal variable
+convert_SWL <- function(score) {
+  if (is.na(score)) return(NA)  # Handle NA values
+  if (score >= 31 & score <= 35) {
+    return("extremely satisfied")
+  } else if (score >= 26 & score <= 30) {
+    return("satisfied")
+  } else if (score >= 21 & score <= 25) {
+    return("slightly satisfied")
+  } else if (score == 20) {
+    return("neutral")
+  } else if (score >= 15 & score <= 19) {
+    return("slightly dissatisfied")
+  } else if (score >= 10 & score <= 14) {
+    return("dissatisfied")
+  } else if (score >= 5 & score <= 9) {
+    return("extremely dissatisfied")
+  } else {
+    return(NA)  # Handles scores outside defined range
+  }
+}
+
+# Function to convert SPIN_T to ordinal variable
+convert_SPIN <- function(score) {
+  if (is.na(score)) return(NA)  # Handle NA values
+  if (score >= 0 & score <= 20) {
+    return("none")
+  } else if (score >= 21 & score <= 30) {
+    return("mild")
+  } else if (score >= 31 & score <= 40) {
+    return("moderate")
+  } else if (score >= 41 & score <= 50) {
+    return("severe")
+  } else if (score >= 51 & score <= 68) {
+    return("very severe")
+  } else {
+    return(NA)  # Handles scores outside defined range
+  }
+}
+
+# Function to convert hours to ordinal variable
+convert_hours <- function(hours) {
+  if (is.na(hours)) return(NA)  # Handle NA values
+  if (hours >= 0 & hours <= 10) {
+    return("Low")
+  } else if (hours > 10 & hours <= 20) {
+    return("Moderate")
+  } else if (hours > 20 & hours <= 30) {
+    return("High")
+  } else if (hours > 30) {
+    return("Very High")
+  } else {
+    return(NA)  # Handles any unexpected values
+  }
+}
+
+# Create new columns in the data frame
+df$GAD_ord <- sapply(df$GAD_T, convert_GAD)
+df$SWL_ord <- sapply(df$SWL_T, convert_SWL)
+df$SPIN_ord <- sapply(df$SPIN_T, convert_SPIN)
+df$hours_ord <- sapply(df$Hours, convert_hours)
+
+
+#make values ordinal (min to max)
+df$GAD_ord <- factor(df$GAD_ord, 
+                     levels = c("minimal anxiety", "mild anxiety", "moderate anxiety", "severe anxiety"), 
+                     ordered = TRUE)
+
+df$SWL_ord <- factor(df$SWL_ord, 
+                     levels = c("extremely satisfied", "satisfied", "slightly satisfied", "neutral", 
+                                "slightly dissatisfied", "dissatisfied", "extremely dissatisfied"), 
+                     ordered = TRUE)
+
+df$SPIN_ord <- factor(df$SPIN_ord, 
+                      levels = c("none", "mild", "moderate", "severe", "very severe"), 
+                      ordered = TRUE)
+
+df$hours_ord <- factor(df$hours_ord, 
+                            levels = c("Low", "Moderate", "High", "Very High"), 
+                            ordered = TRUE)
+
+
+# Print the updated data frame
+#print(df$GAD_ord)
+```
+
+```{r GAD_ord_dist}
+ggplot(df, aes(x = GAD_ord)) +
+  geom_bar(fill = "blue") +
+  labs(title = "Histogram of Ordinal GAD Values",
+       x = "Ordinal GAD Values",
+       y = "Frequency") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+GAD has been converted into four classes, with the "minimal anxiety" class having the most observations. 
+
+```{r SWL_ord_dist}
+ggplot(df, aes(x = SWL_ord)) +
+  geom_bar(fill = "green") +
+  labs(title = "Histogram of Ordinal SWL Values",
+       x = "Ordinal SWL Values",
+       y = "Frequency") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+SWL is bimodal, show how the grading scale is different from the other two inventories. The seven classes get more extreme on the ends, with the middle being neutral.
+
+```{r SPIN_ord_dist}
+ggplot(df, aes(x = SPIN_ord)) +
+  geom_bar(fill = "magenta") +
+  labs(title = "Histogram of Ordinal SPIN Values",
+       x = "Ordinal SPIN Values",
+       y = "Frequency") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+SPIN has five levels (NA is later removed).
+
+### Reason for playing
+
+When looking at all of this data, a crucial component is the reason why gamers play video games in the first place. Since this field was a free-response, it would be impossible, and unwise, to display a histogram of every possible response received. In order to show meaningful results, we will use regular expressions to isolate key words in the responses and categorize them under a specific group.
+
+``` {r, cleaningwhyplay}
+clean_responses <- function(response) {
+  response <- trimws(tolower(response))  # Normalize to lowercase and trim whitespace
+  
+  # Check for exact matches first
+  if (response %in% c("winning", "improving", "relaxing", "having fun")) {
+    return(response)
+  }
+  
+  # Check for various conditions to set the response
+  if (str_detect(response, "^a[\\s,\\.]", ) || 
+      str_detect(response, "^1[\\s,\\.]", ) || 
+      str_detect(response, "^all") || 
+      str_detect(response, "^mix") || 
+      str_detect(response, "combination") || 
+      str_detect(response, "everything")) {
+    return("all of the above")
+  }
+  
+  if (str_detect(response, "distraction|escaping|escape|forget|hide|hiding|depression|boredom|bored|time|forgetting|making my brain go numb|distracting|doing something|getting away from real life|trying to get my mind off")) {
+    return("escape")
+  }
+
+  if (str_detect(response, "improve|improving|learn|learning")) {
+    return("improving")
+  }
+  
+  if (str_detect(response, "well|perform|performing")) {
+    return("winning")
+  }
+  
+  if (str_detect(response, "social|socializing|friends|team|cooperating|people|the people i play with, the game is less important")) {
+    return("social")
+  }
+  
+  if (str_detect(response, "win|winning|beating|victory|competeing|competing|competition|conpeting")) {
+    return("winning")
+  }
+  
+  if (str_detect(response, "winning") && str_detect(response, "improving")) {
+    return("mix")
+  }
+  
+  if (str_detect(response, "relaxing") && str_detect(response, "fun")) {
+    return("mix")
+  }
+  
+  if (str_detect(response, "combination|all")) {
+    return("mix")
+  }
+  
+  if (str_detect(response, "fun")) {
+    return("having fun")
+  }
+  
+  # Default to original response if no condition is met
+  return("bad response")
+}
+
+# Apply the cleaning function to the 'whyplay' column
+df$cleaned_whyplay <- sapply(df$whyplay, clean_responses)
+
+# Count the occurrences of each cleaned response
+whyplay_counts <- as.data.frame(table(df$cleaned_whyplay))
+```
+
+```{r, why }
+
+colnames(whyplay_counts) <- c("WhyPlay", "SurveyCount")
+
+
+whyplay_counts <- whyplay_counts[order(-whyplay_counts$SurveyCount), ]
+
+
+whyplay_counts$WhyPlay <- factor(whyplay_counts$WhyPlay, levels = whyplay_counts$WhyPlay)
+
+
+fig <- ggplot(whyplay_counts, aes(x = WhyPlay, y = SurveyCount)) +
+  geom_bar(stat = 'identity', fill = '#232A75') +
+  labs(title = 'Reasons for Playing', 
+       subtitle = '', 
+       caption = 'Data Source: Survey Data', 
+       x = 'Reasons for Playing', 
+       y = 'Total Respondents') +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+print(fig)
+```
+
+Now we can see that most gamers play either for fun or to improve their skills. One quick note: the group 'Escape' does not refer to escaping responsibilities. It is more along the lines of dissociation and depression.
+
+```{r hours_ord_dist}
+ggplot(df, aes(x = hours_ord)) +
+  geom_bar(fill = "turquoise") +
+  labs(title = "Histogram of Ordinal Hours Playing Video Games per Week",
+       x = "Ordinal Hours Values",
+       y = "Frequency") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r}
+
+# Replace missing values in the Hours column with NA explicitly
+hrs_data_cleaned <- df %>%
+  mutate(Hours = ifelse(is.na(Hours), NA, Hours))
+missing_values <- colSums(is.na(hrs_data_cleaned))
+
+# Filter necessary columns
+hrs_GAD_filtered <- hrs_data_cleaned %>%
+  select(Hours, GAD1:GAD7, GAD_T)
+
+```
+
+```{r, echo=TRUE, results='hide'}
+# Define the outlierKD2 function
+outlierKD2 <- function(dt, var, rm = TRUE, boxplt = TRUE, qqplt = TRUE) { 
+  var_name <- eval(substitute(var),eval(dt))
+  na1 <- sum(is.na(var_name))
+  m1 <- mean(var_name, na.rm = TRUE)
+  
+  # Generate boxplot and histogram (before removing outliers)
+  if (boxplt) {
+    par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
+    boxplot(var_name, main = "With outliers")
+    hist(var_name, main = "With outliers", xlab = NA, ylab = NA)
+  }
+  
+  outlier <- boxplot.stats(var_name)$out
+  mo <- mean(outlier)
+  
+  var_name <- ifelse(var_name %in% outlier, NA, var_name)
+  
+
+  na2 <- sum(is.na(var_name))
+  
+  cat("Outliers identified:", na2 - na1, "\n")
+  cat("Proportion (%) of outliers:", round((na2 - na1) / sum(!is.na(var_name)) * 100, 1), "\n")
+  cat("Mean of the outliers:", round(mo, 2), "\n")
+  m2 <- mean(var_name, na.rm = TRUE)
+  cat("Mean without removing outliers:", round(m1, 2), "\n")
+  cat("Mean if we remove outliers:", round(m2, 2), "\n")
+  
+  # Option to remove outliers (replace with NA)
+  if (rm) {
+    dt[[as.character(substitute(var))]] <- invisible(var_name)
+    assign(as.character(as.list(match.call())$dt), dt, envir = .GlobalEnv)
+    cat("Outliers successfully removed\n")
+    return(invisible(dt))
+  } else {
+    cat("Nothing changed\n")
+    return(invisible(var_name))
+  }
+}
+
+# Apply outlierKD2 to remove outliers from 'Hours'
+hrs_GAD_filtered_clean <- outlierKD2(hrs_GAD_filtered, Hours, rm = TRUE, boxplt = FALSE, qqplt = TRUE)
+
+
+```
+
+```{r, echo=TRUE, results='hide'}
+
+# Define the outlierKD2 function
+outlierKD2 <- function(dt, var, rm = TRUE, boxplt = TRUE, qqplt = TRUE) { 
+  var_name <- eval(substitute(var), eval(dt))
+  na1 <- sum(is.na(var_name))
+  m1 <- mean(var_name, na.rm = TRUE)
+  
+  
+  outlier <- boxplot.stats(var_name)$out
+  mo <- mean(outlier)
+  
+  var_name <- ifelse(var_name %in% outlier, NA, var_name)
+  
+  if (boxplt) {
+    boxplot(var_name, main = "Without outliers")
+    hist(var_name, main = "Without outliers", xlab = NA, ylab = NA)
+  }
+  
+  
+  na2 <- sum(is.na(var_name))
+  
+  cat("Outliers identified:", na2 - na1, "\n")
+  cat("Proportion (%) of outliers:", round((na2 - na1) / sum(!is.na(var_name)) * 100, 1), "\n")
+  cat("Mean of the outliers:", round(mo, 2), "\n")
+  m2 <- mean(var_name, na.rm = TRUE)
+  cat("Mean without removing outliers:", round(m1, 2), "\n")
+  cat("Mean if we remove outliers:", round(m2, 2), "\n")
+  
+  # Option to remove outliers (replace with NA)
+  if (rm) {
+    dt[[as.character(substitute(var))]] <- invisible(var_name)
+    assign(as.character(as.list(match.call())$dt), dt, envir = .GlobalEnv)
+    cat("Outliers successfully removed\n")
+    return(invisible(dt))
+  } else {
+    cat("Nothing changed\n")
+    return(invisible(var_name))
+  }
+}
+
+# Use outlierKD2 to remove outliers from 'streams'
+df_clean <- outlierKD2(df, streams, rm = TRUE, boxplt = FALSE, qqplt = TRUE)
+
+
+```
+
+``` {r}
+df_clean$streams_Stand <- scale(df_clean$streams)
+hrs_GAD_filtered_clean$hours_Stand <- scale(hrs_GAD_filtered_clean$Hours)
+
+```
+
+### Adding Hours and Streams -> Total Time and generating a histogram
+
+We combine the two time variables (hours and streams) and try to see if the combined data can be used for further analysis.
+
+```{r}
+
+# Create the new column hrs_stream_combined in df
+df$hrs_stream_combined <- df_clean$streams + hrs_GAD_filtered_clean$Hours
+
+# Histogram with minimal theme and bin width of 5
+ggplot(data = df, aes(x = hrs_stream_combined)) +
+  geom_histogram(binwidth = 5, color = "red", fill = "lightblue", alpha = 0.7) +
+  labs(title = "Histogram: Total Time Spent Watching Streams, Tournaments, etc.", 
+       x = "Time Spent (hrs/week)", 
+       y = "Frequency") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5,),  # Center and bold title
+    axis.title.x = element_text(hjust = 0.5), # Bold and center x-axis label
+    axis.title.y = element_text(hjust = 0.5)  # Bold and center y-axis label
+  )
+
+```
+
+We can clearly see from the generated histogram that the combined data called (now called Total time spent on watching streaming and playing games) looks near to normal. We find the average time spent playing and streaming to be around 24 hours/ week.
+
+```{r hours_streams_ANOVA, include=FALSE}
+# Perform one-way ANOVA
+anova_result_Hours_Streams <- aov(streams ~ hours_ord, data = df)
+p_Hours_Streams <- summary(anova_result_Hours_Streams)[[1]]$`Pr(>F)`[1]
+summary(anova_result_Hours_Streams)
+```
+
+```{r TukeyHSD_Hours_Streams, include=FALSE}
+# Performing Tukey HSD test
+tukey_result_Hours_Streams <- TukeyHSD(anova_result_Hours_Streams)
+
+# Print the Tukey HSD results
+print(tukey_result_Hours_Streams)
+
+# Plot the Tukey HSD results
+plot(tukey_result_Hours_Streams)
+```
+
+```{r gad_ANOVA, include=FALSE}
+# Perform one-way ANOVA
+anova_result_GAD_Hours <- aov(GAD_T ~ hours_ord, data = df)
+p_GAD <- summary(anova_result_GAD_Hours)[[1]]$`Pr(>F)`[1]
+summary(anova_result_GAD_Hours)
+```
+
+```{r TukeyHSD_GAD_Hours, include=FALSE}
+# Performing Tukey HSD test
+tukey_result_GAD_Hours <- TukeyHSD(anova_result_GAD_Hours)
+
+# Print the Tukey HSD results
+print(tukey_result_GAD_Hours)
+
+# Plot the Tukey HSD results
+plot(tukey_result_GAD_Hours)
+```
+
+```{r, swl_ANOVA, include=FALSE}
+# Perform one-way ANOVA
+anova_result_SWL_Hours <- aov(SWL_T ~ hours_ord, data = df)
+p_SWL <- summary(anova_result_SWL_Hours)[[1]]$`Pr(>F)`[1]
+summary(anova_result_SWL_Hours)
+```
+
+```{r TukeyHSD_SWL_Hours, include=FALSE}
+# Performing Tukey HSD test
+tukey_result_SWL_Hours <- TukeyHSD(anova_result_SWL_Hours)
+
+# Print the Tukey HSD results
+print(tukey_result_SWL_Hours)
+
+# Plot the Tukey HSD results
+plot(tukey_result_SWL_Hours)
+```
+
+```{r spin_ANOVA, include=FALSE}
+# Perform one-way ANOVA
+anova_result_SPIN_Hours <- aov(SPIN_T ~ hours_ord, data = df)
+p_SPIN <- summary(anova_result_SPIN_Hours)[[1]]$`Pr(>F)`[1]
+summary(anova_result_SPIN_Hours)
+```
+
+```{r TukeyHSD_SPIN_Hours, include=FALSE}
+# Performing Tukey HSD test
+tukey_result_SPIN_Hours <- TukeyHSD(anova_result_SPIN_Hours)
+
+# Print the Tukey HSD results
+print(tukey_result_SPIN_Hours)
+
+# Plot the Tukey HSD results
+plot(tukey_result_SPIN_Hours)
+```
+
+```{r contingency_GAD, include=TRUE, include=FALSE}
+contingency_table_gad <- table(df$GAD_ord, df$cleaned_whyplay)
+
+
+chi_squared_test_gad <- chisq.test(contingency_table_gad)
+
+# Print the results of the Chi-squared test
+chi_squared_test_gad
+```
+
+```{r contingency_GADE_KEEP, include=TRUE, include=FALSE}
+# Define the contingency table
+contingency_table_GADE <- table(df$GADE, df$cleaned_whyplay)
+
+# Perform the chi-squared test
+chi_squared_test_GADE <- chisq.test(contingency_table_GADE)
+p_GADE_whyplay <- chi_squared_test_GADE$p.value
+
+# Print the result
+chi_squared_test_GADE
+```
+
+```{r contingency_SWL, include=TRUE, include=FALSE}
+contingency_table_swl <- table(df$SWL_ord, df$cleaned_whyplay)
+
+
+chi_squared_test_swl <- chisq.test(contingency_table_swl)
+
+# Print the results of the Chi-squared test
+chi_squared_test_swl
+```
+
+```{r contingency_SPIN, include=TRUE, include=FALSE}
+contingency_table_spin <- table(df$SPIN_ord, df$cleaned_whyplay)
+
+
+
+chi_squared_test_spin <- chisq.test(contingency_table_spin)
+
+# Print the results of the Chi-squared test
+chi_squared_test_spin
+```
+
+``` {r, posthoc_GAD, include=FALSE}
+expected_counts <- chisq.test(contingency_table_gad)$expected
+
+# Calculate residuals
+residuals <- contingency_table_gad - expected_counts
+
+# Calculate adjusted residuals
+adjusted_residuals <- residuals / sqrt(expected_counts)
+
+# Print adjusted residuals
+#print(adjusted_residuals)
+
+
+residuals_df <- melt(adjusted_residuals)
+
+# Create a heatmap
+ggplot(residuals_df, aes(Var1, Var2, fill = value)) +
+  geom_tile() +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0) +
+  labs(title = "GAD and WhyPlay Adjusted Residuals Heatmap", x = "GAD Scale", y = "WhyPlay") +
+  theme_minimal()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r GAD_ord vs why_play2, include=FALSE}
+
+
+ggplot(df, aes(x = GAD_ord, fill = cleaned_whyplay)) +
+  geom_bar(position = "fill") +  # Use position = "fill" to show proportions
+  ylab("Proportion") +           # Label the y-axis
+  xlab("Severity of the Generalized Anxiety Disorder") +           # Label the x-axis
+  labs(title = "Proportion of Reasons for Playing by GAD Scores",
+       fill = "Reasons for Playing") +  # Rename the legend title
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 14),  # Center and bold the title
+    axis.title.x = element_text(face = "bold", size = 12),  # Bold and size for x-axis label
+    axis.title.y = element_text(face = "bold", size = 12),  # Bold and size for y-axis label
+    axis.text.x = element_text(face = "bold", size = 10),   # Bold the x-axis tick labels
+    axis.text.y = element_text(face = "bold", size = 10),   # Bold the y-axis tick labels
+    legend.title = element_text(face = "bold"),             # Bold the legend title
+    legend.text = element_text(face = "bold")               # Bold the legend labels
+  )
+```
+
+``` {r, posthoc_GADE, include=FALSE}
+expected_counts <- chisq.test(contingency_table_GADE)$expected
+
+# Calculate residuals
+residuals <- contingency_table_GADE - expected_counts
+
+# Calculate adjusted residuals
+adjusted_residuals <- residuals / sqrt(expected_counts)
+
+# Print adjusted residuals
+#print(adjusted_residuals)
+
+
+residuals_df <- melt(adjusted_residuals)
+
+# Create a heatmap
+ggplot(residuals_df, aes(Var1, Var2, fill = value)) +
+  geom_tile() +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0) +
+  labs(title = "GADE and WhyPlay Adjusted Residuals Heatmap", x = "GADE Scale", y = "WhyPlay") +
+  theme_minimal()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r, include=FALSE}
+ggplot(df, aes(x = GADE, fill = cleaned_whyplay)) +
+  geom_bar(position = "fill") +  # Use position = "fill" to show proportions
+  ylab("Proportion") +           # Label the y-axis
+  xlab("Generalized Anxiety Disorder Effect in Life") +           # Label the x-axis
+  labs(title = "Proportion of Reasons for Playing by GADE Scores",
+       fill = "Reasons for Playing") +  # Rename the legend title
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 14),  # Center and bold the title
+    axis.title.x = element_text(face = "bold", size = 12),  # Bold and size for x-axis label
+    axis.title.y = element_text(face = "bold", size = 12),  # Bold and size for y-axis label
+    axis.text.x = element_text(face = "bold", size = 10, angle = 45, hjust = 1),   # Rotate and bold the x-axis tick labels
+    axis.text.y = element_text(face = "bold", size = 10),   # Bold the y-axis tick labels
+    legend.title = element_text(face = "bold"),             # Bold the legend title
+    legend.text = element_text(face = "bold")               # Bold the legend labels
+  )
+
+
+```
+
+``` {r, posthoc_SWL, include=FALSE}
+expected_counts <- chisq.test(contingency_table_swl)$expected
+
+# Calculate residuals
+residuals <- contingency_table_swl - expected_counts
+
+# Calculate adjusted residuals
+adjusted_residuals <- residuals / sqrt(expected_counts)
+
+# Print adjusted residuals
+#print(adjusted_residuals)
+
+
+
+residuals_df <- melt(adjusted_residuals)
+
+# Create a heatmap
+ggplot(residuals_df, aes(Var1, Var2, fill = value)) +
+  geom_tile() +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0) +
+  labs(title = "SWL and WhyPlay Adjusted Residuals Heatmap", x = "SWL Scale", y = "WhyPlay") +
+  theme_minimal()+
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+```
+
+``` {r, posthoc_SPIN, include=FALSE}
+expected_counts <- chisq.test(contingency_table_spin)$expected
+
+# Calculate residuals
+residuals <- contingency_table_spin - expected_counts
+
+# Calculate adjusted residuals
+adjusted_residuals <- residuals / sqrt(expected_counts)
+
+# Print adjusted residuals
+#print(adjusted_residuals)
+
+
+residuals_df <- melt(adjusted_residuals)
+
+# Create a heatmap
+ggplot(residuals_df, aes(Var1, Var2, fill = value)) +
+  geom_tile() +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0) +
+  labs(title = "SPIN and WhyPlay Adjusted Residuals Heatmap", x = "SPIN Scale", y = "WhyPlay") +
+  theme_minimal()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r SPIN_ord vs why_play, include=FALSE}
+
+ggplot(df, aes(x = SPIN_ord, fill = cleaned_whyplay)) +
+  geom_bar(position = "fill") +  # Use position = "fill" to show proportions
+  ylab("Proportion") +           # Label the y-axis
+  xlab("Total score on the Social Phobia Inventory") +          # Label the x-axis
+  labs(title = "Proportion of Reasons for Playing by SPIN Scores",
+       fill = "Reasons for Playing") +  # Rename the legend title
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 14),  # Center and bold the title
+    axis.title.x = element_text(face = "bold", size = 12),  # Bold and size for x-axis label
+    axis.title.y = element_text(face = "bold", size = 12),  # Bold and size for y-axis label
+    axis.text.x = element_text(face = "bold", size = 10),   # Bold the x-axis tick labels
+    axis.text.y = element_text(face = "bold", size = 10),   # Bold the y-axis tick labels
+    legend.title = element_text(face = "bold"),             # Bold the legend title
+    legend.text = element_text(face = "bold")               # Bold the legend labels
+  )
+  
+
+```
+
+```{r, include=FALSE}
+
+# Combine the hours played and streams into a new variable
+df$hrs_stream_combined <- df_clean$streams + hrs_GAD_filtered_clean$Hours
+
+```
+
+# <u>Linear Regression Modeling</u>
+We want to make inferences on how mental health indicator scores and categories affect a person's time spent playing and streaming video games. In order to start this process, we are first going to guess that there is a linear relationship among all the variables.
+
+### Numeric Scores
+We will first start with a linear model that has individual or combined mental health scores as the independent variable(s) and hours playing and streaming as the dependent variable.
+
+```{r Numeric_LRM}
+# Fit the linear regression models
+lm_gad <- lm(hrs_stream_combined ~ GAD_T, data = df)
+lm_swl <- lm(hrs_stream_combined ~ SWL_T, data = df)
+lm_spin <- lm(hrs_stream_combined ~ SPIN_T, data = df)
+lm_3_combined <- lm(hrs_stream_combined ~ GAD_T + SWL_T + SPIN_T, data = df)
+
+# Define the summaries of each model
+summary_gad <- summary(lm_gad)
+summary_swl <- summary(lm_swl)
+summary_spin <- summary(lm_spin)
+summary_3_combined <- summary(lm_3_combined)
+
+# Values
+## Intercepts and slopes
+intercept_gad <- coef(summary_gad)["(Intercept)", "Estimate"]
+slope_gad <- coef(summary_gad)["GAD_T", "Estimate"]
+## P-value for the slope
+p_value_gad <- coef(summary_gad)["GAD_T", "Pr(>|t|)"]
+## R-squared and Adjusted R-squared
+r_squared_gad <- summary_gad$r.squared
+adj_r_squared_gad <- summary_gad$adj.r.squared
+
+# Call the summaries
+summary_gad
+summary_swl
+summary_spin
+summary_3_combined
+
+# Visualize the relationship between Hours Playing & Streaming and GAD_T
+ggplot(df, aes(x = GAD_T, y = hrs_stream_combined)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", col = "blue") +
+  labs(title = "Linear Regression: Hours Playing and Streaming vs GAD_T",
+       x = "Generalized Anxiety Disorder Total Score",
+       y = "Hours Spent Playing and Streaming Video Games") +
+  theme_minimal()
+
+# Visualize the relationship between Hours Playing & Streaming and SWL_T
+ggplot(df, aes(x = SWL_T, y = hrs_stream_combined)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", col = "blue") +
+  labs(title = "Linear Regression: Hours Playing and Streaming vs SWL_T",
+       x = "Satisfaction with Life Total Score",
+       y = "Hours Spent Playing and Streaming Video Games") +
+  theme_minimal()
+
+# Visualize the relationship between Hours Playing & Streaming and SPIN_T
+ggplot(df, aes(x = SPIN_T, y = hrs_stream_combined)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", col = "blue") +
+  labs(title = "Linear Regression: Hours Playing and Streaming vs SWL_T",
+       x = "Social Phobia Inventory Total Score",
+       y = "Hours Spent Playing and Streaming Video Games") +
+  theme_minimal()
+
+# Visualize the relationship among Hours Playing & Streaming and the three, numeric scores
+ggplot(df, aes(x = GAD_T + SWL_T + SPIN_T, y = hrs_stream_combined)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", col = "blue") +
+  labs(title = "Linear Regression: Hours Playing and Streaming vs GAD_T + SWL_T + SPIN_T",
+       x = "3 Total Scores",
+       y = "Hours Spent Playing and Streaming Video Games") +
+  theme_minimal()
+```
+
+### Outputs of Numeric Models
+I will only be talking about the GAD_T model, as similar logic can be applied to SWL_T, SPINT_T, and the combination of the three metrics. The intercept is `r intercept_gad`. The GAD model is telling us that people in our data set that have a total score of 0 for the GAD-7 questionnaire spends approximately `r round(intercept_gad, 0)` hours playing and streaming video games. The slope of the line of best fit is `r slope_gad`, which means that as the score from the questionnaire increases by 1, the amount of hours playing and streaming video games increases by approximately `r round(slope_gad, 1)` hours. However, the scatter plot is showing a huge issue. Players can only receive <b>integer value scores</b> when taking the GAD-7 questionnaire. This makes all other values in the models, like Adjusted R Squared and p-values (`r adj_r_squared_gad` and `r p_value_gad` respectively), useless. Before abandoning linear regression models altogether, let's see how using the ordinal categories for each metric plays out.
+
+### Ordinal Scores
+We will see how linear models that have the ordinal categories of each  metric functions as the independent variable(s) and hours playing and streaming as the dependent variable.
+
+```{r Odrinal_LRM}
+# Fit the linear regression models
+lm_gad_ord <- lm(hrs_stream_combined ~ GAD_ord, data = df)
+lm_GADE <- lm(hrs_stream_combined ~ GADE, data = df)
+lm_swl_ord <- lm(hrs_stream_combined ~ SWL_ord, data = df)
+lm_spin_ord <- lm(hrs_stream_combined ~ SPIN_ord, data = df)
+lm_4_ord <- lm(hrs_stream_combined ~ GAD_ord + GADE + SWL_ord + SPIN_ord, data = df)
+
+# Define the summaries of each model
+summary_gad_ord <- summary(lm_gad_ord)
+summary_GADE <- summary(lm_GADE)
+summary_swl_ord <- summary(lm_swl_ord)
+summary_spin_ord <- summary(lm_spin_ord)
+summary_4_ord <- summary(lm_4_ord)
+
+# Values
+## R-squared and Adjusted R-squared
+r_squared_gad_ord <- summary_gad_ord$r.squared
+adj_r_squared_gad_ord <- summary_gad_ord$adj.r.squared
+r_squared_4_ord <- summary_4_ord$r.squared
+adj_r_squared_4_ord <- summary_4_ord$adj.r.squared
+
+# Call the summaries
+summary_gad_ord
+summary_GADE
+summary_swl_ord
+summary_spin_ord
+summary_4_ord
+
+ggplot(df, aes(x = GAD_ord, y = hrs_stream_combined)) +
+    geom_boxplot() +
+    labs(title = "Boxplot of Total Hours by GAD Levels",
+         x = "GAD Ordinal Levels",
+         y = "Combined Hours (Gaming + Streaming)") +
+    theme_minimal()
+
+ggplot(df, aes(x = GADE, y = hrs_stream_combined)) +
+    geom_boxplot() +
+    labs(title = "Boxplot of Total Hours by GADE Levels",
+         x = "GADE Ordinal Levels",
+         y = "Combined Hours (Gaming + Streaming)") +
+    theme_minimal()
+
+ggplot(df, aes(x = SWL_ord, y = hrs_stream_combined)) +
+    geom_boxplot() +
+    labs(title = "Boxplot of Total Hours by SWL Levels",
+         x = "SWL Ordinal Levels",
+         y = "Combined Hours (Gaming + Streaming)") +
+    theme_minimal()
+
+ggplot(df, aes(x = SPIN_ord, y = hrs_stream_combined)) +
+    geom_boxplot() +
+    labs(title = "Boxplot of Total Hours by SPIN Levels",
+         x = "SPIN Ordinal Levels",
+         y = "Combined Hours (Gaming + Streaming)") +
+    theme_minimal()
+```
+
+### Outputs of Ordinal Models
+
+Similarly with the numeric models, I will mostly only discuss the GAD_ord model, as the logic for the other models is similar. Using ordinal categories was much better than raw, numeric scores. We get a clear depiction of median hours spent playing and streaming video games based on the category players align to. However, there is still a significant issue. While everything is set up correctly, we receive an R-squared value of `r r_squared_gad_ord`; the adjusted R-squared value is `r adj_r_squared_gad_ord`. This means that the model only `r round(adj_r_squared_gad_ord, 0)*100`% of the variance in the ordinal GAD categories is accounted for. Even using the model that combines all the ordinal categories, including GADE, yields an adjusted R-squared value of `r adj_r_squared_4_ord`, meaning only `r round(adj_r_squared_4_ord, 0)*100`% of the variance is accounted for. This evidence informs us that there is not a linear relationship among the metrics in the data set and hours spent playing and streaming video games. Linear regression is not the correct type of regression to perform for this analysis, so we will have to use logistic regression.
+
+# <u>Logistic Regression </u>
+
+According to the American Academy of Pediatrics (AAP), teens and adults should be limited to two hours of daily entertainment [@nih_reduce_2013; @cam_adair_screen_2016]. It has been also found that those with three or more hours of screen time were 34% more likely to have a “suicide-related outcome,” meaning suicidal ideation, suicidal plan and/or suicide attempt. Those with five or more hours of screen time were 48% more likely to have a suicide-related outcome [@mary_fristad_adults_2019]. This means playing in between 14-15 hrs/week is considered to be a healthy amount of time spent on screentime. That means the threshold of 15 hours/ week can be considered as normal limit of online streaming and gaming.
+
+We proceed to develop a logistic regression model. Our goal is to identify key factors that influence whether a person's combined hours spent on gaming and streaming exceed 15 hours a week and to assess the effectiveness of our models in making these predictions.
+
+```{r}
+# Create the binary variable indicating whether the combined hours are greater than 15
+df$hrs_stream_binary <- ifelse(df$hrs_stream_combined > 15, 1, 0)
+table(df$hrs_stream_binary)
+```
+
+### Converting categorical variables as factor variables
+
+The categorical variables that we think could have an influence on hours played/ week have been converted into factors in order to proceed with the next steps.
+
+```{r}
+df$SPIN_ord <- as.factor(df$SPIN_ord)
+df$GAD_ord <- as.factor(df$GAD_ord)
+df$SWL_ord <- as.factor(df$SWL_ord)
+df$cleaned_whyplay <- as.factor(df$cleaned_whyplay)
+df$Gender <- as.factor(df$Gender)
+df$Game <- as.factor(df$Game)
+df$Work <- as.factor(df$Work)
+df$Degree <- as.factor(df$Degree)
+df$Platform <- as.factor(df$Platform)
+df$GADE <- as.factor(df$GADE)
+
+```
+
+### T-test and Chi-square tests
+Before building the model, we find out if the predictors we think could have an influence on hours played per week actually have any relationship with the dependent variable.
+ 
+```{r}
+
+# Perform a t-test to compare the mean ages of those who have different HoursBinary values
+t.test(df$Age ~ df$hrs_stream_binary)
+
+# Chi-squared test for SPIN_ord and hrs_stream_binary
+table_SPIN_ord <- table(df$SPIN_ord, df$hrs_stream_binary)
+chisq.test(table_SPIN_ord)
+
+# Chi-squared test for GAD_ord and hrs_stream_binary
+table_GAD_ord <- table(df$GAD_ord, df$hrs_stream_binary)
+chisq.test(table_GAD_ord)
+
+# Chi-squared test for SWL_ord and hrs_stream_binary
+table_SWL_ord <- table(df$SWL_ord, df$hrs_stream_binary)
+chisq.test(table_SWL_ord)
+
+# Chi-squared test for Work and hrs_stream_binary
+table_Work <- table(df$Work, df$hrs_stream_binary)
+chisq.test(table_Work)
+
+# Chi-squared test for Gender and hrs_stream_binary
+table_Gender <- table(df$Gender, df$hrs_stream_binary)
+chisq.test(table_Gender)
+
+# Chi-squared test for Game and hrs_stream_binary
+table_Game <- table(df$Game, df$hrs_stream_binary)
+chisq.test(table_Game)
+
+# Chi-squared test for Platform and hrs_stream_binary
+table_Platform <- table(df$Platform, df$hrs_stream_binary)
+chisq.test(table_Platform)
+
+# Chi-squared test for GADE and hrs_stream_binary
+table_GADE <- table(df$GADE, df$hrs_stream_binary)
+chisq.test(table_GADE)
+
+# Chi-squared test for cleaned_whyplay and hrs_stream_binary
+table_cleaned_whyplay <- table(df$cleaned_whyplay, df$hrs_stream_binary)
+chisq.test(table_cleaned_whyplay)
+
+```
+
+The results suggest that the variables Age, SPIN_ord, SWL_ord, Work, Gender, Game, Platform, GADE, and cleaned_whyplay are likely to be good predictors of hrs_stream_binary based on the significance of their associations.
+GAD_ord gives Non-significant chi-squared result (p-value = 0.1), suggesting it is not a good predictor.
+
+Now in order to proceed with the model building, we need to ensure that the assumptions of logistic regression are met. Two of these assumptions like the dependent variable should be binary, the observations should be independent of each other have been already met. We now check the Linearity of Logits, that there is no multicollinearity and strong outliers in the data set.
+
+### Test the linearity of continuous predictors
+In order to check this, we need to see if the relationship between continuous independent variable (Age) and the logit (log-odds) of the dependent variable is linear or not. We use the Box-Tidwell test to do this:
+
+```{r}
+# Box-Tidwell test for continuous variables
+df$Age_log <- log(df$Age + 1) * df$Age
+
+# Fit the model including the interaction terms only for continuous variables
+model_interaction_cont <- glm(hrs_stream_binary ~ SPIN_ord + SWL_ord + Age + Work + Gender + Game + Platform + GADE + cleaned_whyplay + Age_log, data = df, family = binomial)
+summary(model_interaction_cont)
+
+```
+
+The coefficient suggests that the relationship between Age and the log-odds of the outcome is not strictly linear.
+So we now include a quadratic term for Age to capture non-linearity without creating high multicollinearity.
+
+```{r}
+# Create quadratic term for Age
+df$Age2 <- df$Age^2
+
+# Fit the model with Age and Age^2
+model_poly <- glm(hrs_stream_binary ~ SPIN_ord + SWL_ord + Age + Age2 + Work + Gender + Game + Platform + GADE + cleaned_whyplay, data = df, family = binomial)
+
+# Summarize the model
+summary(model_poly)
+
+```
+
+### Check for multicollinearity
+
+We then check for multicollinearity  using the Variance Inflation Factor (VIF):
+
+```{r}
+# Check VIF
+library(car)
+vif(model_poly)
+
+```
+
+We find that the VIF values of Age and Age^2 are greater than 10. We consider using spline functions to model the non-linear relationship more flexibly and potentially reduce this multicollinearity.
+
+```{r}
+
+library(splines)
+
+# Fit the model using splines for Age
+model_spline <- glm(hrs_stream_binary ~ SPIN_ord + SWL_ord + ns(Age, df=3) + Work + Gender + Game + Platform + GADE + cleaned_whyplay, data = df, family = binomial)
+
+# Summarize the model
+summary(model_spline)
+
+# Check VIF
+vif(model_spline)
+
+```
+
+Now we see that the VIF of all the independent variables are within limits.
+
+### Check influence of Strong Outliers
+### Identify and Remove Rows with Missing Values for Model Variables
+
+We examine standardized residuals and leverage values to identify outliers and influential points. But before that we need to identify and remove the missing values from the dataset.
+
+```{r}
+# Check for missing values
+colSums(is.na(df))
+
+```
+
+We find that there are several missing values in the dataset which are removed in the next step.
+
+```{r}
+
+# Define the variables used in the model
+model_vars <- c("hrs_stream_binary", "SPIN_ord", "GAD_ord", "SWL_ord", "Age", "Work", "Gender", "Game", "Platform", "GADE", "cleaned_whyplay")
+
+# Create a subset of the data frame with only the model variables
+df_model <- df[, model_vars]
+
+# Remove rows with any missing values in the model variables
+df_clean <- na.omit(df_model)
+
+```
+
+### Calculate Standardized Residuals and Leverage Values and generate Influence Plot
+
+Now, we fit the model using the cleaned data frame, calculate the standardized residuals and leverage values and add them to the cleaned data frame. Next, we use diagnostic plots (e.g., Cook's distance, leverage) to identify and potentially address any influential observations.
+
+```{r}
+
+# Fit the logistic regression model using the cleaned data
+model <- glm(hrs_stream_binary ~ SPIN_ord + SWL_ord + ns(Age, df = 3) + Work + Gender + Game + Platform + GADE + cleaned_whyplay, 
+             family = binomial, data = df_clean)
+
+# Calculate standardized residuals
+df_clean$residuals <- rstandard(model)
+
+# Calculate leverage values
+df_clean$leverage <- hatvalues(model)
+
+# Generate the influence plot
+influencePlot(model)
+
+```
+
+The leverage values are mostly moderate. There are no extremely high leverage values that would be of significant concern. All Cook's distances are well below 1, indicating that no single observation is overly influential on the model's fit.
+
+### Model Assessment
+
+Now, we will proceed to assess the significance of each predictor by examining the p-values of the coefficients, creating a confusion matrix using a chosen cut-off value (e.g., 0.5) and evaluate other metrics.
+
+```{r}
+
+# 1. Coefficients’ p-values
+summary(model)
+
+# 2. Confusion Matrix and Accuracy
+predicted_prob <- predict(model, type = "response")
+predicted_class <- ifelse(predicted_prob > 0.5, 1, 0)
+conf_matrix <- table(Predicted = predicted_class, Actual = df_clean$hrs_stream_binary)
+
+# Accuracy
+accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix)
+print(accuracy)
+
+# 3. Precision, Recall, Specificity, F1-score
+library(caret)
+confusionMatrix(as.factor(predicted_class), as.factor(df_clean$hrs_stream_binary), positive = "1")
+
+# 4. ROC-AUC
+library(pROC)
+roc_obj <- roc(df_clean$hrs_stream_binary, predicted_prob)
+auc(roc_obj)
+plot(roc_obj)
+
+# 5. McFadden's Pseudo-R2
+library(pscl)
+pR2(model)
+
+# 6. Feature Selection / Model Comparison (AIC, BIC)
+# AIC and BIC
+AIC(model)
+BIC(model)
+
+# 7. Deviance
+model$deviance
+
+
+```
+
+We find that while the overall accuracy is high (84%), the model performs poorly in identifying the negative class (specificity is very low). The ROC-AUC value suggests a fair discrimination ability. The McFadden's Pseudo-R2 value is 0.0383 (which is relatively low), suggesting that the model does not explain much of the variability in the response variable. The AIC and BIC values are relatively high, suggesting that the model could be further improved.
+
+### Adjusting the Cut-off Threshold
+
+We use the ROC curve to find the optimal cut-off value that balances sensitivity and specificity. 
+
+```{r}
+
+predicted_probabilities <- predict(model, newdata = df_clean, type = "response")
+
+library(pROC)
+roc_obj <- roc(df_clean$hrs_stream_binary, predicted_probabilities)
+
+# Plot the ROC curve
+plot(roc_obj)
+
+# Find the optimal cut-off
+optimal_cutoff <- coords(roc_obj, "best", ret = "threshold", best.method = "closest.topleft")
+optimal_cutoff
+
+optimal_cutoff <- optimal_cutoff[1]  # Extract the cut-off value
+
+
+```
+
+The optimal cut-off threshold identified from the ROC curve is approximately 0.839. This means that using a cut-off value of 0.839 instead of the default 0.5 can potentially provide a better balance between sensitivity (true positive rate) and specificity (true negative rate) for our logistic regression model.
+
+### Apply the Optimal Cut-off
+
+```{r}
+# Generate predicted classes using the optimal cut-off
+optimal_cutoff_value <- optimal_cutoff[1, "threshold"] # Ensure we're getting the right threshold value
+predicted_classes_optimal <- ifelse(predicted_probabilities > optimal_cutoff_value, 1, 0)
+
+# Ensure the vectors are of the same length
+cat("Length of predicted probabilities: ", length(predicted_probabilities), "\n")
+cat("Length of predicted classes (optimal): ", length(predicted_classes_optimal), "\n")
+cat("Length of actual binary outcome: ", length(df_clean$hrs_stream_binary), "\n")
+
+# Check for NA values in the actual binary outcome
+cat("Number of NA values in actual binary outcome: ", sum(is.na(df_clean$hrs_stream_binary)), "\n")
+
+# Check for NA values in predicted classes
+cat("Number of NA values in predicted classes (optimal): ", sum(is.na(predicted_classes_optimal)), "\n")
+
+# Ensure all vectors are of the same length
+if (length(predicted_classes_optimal) != length(df_clean$hrs_stream_binary)) {
+  stop("Lengths of predicted_classes_optimal and df_clean$hrs_stream_binary do not match.")
+}
+
+# Confusion Matrix
+conf_matrix_optimal <- table(predicted_classes_optimal, df_clean$hrs_stream_binary)
+print(conf_matrix_optimal)
+
+# Calculate performance metrics
+accuracy_optimal <- sum(diag(conf_matrix_optimal)) / sum(conf_matrix_optimal)
+precision_optimal <- conf_matrix_optimal[2, 2] / (conf_matrix_optimal[2, 2] + conf_matrix_optimal[2, 1])
+recall_optimal <- conf_matrix_optimal[2, 2] / (conf_matrix_optimal[2, 2] + conf_matrix_optimal[1, 2])
+f1_score_optimal <- 2 * (precision_optimal * recall_optimal) / (precision_optimal + recall_optimal)
+
+# Print the results
+cat("Accuracy (optimal cut-off): ", accuracy_optimal, "\n")
+cat("Precision (optimal cut-off): ", precision_optimal, "\n")
+cat("Recall (optimal cut-off): ", recall_optimal, "\n")
+cat("F1 Score (optimal cut-off): ", f1_score_optimal, "\n")
+
+```
+
+The model is correct 60.5% of the time, which is moderate but not particularly high. The F1 score provides a balance between precision and recall, indicating a reasonable balance but still suggesting room for improvement.
+
+### Output of the LR model
+At the 0.5 Cut-off, the model has high accuracy (84%), but it is biased towards predicting the positive class. This leads to a very low specificity (0.0066), meaning the model fails to correctly identify negative cases (high false positive rate).
+At the 0.839 Cut-off, the model has lower accuracy (60.5%), but it performs better in identifying true positives and minimizes the number of false positives. The model's precision is high (0.891), and the recall is moderate (0.603), balancing the identification of both positive and negative classes. Therefore, we recommend using the 0.839 cut-off for a more balanced and practical prediction of screen time.
+
+To enhance the analysis, we recommend employing a random forest model as an alternative to logistic regression.
+
+# <u>Random Forest Classifcication</u> 
+
+We will model the mental health outcomes (GAD, SWL, and SPIN) using the ordinarily encoded scores in a classification random forest, as the total scores themselves are discrete and would not work with a regression forest.
+
+``` {r, randomforest_classifcation}
+df <- df[complete.cases(df$GAD_ord, df$cleaned_whyplay, df$hrs_stream_combined, df$Game,df$Platform, df$earning, df$Gender, df$Age, df$Work,df$Residence), ]
+
+
+#Random Forest does not allow chr, they have to be factors
+df$cleaned_whyplay <- factor(df$cleaned_whyplay)
+df$Game <- factor(df$Game)
+df$Gender <- factor(df$Gender)
+df$GAD_ord <- factor(as.character(df$GAD_ord))
+
+#encode as needed
+cleaned_whyplay_encoded <- as.integer(factor(df$cleaned_whyplay))
+gender_encoded <- as.integer(factor(df$Gender))
+game_encoded <- as.integer(factor(df$Game))
+
+df$cleaned_whyplay_encoded <- cleaned_whyplay_encoded
+df$gender_encoded <- gender_encoded
+df$game_encoded <- game_encoded
+#str(df)
+```
+
+### GAD
+
+As we can see below, the GAD scores are very imbalanced. We first balance the data using a combination of oversampling (SMOTE) and randomly under sampling the majority class. 
+
+```{r, smote_GAD}
+
+class_counts <- table(df$GAD_ord)
+
+class_percentages <- prop.table(class_counts) * 100
+
+# Pie chart of class percentages
+pie(class_counts,
+    main = "Percentage of GAD_ord Classes, Orginal",
+    col = rainbow(length(class_counts)),
+    labels = paste(names(class_counts), round(class_percentages, 1), "%"))
+# Ensure the target variable GAD_ord is a factor
+
+
+df$GAD_ord <- as.factor(df$GAD_ord)
+
+# Select the relevant predictors and the target variable
+predictors <- df[, c("cleaned_whyplay_encoded", "Hours", "streams", "game_encoded", "gender_encoded", "Age")]
+target <- df$GAD_ord
+
+# Apply SMOTE
+set.seed(123) # For reproducibility
+smote_result <- SMOTE(X = predictors, target = target, K = 1, dup_size = 4)
+
+# Combine the SMOTE result into a new data frame
+smote_data <- data.frame(smote_result$data)
+
+# Rename the target variable
+names(smote_data)[ncol(smote_data)] <- "GAD_ord"
+
+# Ensure the target variable in the new data frame is a factor
+smote_data$GAD_ord <- as.factor(smote_data$GAD_ord)
+
+# Verify the distribution of the target variable after SMOTE
+#print(table(smote_data$GAD_ord))
+
+```
+
+```{r, smote_again_gad}
+# Ensure the target variable GAD_ord is a factor
+df$GAD_ord <- as.factor(df$GAD_ord)
+
+# Select the relevant predictors and the target variable
+predictors <- smote_data[, c("cleaned_whyplay_encoded", "Hours", "streams", "gender_encoded", "game_encoded", "Age")]
+target <- smote_data$GAD_ord
+
+# Apply SMOTE
+set.seed(123) # For reproducibility
+smote_result <- SMOTE(X = predictors, target = target, K = 1, dup_size = 2)
+
+# Combine the SMOTE result into a new data frame
+smote_data2 <- data.frame(smote_result$data)
+
+# Rename the target variable
+names(smote_data2)[ncol(smote_data)] <- "GAD_ord"
+
+# Ensure the target variable in the new data frame is a factor
+smote_data2$GAD_ord <- as.factor(smote_data2$GAD_ord)
+
+# Verify the distribution of the target variable after SMOTE
+#print(table(smote_data2$GAD_ord))
+
+
+class_counts <- table(smote_data2$GAD_ord)
+
+class_percentages <- prop.table(class_counts) * 100
+
+# Pie chart of class percentages
+#pie(class_counts,
+ #   main = "Percentage of GAD_ord Classes",
+ #   col = rainbow(length(class_counts)),
+ #   labels = paste(names(class_counts), round(class_percentages, 1), "%"))
+
+#str(smote_data2)
+```
+
+```{r, model_gad}
+#model_bal <- randomForest(GAD_ord ~ cleaned_whyplay_encoded + Hours * streams #,
+ #                            data = smote_data2, 
+ #                            ntree = 1000)
+
+#cat("Accuracy -- bal: ", mean(predict(model_bal) == smote_data2$GAD_ord), #"\n")
+
+#print(model_bal)
+
+#importance(model_bal)
+#varImpPlot(model_bal)
+```
+
+The balanced data, below, preforms much better in the model and allows the relationships in the minority classes to be learned. 
+
+```{r, undersample_gad}
+# Check the distribution of the classes
+#table(smote_data2$GAD_ord)
+
+# Ensure the "GAD_ord" column is a factor or character
+smote_data2$GAD_ord <- as.character(smote_data2$GAD_ord)  # Convert to character if it's a factor
+
+# Now, under-sample the "minimal anxiety" class to 3643
+set.seed(123)  # For reproducibility
+
+# Subset the "minimal anxiety" rows and the other classes
+minimal_anxiety <- smote_data2[smote_data2$GAD_ord == "minimal anxiety", ]
+other_classes <- smote_data2[smote_data2$GAD_ord != "minimal anxiety", ]
+
+# Ensure there are enough rows to sample from the "minimal anxiety" class
+if (nrow(minimal_anxiety) >= 3643) {
+  minimal_anxiety_undersampled <- minimal_anxiety[sample(1:nrow(minimal_anxiety), 3643), ]
+} else {
+  stop("Not enough rows in 'minimal anxiety' class to sample 3643.")
+}
+
+# Combine the undersampled "minimal anxiety" class with the other classes
+df_undersampled <- rbind(minimal_anxiety_undersampled, other_classes)
+
+# Check the new distribution
+#table(df_undersampled$GAD_ord)
+
+
+class_counts <- table(df_undersampled$GAD_ord)
+
+class_percentages <- prop.table(class_counts) * 100
+
+# Pie chart of class percentages
+pie(class_counts,
+    main = "Percentage of GAD_ord Classes, Bal",
+    col = rainbow(length(class_counts)),
+    labels = paste(names(class_counts), round(class_percentages, 1), "%"))
+
+
+df_undersampled$GAD_ord <- as.factor(df_undersampled$GAD_ord)
+```
+
+During initial modeling, it was apparent the the trees were having trouble distinguishing between the mild and minimal classes. We've determined that the high density of data at GAD_T score 5 (the lowest score in the mild class) is causing the model to struggle to identity the boundary between mild and minimal. Mild and minimal will be consolidated into one class to simplify the model.
+
+```{r, include=FALSE}
+minimal_mild <- df[df$GAD_ord %in% c("minimal anxiety", "mild anxiety"), ]
+
+# Summary statistics of GAD_T for each category
+aggregate(GAD_T ~ GAD_ord, data = minimal_mild, summary)
+```
+
+```{r, gad_consolidate}
+# Violin plot to visualize the distribution with y-axis scaled from 0 to 9
+ggplot(minimal_mild, aes(x = GAD_ord, y = GAD_T, fill = GAD_ord)) +
+  geom_violin(trim = FALSE, alpha = 0.5) +
+  geom_boxplot(width = 0.2, position = position_dodge(0.9)) +
+  labs(title = "Violin Plot of GAD_T for Minimal and Mild Anxiety",
+       x = "Anxiety Category", y = "GAD_T Score", fill = "Anxiety Category") +
+  ylim(0, 9) +
+  theme_minimal()
+```
+
+Below, we can see which variables have the greatest importance to the random forest model.Whyplay and age have a significant effect on generalized anxiety, with hours and streams playing a slightly less important role.
+
+```{r, balmodel}
+# Consolidate minimal and mild anxiety into "minimal-mild anxiety"
+df_undersampled$GAD_ord <- factor(
+  ifelse(df_undersampled$GAD_ord %in% c("minimal anxiety", "mild anxiety"), 
+         "minimal-mild anxiety", 
+         as.character(df_undersampled$GAD_ord)), # Retain other classes
+  levels = c("minimal-mild anxiety", "moderate anxiety", "severe anxiety") # Define desired order
+)
+
+# Verify structure
+#str(df_undersampled)
+
+#levels(df_undersampled$GAD_ord)
+
+
+model_bal2 <- randomForest(GAD_ord ~ cleaned_whyplay_encoded + Hours + streams + game_encoded + gender_encoded + Age ,
+                             data = df_undersampled, 
+                             ntree = 3000,
+                            mtry = 3, 
+                            nodesize = 5, 
+                         importance = TRUE)
+
+
+
+#cat("Accuracy -- bal: ", mean(predict(model_bal2) == df_undersampled$GAD_ord), "\n")
+
+#print(model_bal2)
+
+#importance(model_bal2)
+#varImpPlot(model_bal2)
+
+
+
+
+# Extract MeanDecreaseAccuracy from the variable importance
+var_imp <- importance(model_bal2)
+var_imp_df <- data.frame(
+  Variable = rownames(var_imp),
+  Importance = var_imp[, "MeanDecreaseAccuracy"]
+)
+
+# Plot MeanDecreaseAccuracy using ggplot2
+ggplot(var_imp_df, aes(x = reorder(Variable, Importance), y = Importance)) +
+  geom_bar(stat = "identity", fill = "skyblue", width = 0.7) +
+  coord_flip() + # Flip axes for better readability
+  theme_minimal() +
+  labs(title = "Variable Importance: GAD",
+       x = "Variables",
+       y = "Importance") +
+  theme(text = element_text(size = 12))
+
+
+# Your calculated metrics (use your output here)
+metrics <- data.frame(
+  Class = c("minimal-mild anxiety", "moderate anxiety", "severe anxiety"),
+  Accuracy = c(0.824, 0.952, 0.955),
+  Precision = c(0.971, 0.751, 0.854),
+  Recall = c(0.824, 0.952, 0.955),
+  F1_Score = c(0.891, 0.840, 0.902),
+  Overall_Accuracy = c(0.79, 0.79, 0.79)
+)
+
+# Format the table using kable
+metrics_table <- metrics %>%
+  kable(format = "html", digits = 3, align = "lcccccc") %>%
+  kable_styling(full_width = F, position = "center") %>%
+  column_spec(1, bold = TRUE) %>%
+  add_header_above(c(" " = 1, "Metrics" = 5)) %>%  # Adjust header grouping
+  row_spec(0, bold = TRUE, color = "white", background = "#4CAF50") %>%
+  row_spec(1:nrow(metrics), color = "black", background = "#f2f2f2") %>%
+  footnote(
+    general = "Table showing model evaluation metrics per class and overall accuracy.",
+    general_title = "Note:"
+  )
+
+# Print the table
+metrics_table
+
+
+
+```
+
+The random forest model exhibits robust classification performance for anxiety levels, with high recall (0.952–0.955) and F1 scores (0.840–0.902) across moderate and severe anxiety classes, while slightly lower precision for moderate anxiety (0.751) highlights room for improvement. Although the overall accuracy of 79% reflects good predictive capability, the relatively lower recall and F1 score for minimal-mild anxiety (0.824 and 0.891, respectively) suggest the model may struggle with distinguishing this class accurately. 
+
+### SWL
+
+Once again, we have to balance the data using oversampling and undersampleing.
+```{r, smote_swl}
+# Ensure the target variable GAD_ord is a factor
+df$SWL_ord <- as.factor(df$SWL_ord)
+#print(table(df$SWL_ord))
+
+class_counts <- table(df$SWL_ord)
+
+class_percentages <- prop.table(class_counts) * 100
+
+# Pie chart of class percentages
+pie(class_counts,
+    main = "Percentage of SWL_ord Classes, Orginal",
+    col = rainbow(length(class_counts)),
+    labels = paste(names(class_counts), round(class_percentages, 1), "%"))
+
+
+# Select the relevant predictors and the target variable
+predictors <- df[, c("cleaned_whyplay_encoded", "Hours", "streams", "game_encoded", "gender_encoded", "Age")]
+target <- df$SWL_ord
+
+# Apply SMOTE
+set.seed(123) # For reproducibility
+smote_result <- SMOTE(X = predictors, target = target, K = 1, dup_size = 4)
+
+# Combine the SMOTE result into a new data frame
+smote_data <- data.frame(smote_result$data)
+
+# Rename the target variable
+names(smote_data)[ncol(smote_data)] <- "SWL_ord"
+
+# Ensure the target variable in the new data frame is a factor
+smote_data$SWL_ord <- as.factor(smote_data$SWL_ord)
+
+# Verify the distribution of the target variable after SMOTE
+#print(table(smote_data$SWL_ord))
+
+class_counts <- table(smote_data$SWL_ord)
+
+
+
+class_percentages <- prop.table(class_counts) * 100
+
+
+# Pie chart of class percentages
+#pie(class_counts,
+ #  main = "Percentage of SWL_ord Classes, 1st pass",
+  #  col = rainbow(length(class_counts)),
+ # labels = paste(names(class_counts), round(class_percentages, 1), "%"))
+
+
+
+```
+
+```{r, smote_again_SWL}
+
+
+
+# Select the relevant predictors and the target variable
+predictors <- smote_data[, c("cleaned_whyplay_encoded", "Hours", "streams", "game_encoded", "gender_encoded", "Age")]
+target <- smote_data$SWL_ord
+
+# Apply SMOTE
+set.seed(123) # For reproducibility
+smote_result <- SMOTE(X = predictors, target = target, K = 1, dup_size = 4)
+
+# Combine the SMOTE result into a new data frame
+smote_data2 <- data.frame(smote_result$data)
+
+# Rename the target variable
+names(smote_data2)[ncol(smote_data2)] <- "SWL_ord"
+
+# Ensure the target variable in the new data frame is a factor
+smote_data2$SWL_ord <- as.factor(smote_data2$SWL_ord)
+
+# Verify the distribution of the target variable after SMOTE
+#print(table(smote_data2$SWL_ord))
+
+class_counts <- table(smote_data2$SWL_ord)
+
+
+
+class_percentages <- prop.table(class_counts) * 100
+
+
+# Pie chart of class percentages
+#pie(class_counts,
+#   main = "Percentage of SWL_ord Classes, 2nd pass",
+#    col = rainbow(length(class_counts)),
+#  labels = paste(names(class_counts), round(class_percentages, 1), "%"))
+
+
+
+
+```
+
+```{r, smotex3_swl}
+
+# Select the relevant predictors and the target variable
+predictors <- smote_data2[, c("cleaned_whyplay_encoded", "Hours", "streams", "game_encoded", "gender_encoded", "Age")]
+target <- smote_data2$SWL_ord
+
+#cat("Rows in predictors:", nrow(predictors), "\n")
+#cat("Rows in target:", length(target), "\n")
+
+# Apply SMOTE
+set.seed(123) # For reproducibility
+smote_result <- SMOTE(X = predictors, target = target, K = 1, dup_size = 2)
+
+# Combine the SMOTE result into a new data frame
+smote_data3 <- data.frame(smote_result$data)
+
+# Rename the target variable
+names(smote_data3)[ncol(smote_data3)] <- "SWL_ord"
+
+# Ensure the target variable in the new data frame is a factor
+smote_data3$SWL_ord <- as.factor(smote_data3$SWL_ord)
+
+# Verify the distribution of the target variable after SMOTE
+#print(table(smote_data3$SWL_ord))
+
+class_counts <- table(smote_data3$SWL_ord)
+
+
+
+class_percentages <- prop.table(class_counts) * 100
+
+
+# Pie chart of class percentages
+#pie(class_counts,
+#   main = "Percentage of SWL_ord Classes, 3rd pass",
+#    col = rainbow(length(class_counts)),
+  #labels = paste(names(class_counts), round(class_percentages, 1), "%"))
+
+
+
+
+```
+
+```{r, undersmaple_swl}
+
+
+# Ensure the "GAD_ord" column is a factor or character
+smote_data3$SWL_ord <- as.character(smote_data3$SWL_ord)  # Convert to character if it's a factor
+
+# Now, under-sample the "minimal anxiety" class to 3643
+set.seed(123)  # For reproducibility
+
+# Subset the "minimal anxiety" rows and the other classes
+extremely_satisfied <- smote_data3[smote_data3$SWL_ord == "extremely satisfied", ]
+other_classes <- smote_data3[smote_data3$SWL_ord != "extremely satisfied", ]
+
+
+if (nrow(extremely_satisfied) >= 2851) {
+  extreme_sat_undersampled <- extremely_satisfied[sample(1:nrow(extremely_satisfied), 2851), ]
+} else {
+  stop("Not enough rows in 'minimal anxiety' class to sample 2851.")
+}
+
+# Combine the undersampled "minimal anxiety" class with the other classes
+
+
+df_undersampled_swl <- rbind(extreme_sat_undersampled, other_classes)
+
+# Check the new distribution
+#table(df_undersampled_swl$SWL_ord)
+
+
+class_counts <- table(df_undersampled_swl$SWL_ord)
+
+class_percentages <- prop.table(class_counts) * 100
+
+# Pie chart of class percentages
+pie(class_counts,
+    main = "Percentage of SWL_ord, Bal",
+    col = rainbow(length(class_counts)),
+    labels = paste(names(class_counts), round(class_percentages, 1), "%"))
+
+
+#df_undersampled_swl$SWL_ord <- as.factor(df_undersampled$SWL_ord)
+```
+
+```{r, more_robust_us, include=FALSE}
+balance_classes <- function(df_undersampled_swl, target_column = "SWL_ord", reference_class = "dissatisfied") {
+  # Ensure the target column exists in the dataframe
+  if (!target_column %in% colnames(df_undersampled_swl)) {
+    stop(paste("Column", target_column, "does not exist in the dataframe"))
+  }
+
+  # Identify the size of the reference class (dissatisfied)
+  dissatisfied_size <- sum(df_undersampled_swl[[target_column]] == reference_class)
+  
+  # List to store the undersampled data
+  undersampled_data <- list()
+
+  # Loop over each class and sample from it to match the dissatisfied class size
+  for (class_label in unique(df_undersampled_swl[[target_column]])) {
+    # Subset data for the current class
+    class_data <- df_undersampled_swl[df_undersampled_swl[[target_column]] == class_label, ]
+    
+    # If the class size is greater than the dissatisfied class size, sample to match it
+    if (nrow(class_data) > dissatisfied_size) {
+      class_data <- class_data[sample(1:nrow(class_data), dissatisfied_size), ]
+    }
+    
+    # Append the undersampled data
+    undersampled_data[[class_label]] <- class_data
+  }
+  
+  # Combine all undersampled data into a single dataframe
+  balanced_data <- do.call(rbind, undersampled_data)
+  
+  return(balanced_data)
+}
+
+balanced_data <- balance_classes(df_undersampled_swl, target_column = "SWL_ord", reference_class = "dissatisfied")
+
+# Check the structure and distribution of the resulting dataset
+#str(balanced_data)
+#table(balanced_data$SWL_ord)
+
+```
+
+Once again, lack of uniform distribution of the scores leads to the model misclassifying classes when there is skewness towards one of the upper or lower bounds of the next class. 
+```{r, include=FALSE}
+minimal_mild <- df[df$SWL_ord %in% c("extremely satisfied", "satisfied", "slightly satisfied", "neutral", "slightly dissatisfied", "dissatisfied", "extremely dissatisfied" ), ]
+
+# Summary statistics of GAD_T for each category
+aggregate(SWL_T ~ SWL_ord, data = minimal_mild, summary)
+```
+
+```{r, violin_swl}
+
+# Violin plot to visualize the distribution with y-axis scaled from 0 to 9
+ggplot(minimal_mild, aes(x = SWL_ord, y = SWL_T, fill = SWL_ord)) +
+  geom_violin(trim = FALSE, alpha = 0.5) +
+  geom_boxplot(width = 0.2, position = position_dodge(0.9)) +
+  labs(title = "Violin Plot of SWL_T for all classes",
+       x = "SWL Category", y = "SWL_T Score", fill = "SWL Category") +
+
+  theme_minimal()
+```
+
+```{r, SWL_consolidate}
+# Consolidate satisfaction and dissatisfaction levels
+df_undersampled_swl$SWL_ord <- factor(
+  ifelse(df_undersampled_swl$SWL_ord %in% c("satisfied", "slightly satisfied"), 
+         "sat-slightly_sat", 
+         ifelse(df_undersampled_swl$SWL_ord %in% c("dissatisfied", "slightly dissatisfied"), 
+                "dis-slightly_dis", 
+                as.character(df_undersampled_swl$SWL_ord))), # Retain other classes
+  levels = c("extremely satisfied", "sat-slightly_sat", "neutral", 
+             "dis-slightly_dis", "extremely dissatisfied") # Define desired order
+)
+
+# Verify structure
+#str(df_undersampled_swl)
+
+# Check the levels
+#levels(df_undersampled_swl$SWL_ord)
+
+#table(df_undersampled_swl$SWL_ord)
+
+
+
+#ggplot(df_undersampled_swl, aes(x = Hours, fill = SWL_ord)) +
+ # geom_density(alpha = 0.5) +
+ # labs(title = "Feature Distribution by Class", x = "Hours", y = "Density")
+```
+
+Satisfied and slightly satisfied have been consolidated, along with dissatisfied and slightly dissatisfied. 
+
+```{r, SWL_model}
+
+
+
+df_undersampled_swl$SWL_ord <- as.factor(df_undersampled_swl$SWL_ord)
+
+model_bal_swl <- randomForest(SWL_ord ~ cleaned_whyplay_encoded + Hours + streams + game_encoded + gender_encoded + Age ,
+                             data = df_undersampled_swl, 
+                            ntree = 3000,
+                           mtry = 4, 
+                        nodesize = 5, 
+                         importance = TRUE)
+
+
+
+#cat("Accuracy -- bal: ", mean(predict(model_bal_swl) == df_undersampled_swl$SWL_ord), "\n")
+
+#print(model_bal_swl)
+
+#importance(model_bal2)
+#varImpPlot(model_bal_swl)
+
+
+# Extract MeanDecreaseAccuracy from the variable importance
+var_imp <- importance(model_bal_swl)
+var_imp_df <- data.frame(
+  Variable = rownames(var_imp),
+  Importance = var_imp[, "MeanDecreaseAccuracy"]
+)
+
+# Plot MeanDecreaseAccuracy using ggplot2
+ggplot(var_imp_df, aes(x = reorder(Variable, Importance), y = Importance)) +
+  geom_bar(stat = "identity", fill = "skyblue", width = 0.7) +
+  coord_flip() + # Flip axes for better readability
+  theme_minimal() +
+  labs(title = "Variable Importance: SWL",
+       x = "Variables",
+       y = "Importance") +
+  theme(text = element_text(size = 12))
+
+conf_matrix <- matrix(c(
+  2065, 346, 108, 234, 98,     # extremely satisfied
+  145, 3020, 145, 1731, 180,    # sat-slightly_sat
+  92, 352, 2124, 219, 88,       # neutral
+  130, 2479, 128, 1969, 216,    # dis-slightly_dis
+  165, 476, 149, 400, 1756      # extremely dissatisfied
+), nrow = 5, byrow = TRUE)
+
+# Assign class names
+colnames(conf_matrix) <- rownames(conf_matrix) <- c("extremely satisfied", "sat-slightly_sat", "neutral", "dis-slightly_dis", "extremely dissatisfied")
+
+# Calculate metrics
+accuracy <- diag(conf_matrix) / rowSums(conf_matrix)  # Accuracy for each class
+precision <- diag(conf_matrix) / colSums(conf_matrix) # Precision for each class
+recall <- diag(conf_matrix) / rowSums(conf_matrix)    # Recall for each class
+f1_score <- 2 * (precision * recall) / (precision + recall) # F1-Score for each class
+
+# Overall accuracy (calculated from total confusion matrix)
+overall_accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix)
+
+# Create a data frame with the metrics
+metrics <- data.frame(
+  Class = c("extremely satisfied", "sat-slightly_sat", "neutral", "dis-slightly_dis", "extremely dissatisfied"),
+  Accuracy = round(accuracy, 3),
+  Precision = round(precision, 3),
+  Recall = round(recall, 3),
+  F1_Score = round(f1_score, 3),
+  Overall_Accuracy = round(rep(overall_accuracy, 5), 3)  # Replicate overall accuracy for each class row
+)
+
+# Format the table using kable
+metrics_table <- metrics %>%
+  kable(format = "html", digits = 3, align = "lcccccc") %>%
+  kable_styling(full_width = F, position = "center") %>%
+  column_spec(1, bold = TRUE) %>%
+  add_header_above(c(" " = 1, "Metrics" = 5, " " = 1)) %>%  # This correctly defines the header with 7 columns
+  row_spec(0, bold = TRUE, color = "white", background = "#4CAF50") %>%
+  row_spec(1:nrow(metrics), color = "black", background = "#f2f2f2") %>%
+  footnote(
+    general = "Table showing model evaluation metrics per class and overall accuracy.",
+    general_title = "Note:"
+  )
+
+# Print the table
+metrics_table
+
+
+
+
+
+```
+
+Streams and hours played have the greatest effect on modeling SWL, with age close behind.
+
+The model demonstrates solid performance for "Extremely Satisfied" and "Neutral" with high accuracy, precision, and recall, while struggling with "Dis-Slightly Dis" and "Sat-Slightly Satisfied," where precision and recall are low. Overall accuracy is 0.581, suggesting misclassification issues, though the model works reasonably well on more distinct classes like "Extremely Satisfied," with pros in clarity for certain groups but cons in handling less distinct ones.
+
+```{r, swl_hyperparams}
+# Assuming `balanced_data` is your dataset
+#set.seed(123)  # For reproducibility
+#trainIndex <- createDataPartition(df_undersampled_swl$SWL_ord, p = 0.8, list = FALSE)
+#train_data <- df_undersampled_swl[trainIndex, ]
+#test_data <- df_undersampled_swl[-trainIndex, ]
+#test_data$SWL_ord <- as.factor(test_data$SWL_ord)
+
+grid <- expand.grid(
+  mtry = c(2, 4, 6),             
+  splitrule = "gini",            
+  min.node.size = c(3, 5, 7, 9)     
+)
+
+#control <- trainControl(
+#  method = "cv",          # Cross-validation
+#  number = 5,             # Number of folds
+#  verboseIter = TRUE      # Display training progress
+#)
+
+
+# Train the Random Forest model
+#rf_model <- train(
+#  SWL_ord ~ cleaned_whyplay_encoded + Hours + streams + game_encoded + gender_encoded + Age,
+#  data = train_data,
+#  method = "ranger",         # Using ranger implementation for efficiency
+#  trControl = control,
+#  tuneGrid = grid
+#)
+
+# Display the best parameters and results
+#print(rf_model)
+
+
+# Predictions on the test dataset
+#predictions <- predict(rf_model, newdata = test_data)
+
+
+```
+
+### SPIN
+
+Again, we begin by balacing the classes of SPIN
+
+```{r, smote1_spin}
+
+
+df$SPIN_ord <- as.factor(df$SPIN_ord)
+#print(table(df$SPIN_ord))
+
+class_counts <- table(df$SPIN_ord)
+
+class_percentages <- prop.table(class_counts) * 100
+
+# Pie chart of class percentages
+pie(class_counts,
+    main = "Percentage of SPIN_ord Classes, Orginal",
+    col = rainbow(length(class_counts)),
+    labels = paste(names(class_counts), round(class_percentages, 1), "%"))
+
+
+# Select the relevant predictors and the target variable
+#predictors <- df[, c("cleaned_whyplay_encoded", "Hours", "streams", "game_encoded", "gender_encoded", "Age")]
+#target <- df$SPIN_ord
+
+#cat("Rows in predictors:", nrow(predictors), "\n")
+#cat("Rows in target:", length(target), "\n")
+
+#str(predictors)
+#str(target)
+
+# Check for any NA values or data inconsistencies
+#sum(is.na(predictors))
+#sum(is.na(target))
+
+df <- df[!is.na(df$SPIN_ord), ]
+
+#target <- df$SPIN_ord
+
+#sum(is.na(target))
+
+# Apply SMOTE
+#set.seed(123) # For reproducibility
+#smote_result2 <- SMOTE(X = predictors, target = target, K = 2, dup_size = 1)
+
+# Ensure the target variable GAD_ord is a factor
+df$SPIN_ord <- as.factor(df$SPIN_ord)
+
+# Select the relevant predictors and the target variable
+predictors <- df[, c("cleaned_whyplay_encoded", "Hours", "streams", "game_encoded", "gender_encoded", "Age")]
+target <- df$SPIN_ord
+
+# Apply SMOTE
+set.seed(123) # For reproducibility
+smote_result <- SMOTE(X = predictors, target = target, K = 1, dup_size = 4)
+
+
+
+# Combine the SMOTE result into a new data frame
+smote_data_spin1 <- data.frame(smote_result$data)
+
+# Rename the target variable
+names(smote_data_spin1)[ncol(smote_data_spin1)] <- "SPIN_ord"
+
+# Ensure the target variable in the new data frame is a factor
+smote_data_spin1$SWL_ord <- as.factor(smote_data_spin1$SPIN_ord)
+
+# Verify the distribution of the target variable after SMOTE
+#print(table(smote_data_spin1$SPIN_ord))
+
+#str(smote_data_spin1)
+
+class_counts <- table(smote_data_spin1$SPIN_ord)
+
+#print(class_counts)
+
+class_percentages <- prop.table(class_counts) * 100
+
+
+# Pie chart of class percentages
+#pie(class_counts,
+#   main = "Percentage of SPIN_ord Classes, 1st pass",
+#    col = rainbow(length(class_counts)),
+#  labels = paste(names(class_counts), round(class_percentages, 1), "%"))
+
+```
+
+```{r, spin_smote2}
+# Ensure the target variable GAD_ord is a factor
+smote_data_spin1$SPIN_ord <- as.factor(smote_data_spin1$SPIN_ord)
+
+# Select the relevant predictors and the target variable
+predictors <- smote_data_spin1[, c("cleaned_whyplay_encoded", "Hours", "streams", "game_encoded", "gender_encoded", "Age")]
+target <- smote_data_spin1$SPIN_ord
+
+# Apply SMOTE
+set.seed(123) # For reproducibility
+smote_result <- SMOTE(X = predictors, target = target, K = 1, dup_size = 2)
+
+
+
+# Combine the SMOTE result into a new data frame
+smote_data_spin2 <- data.frame(smote_result$data)
+
+# Rename the target variable
+names(smote_data_spin2)[ncol(smote_data_spin2)] <- "SPIN_ord"
+
+# Ensure the target variable in the new data frame is a factor
+smote_data_spin2$SWL_ord <- as.factor(smote_data_spin2$SPIN_ord)
+
+# Verify the distribution of the target variable after SMOTE
+#print(table(smote_data_spin2$SPIN_ord))
+
+#str(smote_data_spin2)
+
+class_counts <- table(smote_data_spin2$SPIN_ord)
+
+#print(class_counts)
+
+class_percentages <- prop.table(class_counts) * 100
+
+
+# Pie chart of class percentages
+#pie(class_counts,
+ #  main = "Percentage of SPIN_ord Classes, 2nd pass",
+ #   col = rainbow(length(class_counts)),
+  #labels = paste(names(class_counts), round(class_percentages, 1), "%"))
+
+```
+
+```{r, lastsmote_mod}
+# Ensure the target variable GAD_ord is a factor
+smote_data_spin2$SPIN_ord <- as.factor(smote_data_spin2$SPIN_ord)
+
+# Select the relevant predictors and the target variable
+predictors <- smote_data_spin2[, c("cleaned_whyplay_encoded", "Hours", "streams", "game_encoded", "gender_encoded", "Age")]
+target <- smote_data_spin2$SPIN_ord
+
+# Apply SMOTE
+set.seed(123) # For reproducibility
+smote_result <- SMOTE(X = predictors, target = target, K = 1, dup_size = 1)
+
+
+
+# Combine the SMOTE result into a new data frame
+smote_data_spin3 <- data.frame(smote_result$data)
+
+# Rename the target variable
+names(smote_data_spin3)[ncol(smote_data_spin3)] <- "SPIN_ord"
+
+# Ensure the target variable in the new data frame is a factor
+smote_data_spin3$SWL_ord <- as.factor(smote_data_spin3$SPIN_ord)
+
+# Verify the distribution of the target variable after SMOTE
+#print(table(smote_data_spin3$SPIN_ord))
+
+#str(smote_data_spin3)
+
+class_counts <- table(smote_data_spin3$SPIN_ord)
+
+#print(class_counts)
+
+class_percentages <- prop.table(class_counts) * 100
+
+
+# Pie chart of class percentages
+#pie(class_counts,
+  # main = "Percentage of SPIN_ord Classes, 3rd pass",
+  #  col = rainbow(length(class_counts)),
+ # labels = paste(names(class_counts), round(class_percentages, 1), "%"))
+```
+
+```{r, spin_under}
+
+# Ensure the "GAD_ord" column is a factor or character
+smote_data_spin3$SPIN_ord <- as.character(smote_data_spin3$SPIN_ord)  # Convert to character if it's a factor
+
+# Now, under-sample the "minimal anxiety" class to 3643
+set.seed(123)  # For reproducibility
+
+# Subset the "minimal anxiety" rows and the other classes
+extremely_satisfied <- smote_data_spin3[smote_data_spin3$SPIN_ord == "none", ]
+other_classes <- smote_data_spin3[smote_data_spin3$SPIN_ord != "none", ]
+
+
+if (nrow(extremely_satisfied) >= 3500) {
+  extreme_sat_undersampled <- extremely_satisfied[sample(1:nrow(extremely_satisfied), 3500), ]
+} else {
+  stop("Not enough rows in 'minimal anxiety' class to sample 2851.")
+}
+
+# Combine the undersampled "minimal anxiety" class with the other classes
+
+
+df_undersampled_spin <- rbind(extreme_sat_undersampled, other_classes)
+
+# Check the new distribution
+#table(df_undersampled_spin$SPIN_ord)
+
+
+class_counts <- table(df_undersampled_spin$SPIN_ord)
+
+class_percentages <- prop.table(class_counts) * 100
+
+# Pie chart of class percentages
+pie(class_counts,
+    main = "Percentage of SPIN_ord, Bal",
+    col = rainbow(length(class_counts)),
+    labels = paste(names(class_counts), round(class_percentages, 1), "%"))
+
+
+```
+
+```{r, include=FALSE}
+minimal_mild <- df[df$SPIN_ord %in% c("none", "mild", "moderate", "severe", "very severe"), ]
+
+# Summary statistics of GAD_T for each category
+aggregate(SPIN_T ~ SPIN_ord, data = minimal_mild, summary)
+```
+
+```{r, violin_spin}
+# Violin plot to visualize the distribution with y-axis scaled from 0 to 9
+ggplot(minimal_mild, aes(x = SPIN_ord, y = SPIN_T, fill = SPIN_ord)) +
+  geom_violin(trim = FALSE, alpha = 0.5) +
+  geom_boxplot(width = 0.2, position = position_dodge(0.9)) +
+  labs(title = "Violin Plot of SPIN_T for all classes",
+              x = "SPIN Category", y = "SPIN_T Score", fill = "SPIN Category") +
+  theme_minimal()
+```
+
+There was difficulty in differentiating the mild and moderate classes, so they will be consolidated to mild-moderate. 
+
+```{r, spin_consolidate}
+# Consolidate 'mild' and 'moderate' into 'mild-moderate'
+df_undersampled_spin$SPIN_ord <- factor(
+  ifelse(df_undersampled_spin$SPIN_ord %in% c("mild", "moderate"), 
+         "mild-moderate", 
+         as.character(df_undersampled_spin$SPIN_ord)),  # Retain other classes
+  levels = c("none", "mild-moderate", "severe", "very severe")  # Define desired order
+)
+
+# Verify structure
+#str(df_undersampled_spin)
+
+# Check the levels
+#levels(df_undersampled_spin$SPIN_ord)
+
+# Check the distribution of the consolidated class
+#table(df_undersampled_spin$SPIN_ord)
+
+# Visualize the feature distribution by the new consolidated class
+#ggplot(df_undersampled_spin, aes(x = Hours, fill = SPIN_ord)) +
+ # geom_density(alpha = 0.5) +
+  #labs(title = "Feature Distribution by Class (Consolidated)", x = "Hours", y = "Density")
+
+```
+
+```{r, spinmodel}
+df_undersampled_spin$SPIN_ord <- as.factor(df_undersampled_spin$SPIN_ord)
+
+
+#class_weights <- c("none" = 3, "mild" = 3, "moderate" = 2, "severe" = 1, "very severe" = 1)
+model_bal_spin <- randomForest(SPIN_ord ~ cleaned_whyplay_encoded + Hours + streams + game_encoded + gender_encoded + Age ,
+                             data = df_undersampled_spin, 
+                            ntree = 3000,
+                           mtry = 4, 
+                        nodesize = 3, 
+                         importance = TRUE
+                       )
+
+
+
+#cat("Accuracy -- bal: ", mean(predict(model_bal_spin) == df_undersampled_spin$SPIN_ord), "\n")
+
+#print(model_bal_spin)
+
+#importance(model_bal2)
+#varImpPlot(model_bal_spin)
+
+
+# Extract MeanDecreaseAccuracy from the variable importance
+var_imp <- importance(model_bal_spin)
+var_imp_df <- data.frame(
+  Variable = rownames(var_imp),
+  Importance = var_imp[, "MeanDecreaseAccuracy"]
+)
+
+# Plot MeanDecreaseAccuracy using ggplot2
+ggplot(var_imp_df, aes(x = reorder(Variable, Importance), y = Importance)) +
+  geom_bar(stat = "identity", fill = "skyblue", width = 0.7) +
+  coord_flip() + # Flip axes for better readability
+  theme_minimal() +
+  labs(title = "Variable Importance: SPIN",
+       x = "Variables",
+       y = "Importance") +
+  theme(text = element_text(size = 12))
+
+
+# Confusion Matrix data for the second model
+conf_matrix <- matrix(c(
+  1616, 1699, 149, 36,  # none
+  1462, 3263, 310, 134, # mild-moderate
+  264, 534, 1215, 60,   # severe
+  107, 217, 38, 1118    # very severe
+), nrow = 4, byrow = TRUE)
+
+# Assign class names
+colnames(conf_matrix) <- rownames(conf_matrix) <- c("none", "mild-moderate", "severe", "very severe")
+
+# Calculate metrics
+accuracy <- diag(conf_matrix) / rowSums(conf_matrix)  # Accuracy for each class
+precision <- diag(conf_matrix) / colSums(conf_matrix) # Precision for each class
+recall <- diag(conf_matrix) / rowSums(conf_matrix)    # Recall for each class
+f1_score <- 2 * (precision * recall) / (precision + recall) # F1-Score for each class
+
+# Overall accuracy (calculated from total confusion matrix)
+overall_accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix)
+
+# Create a data frame with the metrics
+metrics <- data.frame(
+  Class = c("none", "mild-moderate", "severe", "very severe"),
+  Accuracy = round(accuracy, 3),
+  Precision = round(precision, 3),
+  Recall = round(recall, 3),
+  F1_Score = round(f1_score, 3),
+  Overall_Accuracy = round(rep(overall_accuracy, 4), 3)  # Replicate overall accuracy for each class row
+)
+
+# Format the table using kable
+metrics_table <- metrics %>%
+  kable(format = "html", digits = 3, align = "lcccccc") %>%
+  kable_styling(full_width = F, position = "center") %>%
+  column_spec(1, bold = TRUE) %>%
+  add_header_above(c(" " = 1, "Metrics" = 5, " " = 1)) %>%  # Adjust header grouping
+  row_spec(0, bold = TRUE, color = "white", background = "#4CAF50") %>%
+  row_spec(1:nrow(metrics), color = "black", background = "#f2f2f2") %>%
+  footnote(
+    general = "Table showing model evaluation metrics per class and overall accuracy.",
+    general_title = "Note:"
+  )
+
+# Print the table
+metrics_table
+
+```
+
+Age being the most important variable for SPIN suggests that the effects of video games might depend of demographic facts such as the age of the player.
+
+The model performs well for the "Very Severe" class with high accuracy, precision, recall, and F1 score, while the "Mild-Moderate" and "Severe" classes show moderate performance with room for improvement, especially in precision. Overall accuracy is 0.59, indicating the model is relatively balanced across all classes, but it struggles with the "None" class, where all metrics are lower.
+
+
+# <u>Key Findings </u>
+Linear:
+
+The relationship among hours playing and streaming video games to three, psychological, diagnostic, assessment scores is extremely non-linear. In project 1, we operated under the assumption that the data was continuous. However, the discrete nature of the assessment scores ensured that assumption was no longer viable. This characteristic prevents further analysis with this method, so other techniques were implemented. 
+
+Logistic:
+
+The analysis aimed to predict whether an individual's weekly screen time exceeds 15 hours using logistic regression. It also aimed to identify factors influencing whether individuals exceed 15 hours of weekly screen time (gaming and streaming). Key predictors include age, work status, gender, gaming platform, and motivations for playing. Initial findings revealed that the model has a high overall accuracy (84%) at the default 0.5 cut-off, but this comes at the cost of extremely low specificity (0.0066), meaning it struggles to correctly identify those below the 15-hour threshold. Adjusting the cut-off to 0.839 improves balance, with precision increasing to 0.891 and recall at 0.603, making the model more practical for predicting both high and low screen-time users. The model’s McFadden's Pseudo-R² (0.0383) and AUC (0.638) suggest it has limited explanatory power and fair discrimination ability. While the optimal cut-off enhances performance, the model could still be improved with additional features or alternative approaches.
+
+Based on the cited research, excessive screen time (beyond 15 hours weekly) correlates with negative mental health outcomes, including a higher likelihood of suicide-related outcomes. This model, while limited in explaining variability, provides a practical tool for identifying individuals at risk of excessive screen time. With further refinement, it could serve as a useful framework for targeting interventions aimed at promoting healthier screen-time habits.
+
+Trees:
+
+GAD is predictable using the available features. The power of the "whyplay" variable should warrant more reseach, given its significant influence on classifying levels of anxiety. 
+
+SWL and SPIN require more gaming habit/demographic features and greater engineering  investment.It is possible that evaluation metrics can improve given more sensitive models. For now, it seems apparent that stream/hours effect satisfaction with life and that a respondents age greatly impacts their level of social phobia.  
+
+# <u>References</u>
+
+
+
+
+
+
+
+
+
+
+
+

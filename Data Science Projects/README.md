@@ -1,5 +1,15 @@
-<h2> Content Creation Folder: </h2> 
+<h2> 'Content Creation' Folder: </h2> 
 Wrote a blog and made a video on the basic concepts of Probability and Statistics. </br> </br>
+
+<h2> Graduation Projects: </h22>
+<h3> 'Intro to Data Science in R Projects' Folder: </h2> 
+Contains 2 main projects completed under the course DATS6101 . </br> </br>
+
+<h3> 'Data Warehousing Projects' Folder: </h2> 
+Contains 2 main projects completed under the course DATS6102 . </br> </br>
+
+<h3> 'Data Mining Projects' Folder: </h2> 
+Contains 3 main projects completed under the course DATS6103 . </br> </br>
 
 
 <h2> Coursera Certifications: </h3>
@@ -8,8 +18,4 @@ Wrote a blog and made a video on the basic concepts of Probability and Statistic
 and test completion using Tableau </br>
  Project: https://public.tableau.com/app/profile/fyrooz.anika/viz/Dognitionmain/Story1 </br>
  Video: https://www.youtube.com/watch?v=yi48ckEYG4o </br> </br>
-
-<h2> Graduation Projects: </h22>
-
-
 

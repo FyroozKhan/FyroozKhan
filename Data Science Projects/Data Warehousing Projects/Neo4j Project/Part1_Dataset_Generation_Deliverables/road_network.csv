@@ -1,0 +1,3001 @@
+city1,city2,distance
+Waltham,Wilmington,69
+Hanford,Baton Rouge,105
+Escondido,Billings,205
+Stockton,Elizabethtown,379
+Raleigh,St. Cloud,379
+Hoboken,Lawrence,470
+Raleigh,Greeley,413
+Round Rock,Roseville,347
+Citrus Heights,Irvine,117
+Palmdale,San Rafael,402
+North Miami,Boulder,379
+Rogers,Richardson,313
+Phoenix,Buffalo,230
+San Clemente,Shawnee,279
+San Francisco,Kokomo,280
+Union City,Shawnee,317
+Sioux Falls,Chicago,331
+North Miami,Montgomery,239
+Anaheim,Turlock,123
+Washington,Dayton,106
+Buffalo,Huntsville,338
+Westminster,Lake Havasu City,372
+Haltom City,Baltimore,451
+North Charleston,Sanford,108
+San Clemente,Rancho Santa Margarita,85
+Boynton Beach,Midland,248
+Mission Viejo,Rancho Palos Verdes,260
+Surprise,Salt Lake City,160
+Lynnwood,Daly City,264
+Greeley,Stockton,183
+Greeley,Hanford,173
+Lynnwood,Cleveland,154
+Haltom City,Kokomo,51
+Victorville,Boise,197
+Rockville,Kearny,170
+Schertz,West Jordan,424
+Lawrence,Parker,220
+St. Cloud,Bloomington,69
+Bloomington,Iowa City,309
+Scottsdale,Goose Creek,349
+South Bend,Memphis,121
+Portland,South Bend,144
+Boynton Beach,Denver,137
+Mission Viejo,Lauderhill,458
+San Jacinto,Shoreline,269
+Oshkosh,New Braunfels,385
+Kansas City,Broken Arrow,381
+Salinas,Fort Lee,407
+Kansas City,Rogers,419
+Lawrence,Philadelphia,312
+Clarksville,Sarasota,456
+Union City,San Ramon,465
+Petaluma,Columbus,362
+Corpus Christi,Chico,344
+Lake Elsinore,Fontana,278
+Lubbock,San Diego,316
+New Braunfels,Boynton Beach,419
+Kearny,Macon,155
+Milwaukee,Nashville,177
+Winston-Salem,Goose Creek,487
+Murray,Riverside,483
+Detroit,Fremont,478
+Arcadia,Dubuque,60
+Columbus,Athens,411
+Baltimore,Spokane,124
+Hoffman Estates,Bellingham,370
+San Francisco,Richardson,136
+Clarksville,Greensboro,190
+Cedar Hill,Hoboken,386
+St. Peters,Sterling Heights,476
+Boulder,Scottsdale,325
+Kansas City,Laredo,467
+Richardson,Apple Valley,197
+Rancho Santa Margarita,Buffalo,96
+Palm Bay,Methuen,51
+Fort Worth,Petaluma,448
+Corpus Christi,Riverside,311
+Burien,Baldwin Park,408
+Hoboken,Midland,295
+Hanford,Dearborn,371
+Fountain Valley,Augusta,353
+Doral,Sanford,486
+Valdosta,Dubuque,167
+Santa Ana,Dearborn,225
+Roseville,St. Cloud,379
+Chicago,Lynnwood,50
+Parker,Granite Bay,253
+Rogers,Arcadia,391
+Pomona,Waltham,89
+Buffalo,Auburn,214
+Bowie,Escondido,179
+Northport,Citrus Heights,152
+Edmonds,Dayton,494
+Shawnee,Decatur,284
+Broken Arrow,Westminster,174
+Surprise,Cupertino,122
+Sarasota,Round Rock,106
+Schertz,Nashville,166
+North Miami,Hampton,486
+Tacoma,San Jose,455
+Surprise,Phoenix,245
+Tampa,Jefferson City,354
+Yonkers,Fremont,355
+Palm Bay,Murray,165
+Fort Collins,Macon,144
+Midland,Winston-Salem,151
+Carrollton,Billings,185
+Boise,Goose Creek,470
+San Jose,Sioux Falls,371
+Abilene,Spokane,316
+Irvine,Lubbock,371
+Goodyear,Haltom City,497
+Goose Creek,Kansas City,186
+Mission Viejo,Midland,409
+North Las Vegas,Fort Lee,131
+Columbus,Winston-Salem,314
+Cleveland Heights,Winston-Salem,426
+Fremont,Shoreline,233
+Haltom City,Dayton,335
+Daly City,Stockton,421
+Waltham,Jefferson City,416
+Decatur,San Leandro,174
+Boston,Fort Lee,259
+Sioux Falls,Norfolk,69
+New Braunfels,Sterling Heights,319
+Denver,Huntsville,423
+Winston-Salem,Apple Valley,244
+Sioux Falls,West Sacramento,320
+Atlanta,Bayonne,299
+West Covina,Montgomery,235
+Rancho Palos Verdes,Jefferson City,284
+Fresno,Maplewood,352
+Laredo,Orange,159
+Tucson,Buffalo,134
+Greensboro,Apple Valley,87
+New York,Tacoma,117
+Corpus Christi,Parker,147
+Yonkers,Escondido,352
+Rockville,Edmonds,185
+North Miami,Detroit,360
+Jefferson City,Baldwin Park,100
+Edmonds,Surprise,172
+Cleveland Heights,Greeley,362
+Phoenix,Lincoln,301
+Salinas,Kearny,70
+Lynnwood,San Clemente,351
+Greeley,Brunswick,499
+Shoreline,Las Vegas,344
+Mission Viejo,St. Paul,415
+North Charleston,Phoenix,213
+Tampa,Portland,317
+Blaine,Fargo,398
+Kearny,Baldwin Park,158
+Cleveland,Alpharetta,101
+New Orleans,Fremont,224
+Pompano Beach,Baltimore,360
+Portland,College Station,312
+Boynton Beach,Daly City,233
+St. Paul,Phoenix,299
+San Ramon,Rogers,73
+Elizabethtown,Boynton Beach,491
+Waltham,Fountain Valley,226
+Billings,Mission Viejo,136
+Boise,Dubuque,125
+San Francisco,Valdosta,301
+Bayonne,Kansas City,145
+Santa Ana,Washington,406
+Fort Collins,San Jacinto,214
+Roseville,Kokomo,440
+Carrollton,Fargo,127
+Lake Havasu City,Corpus Christi,354
+Murfreesboro,Mobile,106
+Broken Arrow,Milwaukee,291
+Carrollton,Fort Collins,482
+Fresno,Parker,411
+Lauderhill,Westminster,373
+Burien,Huntsville,436
+St. Paul,Midland,418
+Cedar Hill,Midland,225
+Lacey,Orange,233
+Westminster,Nashville,87
+Victoria,Fontana,116
+Boynton Beach,Las Vegas,126
+Raleigh,Fremont,348
+Elizabethtown,Decatur,253
+Centennial,Baltimore,363
+Virginia Beach,Chicago,212
+Round Rock,Carrollton,255
+Rockville,Evansville,346
+San Francisco,Burien,481
+Baltimore,Schertz,306
+Tucson,Victoria,128
+Detroit,St. Cloud,417
+West Jordan,Tacoma,286
+Atlanta,Eden Prairie,188
+Fargo,Daly City,140
+Fontana,Lauderhill,168
+Stockton,Round Rock,349
+New Orleans,Salinas,429
+Richmond,New York,182
+Salt Lake City,Doral,100
+Fresno,Macon,443
+Murfreesboro,Richardson,443
+Citrus Heights,Westminster,307
+Kansas City,Huntington Beach,296
+New Orleans,Pompano Beach,422
+West Covina,North Charleston,247
+Pompano Beach,Nashville,124
+Chicago,Athens,127
+Portland,Greensboro,346
+Kansas City,Grapevine,464
+Stockton,Union City,495
+Huntsville,Portland,323
+Jefferson City,Greensboro,144
+Murfreesboro,San Rafael,323
+San Rafael,Turlock,466
+Fremont,Fountain Valley,426
+St. Paul,Lincoln,347
+Detroit,Inglewood,310
+Hampton,Huntsville,411
+Parker,Anaheim,215
+Rogers,Fremont,403
+Salt Lake City,College Station,429
+Laredo,Victorville,307
+Victorville,Decatur,419
+West Sacramento,Burien,453
+St. Cloud,Tacoma,57
+Yonkers,Stockton,498
+Rancho Santa Margarita,Columbus,343
+New York,Gilbert,174
+St. Peters,Boulder,242
+Turlock,Mobile,212
+San Rafael,Washington,407
+Billings,Springfield,239
+Murray,Sarasota,170
+Kansas City,Dubuque,283
+Kokomo,New Orleans,192
+Rockville,Goose Creek,316
+San Clemente,Coachella,356
+Virginia Beach,Burien,402
+Alameda,Norwalk,105
+San Rafael,San Ramon,80
+Round Rock,Victoria,483
+Daly City,Arlington,138
+Anaheim,Reno,207
+Murfreesboro,Hagerstown,467
+Carlsbad,Milwaukee,428
+Hoffman Estates,Parker,269
+Washington,Victorville,324
+Evansville,Raleigh,331
+Sterling Heights,Turlock,348
+San Bernardino,Round Rock,396
+Memphis,Mobile,354
+Atlanta,Rockville,448
+College Station,Dubuque,70
+Mobile,Clarksville,378
+Salinas,Laredo,258
+Bayonne,Tallahassee,84
+Hampton,Arcadia,224
+Lake Havasu City,Iowa City,409
+San Clemente,Rockville,121
+Abilene,Centennial,124
+Fontana,Chico,400
+Tacoma,Baldwin Park,164
+Atlanta,St. Peters,378
+Boynton Beach,Centennial,70
+Springfield,Lubbock,434
+Kansas City,Lacey,153
+Fargo,Haltom City,176
+Petaluma,Shoreline,67
+Tacoma,Laredo,93
+Milwaukee,San Ramon,108
+Rancho Santa Margarita,Burien,484
+Billings,Kearny,249
+Kansas City,Sarasota,441
+Victorville,Alameda,128
+North Las Vegas,South Bend,363
+Sanford,Lake Havasu City,446
+Dayton,Milwaukee,438
+Tampa,New Braunfels,204
+Apple Valley,Rockville,349
+Daly City,Decatur,310
+Cleveland Heights,Coachella,389
+Alpharetta,Richardson,454
+Kearny,Athens,383
+Blaine,Detroit,287
+Wilmington,Greensboro,180
+Doral,Kansas City,367
+Cleveland,Winston-Salem,480
+Arlington,Boynton Beach,119
+North Miami,Sterling Heights,403
+Cleveland Heights,Fontana,238
+Nashville,Sarasota,486
+Tallahassee,Kearny,461
+Anaheim,Bartlett,360
+Buffalo,Sanford,484
+Lauderhill,Baton Rouge,142
+Roseville,Northport,93
+Goose Creek,Indianapolis,394
+Turlock,Columbus,415
+Valdosta,North Miami,356
+Boynton Beach,Murray,262
+Simi Valley,Orange,182
+Tucson,Murfreesboro,224
+Washington,Gilbert,408
+Huntsville,Alpharetta,245
+Albuquerque,Evansville,89
+Dearborn,Tampa,283
+Lake Havasu City,Orange,315
+Coachella,Abilene,495
+Simi Valley,Chico,442
+Waltham,Tucson,293
+Round Rock,Union City,138
+Lacey,San Diego,329
+St. Paul,North Charleston,399
+Fort Lee,Orange,257
+Cleveland,Lincoln,57
+Dearborn,Lakeville,184
+Atlanta,Methuen,279
+Spokane,Santa Ana,122
+St. Cloud,Fremont,152
+Carrollton,Lincoln,253
+Baton Rouge,Boulder,307
+Tacoma,Goose Creek,52
+Arcadia,Northport,472
+Granite Bay,Hagerstown,158
+Macon,Salt Lake City,454
+Kokomo,Fresno,485
+Baton Rouge,Lake Elsinore,91
+Lake Elsinore,Carlsbad,334
+Richardson,Detroit,254
+Evansville,Hanford,312
+San Francisco,Orem,343
+Bartlett,Kearny,180
+Fort Worth,Augusta,266
+Oshkosh,Richmond,221
+Evansville,Burien,172
+Elk Grove,Pompano Beach,490
+Indianapolis,Round Rock,78
+Murray,Centennial,261
+Greensboro,Salt Lake City,473
+Riverside,Doral,105
+Montgomery,Rancho Santa Margarita,462
+Midland,Hanford,229
+San Francisco,Westminster,200
+Corpus Christi,Arcadia,435
+West Sacramento,Columbus,55
+Baldwin Park,Apple Valley,150
+Haltom City,Hoffman Estates,65
+Dubuque,Columbus,100
+Rochester,Orem,430
+Tallahassee,Wilmington,442
+Parker,Schertz,144
+Northport,Schertz,82
+Eden Prairie,Edmonds,310
+Salt Lake City,Fremont,155
+San Jose,Sarasota,129
+Macon,San Jose,211
+Tucson,Lake Elsinore,171
+Las Vegas,Round Rock,194
+Chico,Lakeville,114
+Huntington Beach,Bartlett,376
+Fremont,Kokomo,234
+Santa Ana,Palm Bay,417
+Detroit,Lynchburg,471
+Detroit,Baton Rouge,343
+Valdosta,Reno,384
+Sarasota,Atlanta,460
+Fort Collins,Schertz,284
+West Jordan,Fort Lee,461
+Yonkers,Decatur,479
+Cupertino,Jefferson City,242
+Valdosta,Alameda,438
+Lincoln,Hanford,56
+Dearborn,Boston,154
+Huntsville,Hoboken,483
+Macon,Palmdale,298
+Brunswick,Nashville,279
+Victoria,Cleveland Heights,476
+Murfreesboro,Billings,302
+San Jose,Mobile,466
+Winston-Salem,Victoria,486
+Carlsbad,West Jordan,434
+Schertz,Pomona,217
+San Jacinto,Las Vegas,399
+Bartlett,Murray,267
+Schertz,Eden Prairie,488
+Corpus Christi,Waltham,473
+Carlsbad,Cedar Hill,158
+New Braunfels,Haltom City,346
+Laredo,Fargo,153
+Surprise,Denver,437
+North Charleston,Boston,273
+Oshkosh,Auburn,275
+Fontana,Baltimore,469
+Lakeville,Surprise,403
+Indianapolis,Lubbock,360
+Corpus Christi,San Leandro,149
+West Covina,Bowie,483
+Pomona,Orange,113
+Augusta,Victorville,227
+Milwaukee,Boise,227
+Surprise,Grapevine,259
+Alpharetta,Riverside,294
+Greensboro,St. Peters,329
+Las Vegas,Norfolk,436
+Washington,Fort Worth,430
+Stockton,Tucson,471
+Corpus Christi,Blaine,70
+Doral,Augusta,96
+Norfolk,Dubuque,90
+Granite Bay,Cedar Hill,142
+Irvine,Norwalk,451
+Baldwin Park,Yonkers,491
+Portland,Lynchburg,396
+Westminster,Burien,113
+New York,Greeley,433
+Macon,Denver,385
+Scottsdale,Santa Ana,63
+North Charleston,Fargo,52
+San Jacinto,San Clemente,415
+Baltimore,Cedar Hill,211
+Elk Grove,Athens,286
+New Orleans,Denver,272
+Auburn,Baldwin Park,361
+San Clemente,Hagerstown,60
+Fresno,North Charleston,401
+Tacoma,Philadelphia,200
+Mobile,San Ramon,385
+Oshkosh,Carrollton,120
+College Station,Hoboken,169
+Huntington Beach,Stockton,361
+Bayonne,Augusta,203
+Brunswick,San Francisco,438
+Orem,Sioux Falls,339
+Scottsdale,Milwaukee,146
+Rockford,San Jose,160
+Blaine,Washington,304
+Evansville,Augusta,441
+Rockville,Shawnee,143
+Bayonne,Anaheim,166
+West Sacramento,Brunswick,287
+Northport,Baldwin Park,201
+Fargo,Huntington Beach,304
+Northport,Valdosta,414
+Fountain Valley,Lake Havasu City,72
+Lauderhill,Dayton,69
+Memphis,New Orleans,196
+Atlanta,Goodyear,500
+New Braunfels,Citrus Heights,218
+Surprise,Citrus Heights,422
+Hagerstown,Greeley,117
+Richardson,Albuquerque,455
+Baton Rouge,Montgomery,441
+Yonkers,Memphis,482
+Westminster,Denver,235
+Bartlett,St. Paul,77
+Salinas,Reno,476
+Spokane,Carlsbad,196
+Rockford,San Rafael,418
+Cleveland,Virginia Beach,315
+San Jose,Winston-Salem,263
+Inglewood,Paramount,313
+Alameda,Alpharetta,476
+Hanford,Sarasota,204
+Bloomington,Santa Ana,190
+Grapevine,Arlington,209
+Citrus Heights,Iowa City,328
+Elizabethtown,Rochester,209
+Stockton,Simi Valley,348
+Rochester,Kearny,251
+Sanford,Huntington Beach,275
+New York,Westminster,474
+Cupertino,Bloomington,323
+Brunswick,Montgomery,193
+Sioux Falls,Sterling Heights,314
+Cedar Hill,San Clemente,278
+Lawrence,Huntsville,396
+Maplewood,Macon,103
+Citrus Heights,Anaheim,349
+Bellingham,Tampa,420
+San Clemente,Spokane,73
+Paramount,Decatur,56
+Granite Bay,Boise,259
+Rochester,Hanford,335
+Pompano Beach,Maplewood,100
+Apple Valley,Billings,77
+Palmdale,Daly City,268
+Shoreline,Palm Bay,234
+Dayton,Portland,204
+New Braunfels,Bloomington,210
+Baldwin Park,Las Vegas,303
+Kansas City,Hanford,384
+Haltom City,Huntsville,144
+South Bend,Brunswick,127
+Fountain Valley,Abilene,355
+Victorville,Elizabethtown,373
+Chicago,Bloomington,447
+Haltom City,Fremont,344
+Westminster,Cleveland Heights,376
+Stockton,Memphis,467
+Fontana,Murfreesboro,173
+South Bend,Salt Lake City,476
+Paramount,Gilbert,160
+Nashville,Atlanta,68
+Spokane,San Diego,305
+Raleigh,North Miami,93
+Lincoln,Nashville,173
+Westminster,Doral,265
+Carrollton,Coachella,172
+Brunswick,Philadelphia,363
+Shoreline,Hoffman Estates,493
+Dayton,Citrus Heights,73
+San Diego,Elk Grove,276
+St. Cloud,Billings,177
+Norwalk,Philadelphia,410
+Dubuque,Brunswick,281
+Baldwin Park,Spokane,314
+Jefferson City,Victoria,323
+Salinas,College Station,171
+Yonkers,Edmonds,375
+Boston,Tacoma,154
+North Las Vegas,Elk Grove,492
+San Jose,Fargo,268
+San Jacinto,Elk Grove,60
+Lincoln,Auburn,435
+Arlington,Clarksville,375
+San Bernardino,Lubbock,228
+Daly City,Palm Bay,401
+Cleveland Heights,Greensboro,490
+Cedar Hill,Chico,372
+Palmdale,Granite Bay,216
+Citrus Heights,Boulder,378
+Buffalo,Cupertino,406
+San Rafael,Roseville,290
+Brunswick,Albuquerque,115
+Tampa,Lakeville,480
+Mobile,Lake Elsinore,143
+Turlock,St. Peters,398
+Bloomington,Oshkosh,91
+Palm Bay,Arlington,346
+Denver,Hampton,235
+Cupertino,San Leandro,134
+Roseville,Nashville,244
+Dayton,Salt Lake City,482
+Simi Valley,Dearborn,251
+Richardson,Las Vegas,360
+New York,Sterling Heights,300
+San Rafael,Granite Bay,84
+San Francisco,Pomona,60
+Alpharetta,Boston,290
+Evansville,San Rafael,318
+Jefferson City,Sioux Falls,451
+Norwalk,Fargo,93
+Kansas City,Petaluma,398
+Coachella,Broken Arrow,241
+Lake Elsinore,Union City,326
+Hanford,College Station,428
+Oshkosh,Inglewood,461
+Alameda,Kearny,325
+Bowie,Kansas City,99
+Atlanta,Hoboken,251
+Laredo,Stockton,433
+Buffalo,Yonkers,362
+Sarasota,Arlington,129
+Rockville,San Ramon,453
+Tacoma,Elk Grove,65
+Arlington,Hampton,377
+Cedar Hill,New Orleans,231
+Surprise,Corpus Christi,383
+Rancho Santa Margarita,San Bernardino,440
+Keller,Macon,91
+Tampa,Baton Rouge,238
+Santa Ana,San Clemente,311
+Cedar Hill,Paramount,83
+Haltom City,Baldwin Park,467
+Wilmington,Mobile,91
+Macon,Santa Ana,87
+Round Rock,Rogers,298
+Fountain Valley,Boise,88
+Bellingham,Montgomery,222
+Billings,Augusta,460
+Northport,West Covina,491
+Bellingham,Lacey,336
+Riverside,Huntington Beach,429
+Grapevine,Gilbert,362
+Boynton Beach,Inglewood,159
+Gilbert,St. Peters,495
+Montgomery,Paramount,296
+Atlanta,Rancho Palos Verdes,182
+Virginia Beach,Waltham,428
+Fontana,Raleigh,316
+Goose Creek,Orange,387
+Boynton Beach,Rockville,306
+Apple Valley,Broken Arrow,353
+Denver,San Rafael,419
+Alpharetta,Stockton,250
+Pomona,Abilene,481
+Abilene,Pompano Beach,306
+Northport,Iowa City,183
+Kearny,Phoenix,164
+Rochester,Denver,441
+Grapevine,San Clemente,197
+Boynton Beach,Carlsbad,56
+Hagerstown,Orange,454
+West Covina,Norfolk,475
+Grapevine,Petaluma,371
+Sanford,San Jose,131
+Sioux Falls,Detroit,51
+Northport,Lincoln,338
+Escondido,New Braunfels,485
+Keller,Buffalo,120
+Indianapolis,Corpus Christi,161
+Eden Prairie,Winston-Salem,90
+Sarasota,St. Paul,346
+Lynnwood,Paramount,449
+Bellingham,Chico,235
+Lawrence,Tampa,181
+Huntington Beach,Decatur,290
+Pomona,New Orleans,221
+Rockford,Auburn,147
+Kansas City,Daly City,277
+Athens,Fort Worth,230
+Fresno,Broken Arrow,309
+Union City,Roseville,145
+Westminster,South Bend,373
+Denver,Philadelphia,246
+Union City,Keller,332
+Dayton,San Francisco,167
+Corpus Christi,Sanford,132
+Tampa,Reno,487
+West Jordan,St. Peters,466
+Lacey,Athens,280
+Broken Arrow,West Covina,272
+Lincoln,Edmonds,288
+Dayton,Albuquerque,348
+Waltham,Brunswick,273
+Sterling Heights,Columbus,273
+Fort Collins,Victorville,246
+Detroit,Shoreline,263
+Hoboken,Burien,384
+Fremont,Decatur,342
+Columbus,Bloomington,161
+Fremont,Hanford,425
+Pompano Beach,Orem,235
+Baton Rouge,Winston-Salem,351
+Indianapolis,Bayonne,399
+Shoreline,Milwaukee,168
+Elk Grove,Bartlett,131
+North Charleston,Salinas,293
+Victoria,Virginia Beach,363
+Elizabethtown,Hanford,346
+St. Peters,Albuquerque,88
+Santa Ana,San Bernardino,149
+Grapevine,Fargo,304
+Greeley,Kokomo,431
+Hoboken,San Francisco,303
+Granite Bay,Hoffman Estates,252
+Daly City,Hampton,329
+Winston-Salem,Methuen,498
+Escondido,Haltom City,250
+Nashville,Fargo,360
+Lacey,Brunswick,164
+Paramount,Augusta,477
+Wilmington,Lubbock,118
+Spokane,Rockville,323
+Salt Lake City,Decatur,478
+Lacey,Orem,73
+Salt Lake City,Richardson,165
+Lakeville,Edmonds,498
+Sanford,Boynton Beach,108
+Escondido,Cedar Hill,208
+Carlsbad,Columbus,147
+Buffalo,Fort Lee,166
+Stockton,Dubuque,421
+Schertz,Pompano Beach,387
+Fort Worth,West Covina,306
+Sanford,Victoria,239
+Haltom City,Lakeville,113
+Irvine,Denver,280
+Carrollton,Fresno,182
+Albuquerque,Auburn,311
+Surprise,St. Peters,379
+Lynnwood,Greeley,259
+Fort Collins,Alpharetta,161
+Fort Lee,Grapevine,447
+Norfolk,Lake Havasu City,374
+Round Rock,Santa Ana,174
+Edmonds,Philadelphia,359
+Baldwin Park,Memphis,254
+Roseville,Laredo,360
+Rancho Santa Margarita,Athens,407
+Victorville,Midland,56
+Victorville,Virginia Beach,333
+Centennial,Iowa City,79
+Detroit,Greensboro,461
+Decatur,St. Cloud,458
+Rogers,Augusta,249
+Palm Bay,Hoboken,490
+San Francisco,Cedar Hill,385
+Springfield,Murfreesboro,259
+Mobile,Keller,88
+Sanford,San Francisco,394
+Lake Havasu City,Boulder,262
+Apple Valley,Palm Bay,419
+Keller,New Orleans,252
+Baldwin Park,Kansas City,337
+Rancho Palos Verdes,Lynchburg,420
+Spokane,Sanford,324
+College Station,Abilene,235
+Boynton Beach,Northport,234
+Salinas,Petaluma,100
+Anaheim,San Rafael,382
+Methuen,Orem,122
+Dayton,Alpharetta,370
+Hanford,Round Rock,318
+Westminster,Fremont,92
+Hampton,Buffalo,466
+New Orleans,San Diego,142
+Iowa City,Bartlett,289
+Baton Rouge,Simi Valley,449
+Wilmington,Oshkosh,207
+Fremont,Doral,392
+Rancho Santa Margarita,Bloomington,323
+Gilbert,Buffalo,312
+Nashville,Cleveland Heights,406
+Hoboken,Springfield,393
+San Rafael,Westminster,248
+Elk Grove,Fort Collins,464
+Burien,Carrollton,155
+Methuen,Murray,229
+Milwaukee,Lubbock,432
+Lynchburg,North Charleston,338
+Philadelphia,Paramount,264
+Dayton,Baldwin Park,379
+Macon,Rancho Palos Verdes,67
+Stockton,Inglewood,240
+Murfreesboro,San Bernardino,134
+Norwalk,Methuen,94
+Midland,North Las Vegas,363
+Fargo,Jefferson City,441
+Montgomery,Cleveland Heights,191
+Decatur,Shoreline,196
+Chico,Hanford,425
+San Leandro,Reno,349
+Mission Viejo,Indianapolis,232
+Lake Elsinore,San Jacinto,197
+Iowa City,Indianapolis,437
+Lynchburg,Westminster,234
+San Francisco,Coachella,90
+Inglewood,Northport,179
+Huntington Beach,West Covina,153
+Centennial,Daly City,375
+Rancho Palos Verdes,Simi Valley,273
+Springfield,Kearny,334
+Raleigh,New York,292
+Daly City,Nashville,319
+Las Vegas,Maplewood,473
+Atlanta,Milwaukee,439
+Turlock,Somerville,360
+West Jordan,Alameda,315
+Grapevine,Shoreline,227
+Union City,Hagerstown,52
+Cleveland Heights,Spokane,62
+Fresno,Sterling Heights,106
+Richmond,Decatur,76
+San Rafael,Shoreline,275
+Grapevine,Dearborn,440
+Midland,Cleveland,133
+Arcadia,Baton Rouge,290
+Sterling Heights,Lake Elsinore,262
+Salinas,Lynchburg,244
+Fargo,Palm Bay,373
+Coachella,Salinas,161
+Clarksville,Fontana,68
+Stockton,Lincoln,192
+Palm Bay,Edmonds,475
+Kearny,Rancho Santa Margarita,361
+Carrollton,College Station,140
+Burien,Daly City,241
+San Clemente,Boise,436
+Arlington,Evansville,419
+Midland,Abilene,122
+Lakeville,Lubbock,179
+Surprise,Mobile,344
+Mission Viejo,Citrus Heights,462
+Union City,Lincoln,309
+Atlanta,Mission Viejo,219
+Rockford,Laredo,314
+Mission Viejo,Bloomington,191
+Greeley,St. Paul,264
+Cleveland,Goose Creek,477
+Indianapolis,New Braunfels,406
+Kearny,Rogers,96
+Dubuque,Mobile,500
+Reno,Shawnee,75
+Sterling Heights,Pomona,182
+Cedar Hill,Laredo,126
+West Covina,Cupertino,121
+Yonkers,Broken Arrow,238
+Bartlett,Montgomery,80
+Somerville,Murray,491
+Victorville,Detroit,335
+Bellingham,Boise,486
+Kansas City,San Bernardino,267
+Sarasota,Scottsdale,179
+College Station,Valdosta,434
+West Sacramento,Fremont,393
+Hanford,Tucson,156
+Mobile,West Sacramento,56
+Pomona,Baltimore,365
+Orem,Carlsbad,130
+Salt Lake City,San Clemente,284
+Citrus Heights,Midland,149
+Dearborn,Bayonne,219
+Sanford,Alameda,250
+Fort Worth,Atlanta,273
+Somerville,Bloomington,361
+Montgomery,Tallahassee,151
+Hagerstown,Surprise,83
+Augusta,Abilene,361
+Coachella,Westminster,180
+Abilene,Detroit,336
+Fort Worth,Turlock,312
+Boston,Virginia Beach,378
+Rochester,Baldwin Park,284
+Virginia Beach,Athens,498
+New Braunfels,Fort Lee,405
+Valdosta,Roseville,468
+Methuen,Doral,142
+Albuquerque,Las Vegas,339
+Paramount,St. Peters,284
+Chico,San Rafael,99
+Boulder,Tallahassee,364
+Memphis,Goose Creek,191
+Richmond,Salt Lake City,281
+Corpus Christi,Brunswick,59
+Shawnee,Apple Valley,489
+Memphis,Coachella,55
+Gilbert,Bowie,168
+Apple Valley,Gilbert,88
+Santa Ana,Lake Havasu City,77
+Methuen,Fresno,268
+Turlock,College Station,179
+Yonkers,Lake Havasu City,271
+Cedar Hill,San Jacinto,58
+Raleigh,Schertz,81
+Oshkosh,Victorville,89
+Norfolk,Westminster,209
+North Miami,Cupertino,269
+Raleigh,Greensboro,197
+Bloomington,Petaluma,496
+Keller,Greensboro,420
+Denver,Fort Worth,263
+Dayton,St. Cloud,317
+West Covina,New Orleans,241
+Coachella,San Jose,299
+Anaheim,San Leandro,315
+North Miami,Daly City,400
+West Sacramento,Phoenix,297
+Lakeville,Yonkers,102
+South Bend,Lawrence,251
+Cleveland Heights,Lake Elsinore,127
+Shawnee,Maplewood,227
+New Orleans,Granite Bay,323
+Lawrence,Wilmington,151
+Carlsbad,Billings,444
+North Charleston,Denver,67
+Richardson,Dubuque,273
+Montgomery,Edmonds,319
+Doral,New York,385
+Mobile,Reno,432
+Scottsdale,Stockton,138
+Scottsdale,Yonkers,449
+Haltom City,Inglewood,431
+Portland,Keller,85
+Hampton,Sanford,337
+Raleigh,Columbus,155
+Fort Lee,Hagerstown,310
+San Jacinto,West Covina,193
+Stockton,Apple Valley,202
+St. Paul,Granite Bay,191
+Dubuque,West Covina,446
+Spokane,Pompano Beach,261
+Eden Prairie,Escondido,479
+Baldwin Park,Methuen,362
+Lincoln,Evansville,123
+Richmond,Pompano Beach,381
+Montgomery,Athens,247
+Riverside,Fremont,233
+Virginia Beach,Schertz,355
+Bellingham,Shoreline,138
+San Diego,Tallahassee,150
+Lubbock,Cedar Hill,157
+Fort Worth,Billings,345
+Kansas City,Murray,361
+Eden Prairie,Phoenix,83
+Centennial,Fort Collins,183
+Macon,Methuen,490
+West Covina,Atlanta,157
+Centennial,Montgomery,344
+Rockford,Orem,431
+Edmonds,Spokane,424
+Doral,San Jose,475
+Methuen,Memphis,480
+Iowa City,Norwalk,367
+Bartlett,Lawrence,309
+Hoffman Estates,New Braunfels,107
+North Las Vegas,Escondido,218
+Cleveland,Irvine,142
+Lubbock,Palm Bay,66
+Eden Prairie,Broken Arrow,359
+Boise,Richmond,189
+Carlsbad,Huntington Beach,391
+Spokane,San Leandro,167
+Carlsbad,Wilmington,340
+Rancho Palos Verdes,Union City,353
+Corpus Christi,Boston,381
+San Rafael,North Charleston,267
+Tampa,Fresno,325
+Union City,Mission Viejo,120
+Portland,Irvine,242
+Brunswick,Phoenix,428
+Shawnee,Haltom City,134
+New Orleans,Victoria,100
+New York,Rockford,198
+Elk Grove,Milwaukee,310
+Inglewood,Palm Bay,145
+Clarksville,Baton Rouge,251
+Las Vegas,Cupertino,185
+Decatur,Atlanta,130
+Lubbock,Bowie,97
+Citrus Heights,Fremont,401
+Norfolk,Rockford,157
+Columbus,Lake Elsinore,406
+Fremont,Methuen,90
+Shawnee,Salt Lake City,79
+Laredo,Waltham,489
+Richardson,Westminster,469
+Rogers,Bayonne,496
+Billings,Elizabethtown,490
+Westminster,Apple Valley,50
+Cleveland Heights,Waltham,56
+North Charleston,Sarasota,237
+Lacey,Kearny,211
+Portland,Columbus,419
+Milwaukee,Philadelphia,127
+Fargo,Chicago,435
+Billings,Cedar Hill,135
+Simi Valley,Philadelphia,341
+South Bend,Wilmington,203
+Huntington Beach,Fort Collins,100
+Brunswick,Northport,176
+Carlsbad,North Charleston,72
+Carrollton,Keller,332
+Shawnee,Abilene,323
+San Jose,Orem,280
+Murray,Escondido,192
+Iowa City,Tacoma,222
+Murray,San Jacinto,372
+Irvine,Carlsbad,222
+Burien,Las Vegas,375
+Shawnee,West Covina,413
+Boise,Scottsdale,68
+Fort Worth,San Jacinto,273
+Kokomo,Daly City,62
+Fremont,Palmdale,298
+Tacoma,Arlington,482
+Tacoma,Yonkers,411
+Portland,Roseville,122
+Lynchburg,Cleveland Heights,419
+Indianapolis,South Bend,80
+New York,Lynnwood,138
+Buffalo,Evansville,492
+Buffalo,Shawnee,450
+Surprise,Dubuque,296
+Chicago,Haltom City,444
+Las Vegas,Phoenix,338
+San Jose,Maplewood,311
+Indianapolis,Boise,450
+St. Peters,Elizabethtown,189
+Cedar Hill,Mission Viejo,242
+Chicago,Billings,402
+Denver,Hagerstown,219
+Rochester,Augusta,265
+Norfolk,Keller,54
+Union City,Iowa City,78
+Rancho Palos Verdes,Keller,237
+Granite Bay,Paramount,62
+North Charleston,Billings,295
+Yonkers,Columbus,149
+Burien,Goose Creek,471
+Round Rock,Coachella,498
+Kearny,Spokane,92
+Bloomington,Baton Rouge,327
+Fort Worth,Sarasota,285
+Murfreesboro,Hoffman Estates,424
+Somerville,Shoreline,126
+West Covina,Jefferson City,282
+Milwaukee,Granite Bay,261
+Decatur,Riverside,180
+St. Paul,Carrollton,292
+New Orleans,Rogers,405
+Fort Collins,Goose Creek,102
+Coachella,Fort Lee,347
+Hagerstown,Mobile,409
+Hoffman Estates,Huntington Beach,464
+Tallahassee,Norwalk,155
+Reno,Grapevine,323
+Somerville,Lakeville,472
+Raleigh,Sioux Falls,133
+Pomona,Burien,430
+Fort Lee,Corpus Christi,428
+Alpharetta,Las Vegas,394
+Round Rock,Corpus Christi,438
+Detroit,Rancho Santa Margarita,226
+Hagerstown,Kokomo,319
+Baltimore,Auburn,217
+New Braunfels,Carlsbad,102
+Philadelphia,Sanford,106
+Hoboken,Lakeville,293
+Lakeville,Round Rock,384
+Somerville,Baltimore,163
+Eden Prairie,Simi Valley,212
+Haltom City,Broken Arrow,76
+Carlsbad,Turlock,286
+Augusta,Rancho Palos Verdes,148
+Augusta,Cleveland,446
+Palmdale,Norfolk,175
+New York,Apple Valley,338
+Surprise,San Francisco,141
+Murfreesboro,Granite Bay,462
+Fresno,Eden Prairie,153
+Springfield,Centennial,136
+Centennial,Simi Valley,123
+South Bend,Mission Viejo,197
+Salt Lake City,Sioux Falls,114
+Fremont,Granite Bay,57
+West Covina,Goose Creek,418
+San Francisco,Bowie,479
+Sanford,Rancho Palos Verdes,314
+Wilmington,San Ramon,491
+Westminster,Orem,82
+Tampa,Sanford,318
+Lubbock,Maplewood,278
+Columbus,San Jacinto,282
+Anaheim,Cedar Hill,86
+Virginia Beach,New Braunfels,400
+Fontana,Huntsville,105
+San Leandro,Citrus Heights,407
+Arcadia,Lakeville,324
+Corpus Christi,Washington,75
+Virginia Beach,Daly City,255
+Wilmington,Fort Worth,245
+Macon,Carlsbad,207
+Washington,Lacey,85
+Memphis,Lawrence,474
+Corpus Christi,Coachella,322
+Tucson,Northport,408
+Bayonne,Citrus Heights,238
+Goose Creek,Modesto,268
+Indianapolis,Westminster,126
+North Las Vegas,Lake Havasu City,289
+Bayonne,Tacoma,327
+Brunswick,Round Rock,365
+Cedar Hill,College Station,241
+Lynchburg,Lincoln,134
+Escondido,North Charleston,368
+Rogers,Clarksville,212
+Goose Creek,Surprise,336
+Virginia Beach,Philadelphia,354
+Salt Lake City,Palm Bay,83
+Bellingham,Fresno,238
+Goodyear,Santa Ana,200
+Salinas,Lubbock,96
+Simi Valley,Lynnwood,315
+Virginia Beach,Yonkers,169
+Paramount,Portland,490
+Shoreline,Virginia Beach,282
+Shawnee,Stockton,365
+Norwalk,Sarasota,367
+Dearborn,Apple Valley,222
+St. Cloud,Arcadia,87
+Nashville,Boulder,248
+San Bernardino,Baton Rouge,76
+Valdosta,Victorville,143
+San Ramon,Denver,60
+San Diego,Sanford,215
+Lacey,Lynchburg,283
+College Station,Baldwin Park,265
+St. Cloud,Dubuque,140
+Stockton,Kearny,108
+Baton Rouge,Elk Grove,490
+Irvine,Petaluma,471
+Maplewood,Palmdale,135
+Fort Lee,Bowie,270
+Fort Lee,Arcadia,406
+Oshkosh,Shoreline,308
+Hampton,Rockville,326
+Oshkosh,Lawrence,274
+North Las Vegas,Dearborn,365
+Eden Prairie,Elizabethtown,173
+Chico,Victorville,334
+Daly City,Goodyear,194
+Spokane,Broken Arrow,72
+Mission Viejo,San Rafael,183
+Modesto,Rockford,160
+Arcadia,West Sacramento,372
+North Las Vegas,Tucson,160
+Spokane,Haltom City,77
+St. Cloud,College Station,125
+Lakeville,Rancho Palos Verdes,194
+Murray,Philadelphia,314
+Inglewood,Richardson,464
+Greeley,North Charleston,326
+Memphis,North Charleston,132
+Round Rock,San Jose,399
+Lakeville,Salinas,316
+Wilmington,Raleigh,301
+Gilbert,Roseville,149
+Wilmington,New York,114
+North Charleston,Edmonds,285
+San Jose,Fountain Valley,412
+St. Cloud,Kokomo,148
+San Diego,St. Cloud,345
+New Orleans,Indianapolis,87
+Riverside,Memphis,409
+Norfolk,Tacoma,322
+Elizabethtown,Winston-Salem,126
+Norfolk,Waltham,424
+Burien,Hoffman Estates,257
+St. Peters,Roseville,307
+Westminster,Somerville,409
+Alameda,Lubbock,482
+Union City,Cupertino,54
+Keller,Schertz,113
+North Charleston,Petaluma,184
+Escondido,Coachella,477
+Waltham,Macon,456
+Nashville,Paramount,397
+Hanford,Iowa City,285
+Montgomery,Eden Prairie,50
+Murray,Tucson,448
+Sterling Heights,San Clemente,146
+Boise,Lawrence,437
+Granite Bay,Wilmington,317
+Baton Rouge,Huntsville,197
+Salt Lake City,Rogers,343
+Mission Viejo,Lake Havasu City,449
+New Braunfels,Coachella,291
+Lubbock,Coachella,79
+Huntington Beach,Columbus,313
+Lincoln,Haltom City,475
+Victorville,Richmond,104
+Rogers,St. Cloud,227
+Cleveland,Laredo,465
+Salt Lake City,Westminster,157
+Alpharetta,New York,267
+Victorville,Greensboro,269
+Baton Rouge,Palmdale,233
+San Clemente,Alameda,444
+Tucson,Goose Creek,79
+Cedar Hill,Northport,247
+Memphis,Salt Lake City,333
+Bowie,Bartlett,436
+Granite Bay,Elizabethtown,321
+Shoreline,Lynnwood,400
+Surprise,Hanford,289
+Detroit,Anaheim,338
+Kearny,Santa Ana,286
+Tallahassee,Shoreline,191
+North Charleston,Washington,295
+Alpharetta,Bowie,111
+Hoboken,Greeley,346
+Maplewood,Westminster,113
+Albuquerque,Kearny,270
+San Bernardino,Baltimore,298
+Norfolk,New Braunfels,179
+Chico,Decatur,175
+Granite Bay,West Sacramento,466
+Dearborn,Norwalk,186
+Maplewood,Centennial,458
+Victoria,Alpharetta,143
+Washington,Midland,472
+Escondido,Atlanta,174
+Memphis,Springfield,251
+Murfreesboro,Alpharetta,220
+Daly City,Lacey,377
+Dayton,Simi Valley,483
+St. Cloud,Kansas City,261
+San Ramon,Kokomo,95
+Murray,Lubbock,298
+Broken Arrow,Kearny,344
+Denver,Escondido,154
+San Leandro,Evansville,305
+Parker,Shoreline,100
+Union City,Greensboro,125
+Alameda,St. Cloud,65
+Sterling Heights,Lauderhill,213
+Rancho Santa Margarita,Lynchburg,75
+San Bernardino,Rogers,53
+Murray,Decatur,424
+New York,Lake Elsinore,343
+Elizabethtown,Las Vegas,247
+Shawnee,Riverside,377
+Oshkosh,Escondido,261
+Orange,Kokomo,214
+Alameda,Bayonne,73
+Evansville,Broken Arrow,498
+West Covina,Macon,329
+Rockford,Kokomo,431
+Fort Collins,Sterling Heights,437
+Union City,Rancho Santa Margarita,104
+Bartlett,Dayton,428
+Lincoln,Columbus,454
+Westminster,Lacey,259
+San Jose,Turlock,72
+Winston-Salem,San Diego,448
+Surprise,Rancho Santa Margarita,156
+Fort Worth,Fort Collins,325
+Rockford,Albuquerque,66
+Mission Viejo,Rockford,231
+Burien,Edmonds,256
+Blaine,Shoreline,336
+Elk Grove,Inglewood,64
+Hoffman Estates,New York,97
+Washington,Fontana,288
+Tampa,Atlanta,290
+Sioux Falls,Hanford,155
+San Clemente,Escondido,412
+Springfield,San Clemente,451
+Fort Collins,Bowie,124
+Philadelphia,Tucson,94
+San Diego,Springfield,239
+Rogers,Iowa City,384
+Memphis,San Jacinto,474
+Westminster,Baldwin Park,310
+Baltimore,Victorville,334
+Sanford,Huntsville,393
+Bellingham,Burien,405
+St. Cloud,Lynchburg,99
+Carrollton,Shawnee,71
+College Station,Buffalo,421
+Inglewood,Irvine,182
+Lacey,Rancho Palos Verdes,69
+Keller,Sarasota,189
+San Jose,Lincoln,431
+West Sacramento,San Leandro,68
+Lawrence,Paramount,402
+Elizabethtown,North Charleston,222
+Milwaukee,Bowie,408
+West Jordan,Kansas City,478
+Cupertino,Decatur,229
+Hampton,Fargo,125
+Richardson,Victoria,348
+Fountain Valley,Billings,396
+Sanford,Abilene,491
+Rockford,Fort Worth,322
+Fresno,San Leandro,245
+Lake Elsinore,Broken Arrow,55
+Dearborn,Tucson,188
+Elk Grove,Las Vegas,174
+Hoboken,Waltham,230
+Doral,Laredo,188
+Lynchburg,Tucson,295
+Evansville,Citrus Heights,415
+Waltham,Columbus,410
+Coachella,Virginia Beach,282
+Methuen,Hoffman Estates,185
+Nashville,Lubbock,260
+Lake Havasu City,Cleveland,492
+Rogers,Montgomery,408
+Portland,Burien,275
+Detroit,Murray,210
+Tampa,Tacoma,128
+Philadelphia,Valdosta,186
+Alameda,Decatur,114
+Denver,Citrus Heights,103
+Clarksville,Buffalo,114
+Gilbert,Elizabethtown,463
+Keller,Wilmington,275
+Boynton Beach,Rochester,126
+Atlanta,San Jacinto,111
+Sarasota,Pompano Beach,352
+Clarksville,Lauderhill,76
+Montgomery,Spokane,124
+Petaluma,Stockton,242
+Portland,Bowie,249
+Macon,Lakeville,314
+Gilbert,Lakeville,327
+Fargo,Riverside,363
+Billings,Sterling Heights,424
+San Diego,Macon,61
+Apple Valley,Methuen,342
+Kansas City,San Francisco,270
+San Jose,West Jordan,174
+St. Paul,Wilmington,258
+Tallahassee,Chico,448
+Greensboro,Chico,364
+Sterling Heights,Bartlett,228
+Augusta,Blaine,182
+Chico,Alpharetta,282
+Iowa City,Coachella,341
+Tallahassee,Boynton Beach,221
+Sarasota,Fountain Valley,163
+San Rafael,Waltham,273
+Fresno,St. Paul,90
+Carrollton,Lake Havasu City,272
+Goodyear,Abilene,174
+Kokomo,Sarasota,368
+Spokane,Fountain Valley,458
+Goodyear,Auburn,76
+Raleigh,Lynchburg,257
+Springfield,Fort Lee,341
+Philadelphia,Winston-Salem,225
+Round Rock,Carlsbad,382
+Eden Prairie,Baltimore,252
+San Ramon,Lacey,344
+Orem,Huntington Beach,499
+Tucson,Yonkers,114
+Grapevine,Hampton,477
+Auburn,New Braunfels,435
+Rochester,Columbus,304
+Schertz,Rogers,316
+New Orleans,Bellingham,136
+Lubbock,Lynnwood,332
+Richmond,Sterling Heights,187
+Rockville,Hanford,79
+Shoreline,Macon,459
+Simi Valley,College Station,280
+College Station,Shawnee,95
+Goodyear,Coachella,428
+Kearny,College Station,191
+Methuen,Baton Rouge,452
+Boston,Baton Rouge,80
+Apple Valley,Sioux Falls,101
+Somerville,Sioux Falls,189
+Boulder,Denver,84
+Pomona,Westminster,133
+Arlington,Augusta,267
+Simi Valley,Dubuque,456
+Alpharetta,Columbus,306
+Doral,Cupertino,413
+North Charleston,Lynnwood,283
+Greeley,Eden Prairie,392
+Roseville,Decatur,296
+Sanford,Haltom City,375
+Springfield,Bellingham,164
+Brunswick,Wilmington,54
+North Charleston,Dearborn,463
+Murray,Fort Lee,231
+St. Peters,Rochester,171
+Valdosta,Methuen,138
+Boulder,South Bend,365
+Goose Creek,New Braunfels,211
+Norfolk,Fontana,161
+Tampa,Cupertino,212
+San Francisco,Lincoln,360
+Shawnee,Laredo,242
+Rockville,Orem,321
+Escondido,Round Rock,96
+Pomona,Midland,201
+Alameda,Brunswick,124
+Sanford,Kokomo,500
+Richardson,Decatur,277
+Lakeville,Detroit,480
+Brunswick,Milwaukee,375
+Methuen,Arcadia,289
+Reno,Rogers,300
+Kearny,Murfreesboro,148
+Detroit,Rogers,412
+Dayton,Rockford,282
+Petaluma,Reno,489
+Simi Valley,Cedar Hill,325
+Detroit,Haltom City,344
+Portland,Mobile,391
+Carrollton,Chicago,417
+Waltham,St. Paul,145
+Petaluma,Yonkers,487
+Greeley,West Covina,439
+Lauderhill,Hanford,492
+Buffalo,Santa Ana,462
+Baltimore,Phoenix,171
+Evansville,Mobile,131
+Atlanta,Kansas City,105
+Boston,Chicago,436
+Spokane,Cedar Hill,227
+Santa Ana,Rancho Palos Verdes,95
+Sarasota,Las Vegas,203
+Modesto,South Bend,349
+West Covina,San Bernardino,150
+Richmond,Gilbert,66
+Anaheim,Indianapolis,225
+Memphis,Valdosta,320
+San Jose,Tucson,194
+Alpharetta,Bayonne,475
+Bayonne,Hoboken,104
+Methuen,Cleveland,420
+Fargo,Rockville,163
+Doral,Grapevine,332
+Las Vegas,West Covina,335
+Sanford,Salt Lake City,217
+Macon,Nashville,166
+Boynton Beach,Chicago,183
+Valdosta,Billings,282
+Hoffman Estates,Boynton Beach,158
+Clarksville,Mission Viejo,199
+Murray,Reno,211
+Auburn,Nashville,237
+Virginia Beach,Dayton,197
+Phoenix,St. Cloud,95
+Lake Havasu City,Fort Lee,210
+Rochester,Oshkosh,220
+Methuen,New Orleans,346
+New Braunfels,Lacey,435
+North Charleston,Kansas City,222
+Anaheim,Dearborn,121
+Tucson,Oshkosh,408
+Lakeville,Murfreesboro,215
+Stockton,Arcadia,105
+Phoenix,Blaine,110
+Yonkers,Surprise,403
+Cupertino,Keller,219
+Midland,Hampton,286
+Methuen,St. Paul,136
+Boulder,Rancho Santa Margarita,226
+San Francisco,Round Rock,112
+Portland,San Francisco,497
+Denver,Sarasota,485
+Lake Elsinore,Alpharetta,242
+Rockford,North Miami,175
+North Las Vegas,Atlanta,410
+Sanford,Valdosta,129
+Albuquerque,Centennial,62
+Sarasota,Fargo,186
+Doral,Simi Valley,447
+New Braunfels,Lynnwood,335
+San Jose,St. Peters,447
+Palm Bay,Rochester,457
+Bloomington,Murray,343
+Buffalo,Atlanta,476
+Modesto,Orem,395
+San Rafael,Apple Valley,306
+Iowa City,St. Cloud,73
+San Clemente,Atlanta,407
+Norfolk,Inglewood,293
+Edmonds,Rancho Santa Margarita,348
+Bloomington,Turlock,297
+Bartlett,Tallahassee,333
+Macon,Rogers,338
+Alameda,Greeley,471
+Granite Bay,Shoreline,366
+North Miami,Carlsbad,169
+Lawrence,Keller,151
+Clarksville,Midland,113
+San Francisco,Decatur,228
+Springfield,South Bend,149
+Petaluma,Iowa City,312
+Corpus Christi,Athens,273
+Sioux Falls,Dayton,138
+Lawrence,Cedar Hill,67
+Mobile,Rancho Santa Margarita,148
+Laredo,Columbus,174
+Rochester,Hoffman Estates,176
+Auburn,Keller,203
+Lake Havasu City,North Charleston,68
+Montgomery,Daly City,270
+Blaine,San Leandro,233
+Norwalk,Apple Valley,351
+Lubbock,Richardson,386
+Turlock,Escondido,391
+Iowa City,Bellingham,65
+Philadelphia,Albuquerque,394
+Brunswick,Salinas,477
+San Francisco,Albuquerque,136
+Palmdale,Anaheim,181
+Iowa City,Albuquerque,104
+Fort Worth,Yonkers,488
+Hoboken,Tallahassee,187
+Citrus Heights,Reno,142
+Sterling Heights,Cleveland Heights,71
+Rancho Palos Verdes,Baltimore,496
+Greeley,Bartlett,168
+Decatur,Tacoma,419
+Fort Collins,Murray,304
+Milwaukee,Boynton Beach,123
+Modesto,Cupertino,146
+Lubbock,Shoreline,55
+Mobile,Riverside,443
+Bartlett,Granite Bay,112
+Mission Viejo,Scottsdale,411
+Boynton Beach,Albuquerque,232
+Wilmington,Murfreesboro,165
+San Francisco,Midland,483
+Fort Lee,Granite Bay,330
+Chico,Fountain Valley,254
+Pomona,Reno,236
+Columbus,Tacoma,237
+Lauderhill,Lakeville,453
+Edmonds,Bartlett,264
+Waltham,Shoreline,289
+Surprise,Macon,350
+St. Peters,Tucson,108
+Salt Lake City,Turlock,471
+Kokomo,Chico,118
+Carrollton,Dayton,392
+St. Peters,Victorville,347
+Milwaukee,Norfolk,375
+Macon,Tucson,153
+Atlanta,Hoffman Estates,263
+Rogers,Corpus Christi,141
+Valdosta,Salt Lake City,431
+Centennial,Tucson,458
+Murfreesboro,Arcadia,126
+North Las Vegas,Sioux Falls,237
+Virginia Beach,Richmond,367
+Rockford,Lakeville,244
+Baldwin Park,Murfreesboro,294
+Surprise,Westminster,444
+West Covina,Reno,339
+Gilbert,Athens,123
+Tacoma,Grapevine,194
+Brunswick,Baltimore,170
+Athens,Rochester,387
+Keller,Columbus,279
+South Bend,Stockton,51
+Decatur,Methuen,401
+Billings,Hanford,56
+North Miami,Las Vegas,485
+Lubbock,Palmdale,385
+Gilbert,Virginia Beach,184
+Cedar Hill,Keller,398
+Portland,Modesto,351
+Fresno,Cupertino,275
+North Miami,Boynton Beach,262
+Carlsbad,Elk Grove,424
+Norfolk,Macon,385
+Tacoma,Union City,71
+Stockton,Evansville,281
+Dubuque,Indianapolis,327
+Boston,Methuen,83
+Hanford,Portland,306
+Pompano Beach,Palmdale,213
+Richardson,Clarksville,191
+Jefferson City,Boynton Beach,412
+Iowa City,Montgomery,83
+Arcadia,Fontana,399
+Apple Valley,Baton Rouge,433
+New York,Lakeville,87
+Grapevine,Spokane,360
+Simi Valley,Macon,374
+Rockford,Granite Bay,305
+Anaheim,Fort Worth,309
+West Jordan,Richmond,301
+Fargo,Goodyear,331
+Reno,Parker,156
+New Braunfels,Cedar Hill,120
+Bloomington,Norfolk,314
+Roseville,Arcadia,287
+Lacey,San Leandro,269
+Surprise,Kearny,315
+Northport,Victoria,83
+Elk Grove,Irvine,277
+Columbus,Rockford,215
+Billings,Irvine,314
+Santa Ana,San Francisco,269
+North Las Vegas,Philadelphia,319
+Montgomery,Irvine,371
+Rockford,Bayonne,68
+Sarasota,Fontana,214
+Reno,Rochester,72
+Baltimore,Evansville,330
+Fargo,Victorville,164
+Midland,Milwaukee,267
+Bowie,Tampa,70
+Bellingham,St. Paul,394
+Abilene,Orange,479
+Mobile,Palmdale,107
+Kearny,Sterling Heights,352
+Bartlett,Centennial,314
+Carlsbad,Chico,315
+Bowie,New York,215
+Greensboro,Coachella,389
+San Bernardino,Boston,215
+New Orleans,Huntington Beach,181
+Schertz,Huntsville,426
+Huntsville,Billings,174
+South Bend,Irvine,246
+Rancho Palos Verdes,Mobile,403
+Dayton,Augusta,336
+Modesto,Elizabethtown,193
+Spokane,Jefferson City,99
+Fort Worth,Boise,186
+Raleigh,Iowa City,317
+San Ramon,Murfreesboro,92
+Surprise,Memphis,339
+Tacoma,Pompano Beach,144
+North Las Vegas,Lauderhill,388
+Iowa City,Lauderhill,256
+Fremont,Abilene,181
+Simi Valley,San Francisco,457
+Iowa City,Lakeville,201
+Pomona,Sioux Falls,224
+Lynnwood,Auburn,316
+Sanford,Gilbert,101
+Richardson,New Orleans,493
+San Rafael,Escondido,140
+Surprise,Tallahassee,417
+Bayonne,San Clemente,456
+Sanford,Edmonds,438
+North Miami,Pomona,381
+Broken Arrow,Goodyear,157
+Pompano Beach,Kearny,175
+Wilmington,Pomona,313
+Baltimore,San Clemente,301
+Albuquerque,West Covina,272
+San Jose,Richmond,278
+New Orleans,Lynchburg,158
+Dearborn,Waltham,395
+Carlsbad,Bloomington,325
+Rancho Santa Margarita,Escondido,445
+Phoenix,Rockford,490
+Raleigh,Baton Rouge,83
+Spokane,St. Peters,475
+Carrollton,Hanford,59
+Macon,Richmond,75
+Boulder,Greeley,98
+Lincoln,Scottsdale,369
+Buffalo,Portland,280
+Brunswick,Edmonds,310
+Tucson,Schertz,327
+Abilene,Portland,492
+Auburn,Fort Collins,122
+Goose Creek,Buffalo,87
+Salt Lake City,Corpus Christi,63
+Montgomery,Scottsdale,273
+Sioux Falls,North Miami,272
+St. Peters,Lincoln,111
+Laredo,Carlsbad,236
+Centennial,Salt Lake City,349
+Cleveland,Alameda,455
+Hanford,Decatur,418
+Tampa,Arcadia,102
+Fresno,Salt Lake City,307
+Oshkosh,Milwaukee,458
+Daly City,San Bernardino,341
+Washington,Union City,294
+Augusta,Huntsville,124
+Lubbock,Sioux Falls,385
+Paramount,Somerville,117
+West Jordan,Greensboro,116
+Fremont,Grapevine,394
+Sioux Falls,Fargo,234
+Murfreesboro,San Francisco,467
+Maplewood,Columbus,321
+Cleveland,Sioux Falls,301
+Doral,Phoenix,104
+Fremont,Tampa,444
+Alpharetta,Memphis,466
+Lawrence,Bellingham,330
+Tucson,Union City,81
+Fresno,San Diego,274
+New Orleans,Augusta,253
+Blaine,Richardson,458
+Huntington Beach,Portland,185
+Orange,Carlsbad,353
+Murfreesboro,Anaheim,136
+Irvine,Mobile,200
+Cedar Hill,San Jose,170
+Fort Collins,Palm Bay,289
+Las Vegas,Carlsbad,371
+Indianapolis,Huntsville,197
+Rochester,Cleveland,178
+Alpharetta,Yonkers,491
+Daly City,Haltom City,126
+Portland,Virginia Beach,237
+Jefferson City,Bowie,265
+Fontana,Philadelphia,77
+Laredo,Cupertino,67
+Abilene,Maplewood,98
+Nashville,Coachella,126
+Lauderhill,Laredo,84
+Boise,Dayton,295
+Lacey,Petaluma,196
+Modesto,West Sacramento,436
+St. Cloud,Maplewood,328
+Victoria,Somerville,319
+Norfolk,Fresno,72
+Denver,Apple Valley,207
+Anaheim,Athens,465
+Murray,Laredo,271
+Alpharetta,Reno,108
+Cupertino,Abilene,407
+San Clemente,Hampton,185
+Fresno,Mission Viejo,487
+Orange,Eden Prairie,170
+Elk Grove,Tallahassee,75
+Hoffman Estates,Huntsville,115
+Richmond,Billings,176
+Montgomery,Winston-Salem,422
+Virginia Beach,Atlanta,103
+Alameda,Tampa,241
+Chicago,Cedar Hill,296
+Simi Valley,Salt Lake City,349
+Carrollton,Westminster,298
+Union City,Bayonne,366
+Huntsville,Boston,246
+Kokomo,Cedar Hill,436
+Richardson,Reno,221
+Indianapolis,Somerville,173
+Orem,Boynton Beach,253
+Victoria,North Miami,305
+Burien,New York,239
+Round Rock,Fountain Valley,232
+Rancho Santa Margarita,Yonkers,385
+St. Cloud,Norfolk,469
+Greeley,Hoffman Estates,241
+Coachella,West Covina,109
+Clarksville,Lynchburg,154
+Norwalk,Sterling Heights,227
+San Diego,Elizabethtown,378
+Rockville,Cupertino,359
+Hoboken,Montgomery,234
+Winston-Salem,Doral,157
+College Station,Edmonds,493
+Escondido,Victorville,206
+Huntington Beach,Springfield,441
+Salt Lake City,Las Vegas,251
+Boston,Huntington Beach,115
+Maplewood,San Ramon,171
+Victoria,Albuquerque,127
+Schertz,Murfreesboro,458
+West Sacramento,Turlock,122
+Abilene,San Bernardino,288
+Fountain Valley,Rochester,263
+Irvine,Blaine,403
+Greeley,Schertz,430
+Fort Lee,Sarasota,455
+San Ramon,Corpus Christi,290
+Pompano Beach,Roseville,382
+Escondido,West Sacramento,217
+Boulder,New Braunfels,496
+Fountain Valley,Detroit,467
+Stockton,San Jacinto,275
+Waltham,Elk Grove,259
+New Braunfels,Lynchburg,165
+Lubbock,Salt Lake City,227
+Bellingham,Dayton,98
+Valdosta,Norwalk,101
+Clarksville,Apple Valley,420
+Denver,Chicago,151
+Carlsbad,Burien,221
+Kokomo,Dubuque,378
+San Diego,Buffalo,271
+Westminster,Decatur,61
+Carrollton,West Covina,375
+Keller,Albuquerque,410
+San Rafael,Spokane,109
+Elk Grove,Cleveland,207
+Apple Valley,Sarasota,343
+New Orleans,Apple Valley,326
+Carrollton,Maplewood,478
+Rogers,Fort Lee,224
+Richmond,San Ramon,146
+Phoenix,Lawrence,315
+Anaheim,Irvine,115
+Cupertino,St. Paul,73
+Gilbert,Rochester,121
+West Sacramento,Kokomo,243
+Salinas,Spokane,227
+Waltham,Sioux Falls,463
+Keller,Oshkosh,276
+Brunswick,Lubbock,414
+Petaluma,Wilmington,150
+Boise,Evansville,90
+Atlanta,Hagerstown,125
+Laredo,Kearny,210
+Simi Valley,Lake Havasu City,315
+Arcadia,South Bend,420
+Cedar Hill,Sioux Falls,258
+Virginia Beach,San Ramon,111
+Greensboro,Burien,135
+Norfolk,Cleveland,266
+Jefferson City,Milwaukee,460
+Evansville,Wilmington,432
+Citrus Heights,Elk Grove,255
+Roseville,Kearny,496
+Eden Prairie,Hoffman Estates,229
+Fort Collins,Raleigh,154
+North Charleston,Raleigh,386
+Springfield,Norwalk,372
+Philadelphia,Somerville,92
+Victorville,Dubuque,142
+Pompano Beach,Doral,241
+Baldwin Park,San Clemente,358
+Norwalk,West Jordan,496
+Lake Havasu City,Dearborn,478
+Carrollton,Rancho Santa Margarita,301
+Cleveland Heights,Rockford,396
+San Bernardino,Laredo,284
+Maplewood,St. Peters,392
+Broken Arrow,Orange,484
+Anaheim,Richardson,132
+Mobile,Palm Bay,71
+Columbus,Hanford,156
+Shawnee,Richardson,486
+Simi Valley,Kearny,161
+North Miami,Lynnwood,103
+Greeley,Augusta,353
+Columbus,Fountain Valley,101
+San Francisco,Boulder,139
+Huntington Beach,Westminster,330
+Cleveland,Rogers,285
+Granite Bay,Centennial,280
+Richardson,Evansville,69
+Hampton,Iowa City,332
+Detroit,Roseville,388
+Detroit,Fort Lee,421
+Chicago,Richmond,164
+Escondido,Methuen,103
+Parker,Stockton,461
+Surprise,Scottsdale,269
+Surprise,Richardson,60
+Sarasota,Memphis,336
+Gilbert,Fort Lee,203
+Jefferson City,Elizabethtown,354
+Decatur,Surprise,155
+Goose Creek,Arcadia,356
+Petaluma,Billings,178
+San Diego,Parker,196
+Fountain Valley,Athens,361
+Lynnwood,College Station,156
+Carrollton,Valdosta,290
+Goodyear,Paramount,397
+Yonkers,Raleigh,376
+Rockville,Elizabethtown,477
+Cleveland Heights,San Jacinto,108
+New Braunfels,Albuquerque,106
+San Leandro,Pomona,449
+Lincoln,North Miami,171
+Irvine,Lake Elsinore,50
+Riverside,Scottsdale,362
+Huntington Beach,Philadelphia,458
+Bartlett,Chico,327
+Lauderhill,Orem,95
+Bowie,Cleveland Heights,258
+Auburn,West Jordan,466
+Kokomo,Petaluma,175
+Philadelphia,West Sacramento,105
+Hoffman Estates,San Rafael,317
+Lauderhill,Carrollton,163
+St. Paul,New Orleans,96
+Huntsville,Granite Bay,199
+Cedar Hill,Arcadia,191
+Shawnee,San Rafael,403
+Bayonne,Hagerstown,194
+Grapevine,Coachella,486
+Inglewood,Fargo,259
+St. Paul,Salinas,370
+Orem,St. Paul,106
+Greensboro,Methuen,284
+Westminster,Baton Rouge,404
+Burien,Boynton Beach,497
+College Station,Lake Elsinore,331
+Lake Elsinore,Nashville,213
+Fountain Valley,Burien,163
+Lynchburg,Richmond,469
+Blaine,Arlington,125
+Hagerstown,Fort Collins,229
+Brunswick,Tallahassee,65
+Lakeville,South Bend,54
+Granite Bay,Spokane,96
+San Clemente,Murfreesboro,139
+College Station,Richardson,476
+Corpus Christi,San Bernardino,220
+Pompano Beach,Richardson,393
+Kansas City,St. Paul,95
+West Sacramento,Nashville,338
+Fremont,Philadelphia,436
+Boulder,Paramount,365
+Petaluma,Fontana,203
+North Miami,Buffalo,306
+Lubbock,Clarksville,330
+Dubuque,Modesto,159
+San Jose,Lynchburg,112
+Northport,Atlanta,257
+Waltham,Rockville,392
+St. Paul,Rancho Santa Margarita,307
+Rancho Palos Verdes,Valdosta,315
+Centennial,Lynnwood,201
+South Bend,Hampton,336
+Elk Grove,Arlington,408
+Goose Creek,Lakeville,64
+Cleveland,Haltom City,207
+New York,Inglewood,270
+Laredo,Macon,290
+Chico,North Charleston,350
+Goose Creek,Bloomington,299
+Fargo,Iowa City,340
+Memphis,Tampa,431
+Paramount,Hanford,122
+Dubuque,West Sacramento,103
+Rancho Santa Margarita,Bartlett,438
+Fort Worth,Escondido,141
+Hampton,Pomona,315
+Midland,South Bend,302
+Carrollton,Sioux Falls,401
+Bellingham,Evansville,186
+Fremont,Midland,431
+Simi Valley,Bloomington,185
+Simi Valley,Lake Elsinore,294
+Bellingham,Baton Rouge,113
+Schertz,Norwalk,352
+Richmond,Maplewood,77
+New Braunfels,Hanford,379
+Detroit,Columbus,262
+Spokane,West Sacramento,70
+Brunswick,College Station,372
+Daly City,Las Vegas,299
+Schertz,Hoboken,415
+Valdosta,Keller,226
+Grapevine,Kokomo,379
+Sarasota,Norfolk,484
+Elizabethtown,Turlock,351
+St. Peters,Virginia Beach,485
+Auburn,Citrus Heights,185
+Augusta,Philadelphia,201
+New Orleans,Murfreesboro,124
+Jefferson City,Corpus Christi,349
+San Ramon,Northport,58
+Decatur,Murfreesboro,396
+Bartlett,Oshkosh,387
+San Diego,Sterling Heights,401
+Wilmington,Greeley,188
+Keller,San Jacinto,353
+Brunswick,West Covina,383
+Gilbert,Fontana,407
+Bellingham,Pomona,85
+Cleveland,Billings,346
+Broken Arrow,Lynchburg,118
+Somerville,North Charleston,134
+Blaine,San Rafael,457
+Citrus Heights,Las Vegas,151
+Salinas,Shawnee,348
+Orem,Clarksville,223
+Simi Valley,San Leandro,99
+Palm Bay,Fremont,417
+Citrus Heights,Huntsville,476
+Sanford,Lawrence,485
+Yonkers,Athens,272
+Rockville,Indianapolis,212
+Oshkosh,Las Vegas,184
+Richmond,Lacey,210
+Auburn,Round Rock,147
+Portland,San Diego,429
+Dayton,San Clemente,196
+Methuen,Laredo,248
+Dubuque,Goodyear,345
+Auburn,Indianapolis,363
+Bellingham,Bowie,338
+Springfield,Huntsville,240
+Washington,San Ramon,342
+San Rafael,Abilene,154
+North Charleston,Sioux Falls,461
+Boynton Beach,Petaluma,432
+Rancho Santa Margarita,Pompano Beach,283
+Paramount,Columbus,434
+Lakeville,San Bernardino,312
+Wilmington,Chico,416
+Boulder,Maplewood,183
+Midland,Riverside,488
+Salinas,San Diego,258
+Kansas City,Fort Lee,375
+Hagerstown,St. Paul,52
+St. Cloud,Salinas,257
+Chicago,College Station,450
+South Bend,Huntsville,221
+Billings,Baton Rouge,155
+Petaluma,Athens,279
+Richardson,Broken Arrow,52
+Murfreesboro,Gilbert,381
+Modesto,Lake Elsinore,368
+San Leandro,Daly City,443
+Irvine,Evansville,471
+Albuquerque,Phoenix,451
+Fort Collins,Mobile,133
+Tallahassee,Columbus,101
+Centennial,Turlock,286
+Las Vegas,Lynchburg,108
+Baton Rouge,Murfreesboro,157
+Lake Elsinore,Abilene,415
+Pompano Beach,Waltham,416
+Apple Valley,Milwaukee,234
+Schertz,Macon,389
+Blaine,San Ramon,166
+Rancho Santa Margarita,Kokomo,481
+Philadelphia,Greensboro,484
+Cedar Hill,Kearny,115
+Phoenix,Sanford,411
+Philadelphia,Westminster,162
+Stockton,Escondido,231
+Pompano Beach,Baldwin Park,149
+Palmdale,Decatur,460
+Lynchburg,Greeley,239
+Bayonne,Baltimore,199
+Haltom City,St. Paul,153
+Spokane,Bartlett,130
+Dubuque,San Bernardino,383
+Phoenix,Evansville,303
+Pompano Beach,Montgomery,433
+Baldwin Park,St. Paul,79
+New Orleans,Fort Lee,425
+Goodyear,Chicago,172
+West Covina,Doral,187
+Philadelphia,Dearborn,314
+Memphis,Lynchburg,188
+Apple Valley,Edmonds,480
+Dubuque,San Clemente,189
+Orange,Bartlett,125
+St. Cloud,Fort Lee,452
+Rochester,Boise,371
+Blaine,Buffalo,450
+Kearny,Rancho Palos Verdes,325
+Shoreline,Sterling Heights,123
+Greeley,Murfreesboro,121
+Methuen,Indianapolis,332
+Granite Bay,Somerville,259
+Winston-Salem,Memphis,306
+Lake Elsinore,St. Cloud,204
+Palmdale,Albuquerque,220
+Pomona,Paramount,135
+Roseville,Tampa,101
+Fort Worth,New Orleans,403
+San Francisco,Raleigh,418
+North Las Vegas,Cleveland Heights,190
+Alpharetta,Blaine,357
+Irvine,Springfield,207
+Burien,Keller,250
+Turlock,Pomona,416
+Virginia Beach,Montgomery,299
+Inglewood,Citrus Heights,205
+Augusta,Fargo,254
+Shawnee,Spokane,181
+Pompano Beach,Boynton Beach,453
+Doral,Keller,161
+Mission Viejo,West Covina,225
+Lake Elsinore,Richmond,75
+Pompano Beach,San Ramon,385
+Coachella,Norwalk,423
+New York,Philadelphia,238
+Apple Valley,St. Peters,335
+Bloomington,Rochester,167
+Pomona,Hanford,260
+Decatur,San Bernardino,88
+Turlock,Hoboken,231
+Keller,Dayton,322
+San Jose,Citrus Heights,218
+Kansas City,Westminster,214
+Escondido,Fort Lee,220
+Eden Prairie,Elk Grove,255
+Norwalk,Cleveland Heights,297
+San Clemente,Round Rock,236
+Evansville,Baton Rouge,435
+Simi Valley,St. Peters,376
+Arcadia,Albuquerque,260
+Lakeville,Clarksville,125
+Edmonds,Arcadia,321
+Orange,Baltimore,277
+Greeley,Macon,116
+Rogers,Fort Collins,97
+Somerville,Cupertino,366
+Norfolk,Edmonds,500
+Bloomington,Nashville,69
+Paramount,Chico,163
+Philadelphia,Wilmington,415
+College Station,Haltom City,476
+Buffalo,Victorville,215
+Albuquerque,Alameda,50
+Surprise,Reno,430
+Anaheim,North Las Vegas,240
+Anaheim,St. Cloud,230
+Lake Elsinore,San Francisco,391
+Orem,North Charleston,186
+Mobile,Dayton,231
+Boise,Keller,317
+Chico,Lincoln,393
+Winston-Salem,Victorville,361
+Boulder,San Jacinto,177
+Fort Lee,Broken Arrow,365
+Chico,Goodyear,148
+Methuen,San Bernardino,190
+Petaluma,Memphis,172
+Burien,Nashville,191
+Denver,Waltham,249
+Cupertino,Denver,500
+San Jacinto,Huntington Beach,212
+Denver,Hoffman Estates,72
+Fontana,Lake Havasu City,174
+Fremont,Victoria,364
+Phoenix,New Orleans,278
+Burien,Buffalo,402
+Virginia Beach,Fontana,332
+Arcadia,Fort Worth,176
+Coachella,Orange,162
+Boston,Reno,482
+Doral,Hagerstown,297
+Bowie,Norfolk,353
+Boynton Beach,Apple Valley,443
+Spokane,Raleigh,192
+Methuen,Lacey,275
+Surprise,Lawrence,421
+Sanford,Burien,90
+Rockville,San Leandro,270
+Clarksville,Union City,347
+Rockville,Raleigh,459
+Baton Rouge,Hampton,176
+Winston-Salem,College Station,118
+Columbus,San Bernardino,83
+Waltham,Raleigh,346
+Citrus Heights,Richmond,179
+Detroit,Daly City,474
+Milwaukee,Auburn,433
+Somerville,Auburn,160
+Scottsdale,Rancho Santa Margarita,388
+Baton Rouge,Brunswick,247
+Valdosta,Goodyear,427
+Dubuque,Blaine,483
+Lawrence,Maplewood,139
+Lake Elsinore,Petaluma,183
+Scottsdale,Parker,297
+Lauderhill,Hoffman Estates,310
+Rancho Santa Margarita,Lawrence,183
+San Clemente,Rancho Palos Verdes,98
+Paramount,Arlington,307
+Virginia Beach,Surprise,275
+Winston-Salem,Springfield,141
+Rogers,Chico,248
+Lawrence,Kearny,229
+Tallahassee,Alpharetta,168
+Montgomery,Doral,218
+Sanford,Fremont,341
+Dubuque,Washington,299
+Riverside,Hoffman Estates,96
+Victorville,Murfreesboro,481
+Carlsbad,Westminster,67
+West Covina,Scottsdale,204
+Pompano Beach,Lacey,440
+Lauderhill,Jefferson City,311
+Westminster,Athens,208
+Burien,Fontana,380
+Lakeville,San Diego,467
+Decatur,Palm Bay,334
+Scottsdale,Billings,300
+Lincoln,Apple Valley,345
+Parker,Doral,493
+Chico,Montgomery,497
+Montgomery,San Jacinto,378
+Maplewood,Chico,373
+West Jordan,Virginia Beach,142
+Roseville,San Leandro,432
+Citrus Heights,Tallahassee,286
+Buffalo,Pomona,461
+Boynton Beach,Keller,318
+Baltimore,Grapevine,193
+Salinas,San Clemente,77
+Las Vegas,Raleigh,213
+Nashville,Tucson,348
+Grapevine,Huntsville,379
+Goose Creek,Abilene,312
+Valdosta,Cleveland Heights,299
+Coachella,St. Cloud,346
+Decatur,Carlsbad,231
+Virginia Beach,Hoboken,447
+Rockford,Kearny,469
+Dayton,Laredo,106
+Evansville,Gilbert,121
+Detroit,Round Rock,162
+Tampa,West Sacramento,301
+Tampa,Huntsville,444
+Elk Grove,Augusta,430
+Irvine,Clarksville,402
+Goose Creek,Paramount,185
+Springfield,Edmonds,214
+Lynnwood,Bayonne,204
+Gilbert,Eden Prairie,196
+Modesto,Denver,151
+Baton Rouge,Goose Creek,197
+Augusta,Portland,50
+Iowa City,Chico,72
+Riverside,San Diego,344
+Murfreesboro,Memphis,426
+Dubuque,Elizabethtown,366
+Lake Havasu City,Eden Prairie,139
+Huntsville,Goose Creek,276
+Buffalo,Apple Valley,231
+Montgomery,Mobile,347
+Hoboken,Shawnee,262
+San Francisco,Sioux Falls,467
+Philadelphia,Fort Worth,75
+Dayton,Las Vegas,389
+Roseville,Hagerstown,283
+Montgomery,Salt Lake City,311
+Escondido,Edmonds,228
+Baton Rouge,Carrollton,390
+Schertz,Chicago,289
+Parker,Fountain Valley,81
+Round Rock,Edmonds,285
+Huntsville,Fargo,148
+Arlington,Round Rock,360
+Springfield,Shawnee,359
+Irvine,Grapevine,123
+Augusta,Winston-Salem,473
+Lacey,Murfreesboro,397
+Inglewood,Shoreline,424
+Billings,Montgomery,460
+Orem,Fort Lee,108
+Lynnwood,Chico,359
+Pomona,Apple Valley,251
+Apple Valley,Norfolk,367
+Norwalk,Westminster,114
+Columbus,Gilbert,479
+Westminster,North Las Vegas,448
+Carrollton,Washington,197
+South Bend,Rockville,58
+Valdosta,Lakeville,217
+Lincoln,Irvine,169
+Fontana,Abilene,303
+Richmond,Huntington Beach,235
+Virginia Beach,Tallahassee,472
+San Jacinto,Fresno,176
+Winston-Salem,Round Rock,205
+Athens,Rockford,396
+Salt Lake City,Philadelphia,177
+Dayton,Midland,447
+Sterling Heights,Roseville,64
+San Francisco,Riverside,226
+Norwalk,Spokane,252
+Centennial,Bellingham,109
+Kokomo,Elizabethtown,110
+Turlock,Denver,132
+Huntington Beach,Sarasota,279
+Bloomington,Northport,337
+Fountain Valley,San Jacinto,143
+St. Peters,Sioux Falls,142
+Apple Valley,Carlsbad,373
+Goose Creek,Cupertino,306
+Fort Lee,Sioux Falls,266
+San Jacinto,Sterling Heights,339
+Hoffman Estates,College Station,137
+San Clemente,West Sacramento,300
+Baton Rouge,Atlanta,149
+Norfolk,Scottsdale,196
+Midland,Victoria,473
+Decatur,Elk Grove,235
+Greeley,Boynton Beach,119
+Paramount,Huntsville,325
+West Jordan,Simi Valley,498
+Fontana,North Charleston,179
+San Jacinto,Boston,481
+Goodyear,Palm Bay,230
+Arlington,Dayton,116
+Rogers,Fontana,420
+San Rafael,Rancho Santa Margarita,159
+Methuen,Orange,385
+Fontana,Rancho Palos Verdes,179
+Lacey,Tacoma,293
+Fort Worth,Baldwin Park,123
+Valdosta,Baldwin Park,67
+Chico,Pompano Beach,367
+Lauderhill,Decatur,238
+Methuen,Hanford,63
+West Sacramento,West Covina,258
+Clarksville,Methuen,265
+Evansville,Union City,442
+New York,Corpus Christi,382
+Parker,Mobile,367
+Santa Ana,Fontana,304
+Macon,Yonkers,315
+Lake Elsinore,Westminster,364
+Fort Lee,Clarksville,118
+Reno,Lubbock,474
+Lakeville,West Sacramento,161
+Lynnwood,Petaluma,138
+Keller,Fresno,121
+Baldwin Park,Huntsville,355
+San Clemente,Richmond,386
+Pomona,Bloomington,300
+Escondido,Goose Creek,67
+Spokane,Indianapolis,342
+Lauderhill,San Ramon,461
+Virginia Beach,Northport,67
+Escondido,St. Paul,144
+Centennial,Fargo,394
+St. Peters,Denver,146
+San Ramon,Fremont,72
+Chicago,San Leandro,178
+Citrus Heights,West Covina,393
+St. Peters,Lubbock,159
+Kokomo,Palm Bay,68
+Reno,Norwalk,368
+Memphis,Hanford,414
+Shoreline,Gilbert,448
+Lacey,Santa Ana,326
+Hoffman Estates,Blaine,463
+Mission Viejo,Shoreline,248
+Burien,Reno,474
+Elizabethtown,Hoboken,387
+Inglewood,Waltham,158
+Clarksville,Maplewood,451
+Murfreesboro,Sterling Heights,194
+Bowie,Murfreesboro,476
+Virginia Beach,Broken Arrow,483
+Edmonds,Shawnee,415
+Stockton,Auburn,217
+Broken Arrow,Clarksville,153
+Rancho Santa Margarita,Shawnee,235
+West Sacramento,Jefferson City,436
+Murray,Milwaukee,92
+Round Rock,North Las Vegas,369
+Rancho Palos Verdes,Wilmington,271
+Gilbert,Boston,439
+Rockford,Baton Rouge,306
+Bellingham,Fontana,296
+Brunswick,Bartlett,261
+Cedar Hill,Yonkers,271
+Fargo,Maplewood,207
+Citrus Heights,Pomona,341
+Sioux Falls,Washington,469
+San Jose,Roseville,485
+Fountain Valley,Goodyear,258
+Nashville,Salt Lake City,242
+St. Peters,Midland,51
+Yonkers,Billings,202
+Fontana,Decatur,156
+Lacey,Boston,159
+Wilmington,Riverside,252
+Paramount,San Jacinto,495
+San Jacinto,Tallahassee,283
+Boynton Beach,West Covina,381
+Arlington,Palmdale,136
+Lubbock,Alpharetta,471
+Huntington Beach,Modesto,407
+Paramount,North Miami,332
+Edmonds,Victoria,436
+Murray,Tampa,174
+Fort Collins,Lake Havasu City,337
+Carrollton,Hagerstown,230
+Keller,Huntsville,138
+Petaluma,Sioux Falls,283
+Midland,Richardson,419
+Gilbert,Maplewood,433
+Rockville,Oshkosh,182
+Anaheim,Granite Bay,306
+Yonkers,Shawnee,445
+College Station,Hagerstown,254
+Carlsbad,Murray,326
+Elizabethtown,Fountain Valley,284
+Alameda,Macon,454
+Dayton,Eden Prairie,219
+Dubuque,Cedar Hill,79
+Elizabethtown,Mission Viejo,129
+Decatur,Laredo,250
+Escondido,Elizabethtown,57
+Raleigh,Bartlett,462
+Victorville,Nashville,124
+Cupertino,Hoffman Estates,223
+Phoenix,Norwalk,152
+Maplewood,Sarasota,317
+Methuen,Boulder,184
+New Braunfels,Philadelphia,62
+Hoffman Estates,Shawnee,270
+Portland,Centennial,486
+Rancho Palos Verdes,Apple Valley,399
+Methuen,Columbus,488
+Rancho Santa Margarita,Sanford,147
+San Diego,Sioux Falls,445
+Mobile,Laredo,411
+Parker,Simi Valley,235
+Victorville,Citrus Heights,70
+Boston,Rockford,276
+Greeley,Portland,384
+Iowa City,Winston-Salem,289
+Detroit,St. Peters,241
+Nashville,Lawrence,128
+Dayton,Doral,422
+Rockville,San Bernardino,335
+Hagerstown,Lakeville,76
+Rockford,Shoreline,125
+College Station,West Jordan,303
+Lakeville,Elk Grove,101
+Union City,Lawrence,486
+Rancho Palos Verdes,Phoenix,207
+West Sacramento,Abilene,311
+Boise,Lacey,164
+Eden Prairie,Carlsbad,419
+Kearny,Bellingham,139
+Atlanta,Santa Ana,366
+Shoreline,Lake Elsinore,58
+St. Peters,San Clemente,163
+Boston,Stockton,308
+Lincoln,Greeley,263
+Nashville,San Bernardino,172
+Reno,Rancho Santa Margarita,496
+Turlock,Richardson,427
+Mission Viejo,North Las Vegas,152
+Turlock,Fremont,247
+Granite Bay,Waltham,468
+Richardson,Lynnwood,464
+Lake Havasu City,Round Rock,221
+Rockville,Fort Worth,437
+St. Cloud,Cleveland Heights,481
+Somerville,Boston,203
+Arcadia,Atlanta,276
+Columbus,Norwalk,220
+Pomona,Keller,491
+Lauderhill,Lynchburg,451
+Boulder,Iowa City,58
+West Jordan,Centennial,165
+Escondido,Sioux Falls,123
+Palm Bay,Baton Rouge,60
+Cedar Hill,Parker,373
+Bayonne,Victoria,50
+Maplewood,Northport,369
+Roseville,Edmonds,117
+Fountain Valley,St. Paul,186
+Coachella,Columbus,181
+Boise,Salinas,115
+Dayton,Oshkosh,182
+Kearny,Midland,178
+Buffalo,Boulder,292
+Goodyear,Dearborn,347
+Norfolk,Union City,317
+Rockville,Inglewood,263
+Santa Ana,Norwalk,323
+Parker,Orem,219
+St. Peters,Union City,126
+Schertz,Doral,380
+Denver,Laredo,122
+Bloomington,Baldwin Park,158
+Kansas City,Fargo,344
+Lake Elsinore,Dayton,403
+Schertz,Boynton Beach,112
+Chico,Atlanta,395
+Boston,St. Paul,62
+Santa Ana,Parker,450
+Boston,Lawrence,238
+Salt Lake City,New York,328
+Eden Prairie,Murfreesboro,408
+Lakeville,Auburn,369
+Norwalk,Salinas,189
+Spokane,Rogers,230
+Paramount,Modesto,82
+Grapevine,Centennial,322
+Alameda,Pompano Beach,72
+Union City,Corpus Christi,127
+Cleveland,Inglewood,437
+Edmonds,Chico,64
+Orange,Hampton,291
+San Francisco,St. Peters,89
+Rockville,Lubbock,81
+Nashville,Phoenix,370
+Victorville,Auburn,274
+Haltom City,Baton Rouge,145
+Hampton,West Sacramento,152
+Boise,Parker,477
+Carrollton,Tacoma,128
+West Covina,San Jose,394
+Apple Valley,Macon,235
+Sterling Heights,Round Rock,224
+Pompano Beach,Norwalk,277
+Elizabethtown,Mobile,140
+Baldwin Park,Daly City,423
+Stockton,Dayton,397
+Denver,Dearborn,209
+Billings,Winston-Salem,198
+Dubuque,Baton Rouge,451
+Raleigh,Cedar Hill,394
+Huntsville,Pompano Beach,214
+Jefferson City,Buffalo,401
+Parker,Palm Bay,73
+Broken Arrow,Hampton,234
+North Las Vegas,Palmdale,254
+San Ramon,Irvine,413
+Hoffman Estates,Kansas City,216
+Grapevine,Bayonne,97
+Denver,Evansville,152
+New Braunfels,Baltimore,77
+Baldwin Park,Arcadia,87
+Bowie,Westminster,248
+Lynchburg,Boynton Beach,155
+San Jose,Dearborn,223
+Citrus Heights,Lawrence,433
+Boynton Beach,Memphis,326
+Detroit,Memphis,253
+Hanford,Shoreline,380
+Lacey,Baltimore,487
+Decatur,Arlington,137
+Oshkosh,Lincoln,137
+Lake Elsinore,Dearborn,64
+Pomona,Macon,120
+Citrus Heights,Sanford,254
+Valdosta,Athens,162
+Modesto,Gilbert,262
+Surprise,Wilmington,152
+Pomona,Kansas City,371
+Northport,Paramount,236
+Cleveland,Valdosta,76
+Yonkers,Sarasota,187
+Lauderhill,Boulder,371
+Memphis,Fontana,217
+Mission Viejo,Arlington,233
+Grapevine,Richardson,336
+Gilbert,Cedar Hill,107
+New Braunfels,St. Cloud,138
+Iowa City,Rochester,183
+Maplewood,Lake Elsinore,57
+Iowa City,Alameda,418
+Lawrence,Stockton,422
+Baltimore,Midland,221
+San Jose,Lake Elsinore,156
+Shawnee,Greensboro,135
+Tampa,Mission Viejo,297
+Mobile,Fort Worth,371
+Memphis,Broken Arrow,426
+Rockville,Coachella,323
+Yonkers,Iowa City,309
+Arcadia,St. Paul,324
+Orem,Dubuque,443
+Dayton,Rochester,386
+Fountain Valley,Yonkers,159
+Shoreline,Springfield,292
+Decatur,Keller,233
+Victoria,Santa Ana,83
+Portland,Tucson,417
+Sarasota,Hagerstown,90
+Doral,Boston,117
+Northport,Rogers,262
+Eden Prairie,Albuquerque,490
+Athens,San Bernardino,77
+Pompano Beach,Boston,402
+Clarksville,Coachella,392
+Escondido,Lake Havasu City,354
+Cleveland,Bellingham,385
+Blaine,Denver,64
+Haltom City,San Francisco,351
+Decatur,Blaine,322
+Alameda,Denver,158
+Tacoma,Midland,224
+Dubuque,Pomona,316
+Northport,Fountain Valley,238
+Arlington,San Bernardino,98
+Fremont,Orem,84
+Palmdale,Lynchburg,169
+Virginia Beach,Corpus Christi,281
+St. Paul,Lakeville,373
+San Ramon,Pomona,488
+Rockville,Alameda,51
+Richardson,Lake Havasu City,188
+Fountain Valley,Sioux Falls,255
+Fargo,Palmdale,291
+Bloomington,Washington,168
+Montgomery,Fontana,171
+Boulder,Goodyear,379
+St. Cloud,St. Paul,444
+San Francisco,Rogers,148
+Stockton,Paramount,493
+Evansville,Surprise,412
+Dubuque,Westminster,247
+Huntington Beach,Raleigh,201
+Dayton,New York,487
+San Diego,Greeley,332
+Methuen,San Jacinto,400
+St. Cloud,Bayonne,278
+Petaluma,West Covina,66
+Augusta,Nashville,443
+Abilene,Tampa,212
+Fremont,Baldwin Park,480
+Springfield,Washington,96
+Pomona,Indianapolis,268
+Haltom City,Clarksville,122
+Sarasota,Fremont,127
+Petaluma,Oshkosh,208
+Centennial,Philadelphia,292
+Elk Grove,Huntington Beach,259
+Buffalo,Palm Bay,375
+Methuen,Fontana,164
+Methuen,Granite Bay,148
+South Bend,San Diego,331
+Nashville,Fresno,94
+Irvine,Huntsville,89
+Waltham,Valdosta,444
+Victorville,Roseville,403
+Union City,Cedar Hill,104
+Washington,Simi Valley,318
+Citrus Heights,Palmdale,65
+Kearny,Abilene,398
+Spokane,New Braunfels,311
+Virginia Beach,Albuquerque,340
+Evansville,Richmond,58
+Washington,San Leandro,414
+Pomona,Milwaukee,490
+Abilene,New Orleans,241
+Anaheim,Corpus Christi,446
+San Leandro,Memphis,298
+Elk Grove,Modesto,220
+Buffalo,Westminster,331
+Maplewood,Albuquerque,294
+Reno,Rockford,293
+Cleveland,Iowa City,402
+Shoreline,Tucson,178
+Surprise,Fresno,304
+Virginia Beach,Stockton,494
+South Bend,Macon,258
+Keller,Fountain Valley,51
+Shoreline,Reno,75
+Edmonds,Raleigh,93
+Waltham,Auburn,399
+Lynnwood,Albuquerque,253
+Lacey,Denver,227
+Rancho Palos Verdes,Petaluma,375
+Dubuque,Jefferson City,358
+San Jose,San Leandro,174
+Washington,Salt Lake City,177
+Inglewood,Alpharetta,74
+San Clemente,Bloomington,65
+Buffalo,St. Cloud,255
+Citrus Heights,Atlanta,79
+Sarasota,Fresno,276
+Milwaukee,Memphis,228
+Bowie,Corpus Christi,51
+Atlanta,North Charleston,99
+Richmond,Haltom City,128
+Murfreesboro,Scottsdale,118
+Lake Havasu City,South Bend,277
+Doral,Bowie,498
+Augusta,Hanford,71
+Rancho Santa Margarita,Cedar Hill,78
+Dayton,Methuen,167
+Cedar Hill,Carrollton,485
+Turlock,Victorville,108
+Fort Worth,Gilbert,444
+Lawrence,Baldwin Park,215
+Fremont,Hoboken,387
+Oshkosh,San Rafael,419
+Surprise,Norfolk,277
+West Jordan,Gilbert,408
+Mobile,Greeley,348
+Midland,Decatur,167
+Lauderhill,Fort Lee,412
+Detroit,Somerville,317
+San Bernardino,San Leandro,99
+Fort Lee,Virginia Beach,347
+Greensboro,Doral,183
+Roseville,Stockton,292
+Apple Valley,Lake Elsinore,242
+Grapevine,San Rafael,486
+Palmdale,Tacoma,396
+Lake Havasu City,Alameda,202
+Sioux Falls,Union City,168
+San Rafael,Raleigh,156
+Westminster,Parker,444
+Methuen,Milwaukee,215
+Fremont,Coachella,259
+Centennial,Norfolk,473
+San Rafael,New Orleans,351
+Coachella,Norfolk,304
+Dearborn,Granite Bay,296
+Las Vegas,Cleveland Heights,129
+Victorville,San Leandro,268
+Goodyear,Petaluma,291
+Rochester,Auburn,172
+Goose Creek,Rancho Palos Verdes,208
+Albuquerque,Fort Collins,205
+Norfolk,Bartlett,331
+Billings,Gilbert,210
+San Rafael,Bayonne,129
+Springfield,Bowie,315
+Hanford,Abilene,445
+College Station,Fremont,445
+Lake Havasu City,Sarasota,263
+Greensboro,Lakeville,159
+West Sacramento,Chico,279
+Union City,Orem,448
+San Clemente,Haltom City,241
+Albuquerque,Escondido,494
+Lake Elsinore,Fargo,243
+Sioux Falls,San Clemente,275
+Tallahassee,Palmdale,270
+Citrus Heights,Nashville,360
+Daly City,Citrus Heights,399
+Evansville,Norfolk,495
+Parker,San Rafael,114
+Haltom City,Bowie,273
+Raleigh,Bloomington,221
+Orem,Fontana,431
+Tallahassee,Kokomo,459
+Sterling Heights,Stockton,453
+Decatur,Victoria,443
+Parker,Chico,392
+Turlock,North Charleston,254
+Mobile,Iowa City,224
+New Braunfels,Boise,386
+San Jacinto,Apple Valley,457
+South Bend,Bloomington,124
+Baldwin Park,Evansville,391
+Chicago,Hagerstown,429
+Eden Prairie,Grapevine,65
+Valdosta,Fort Lee,446
+Round Rock,Hagerstown,111
+Laredo,Round Rock,305
+Huntsville,Fresno,337
+Alameda,Yonkers,297
+Lincoln,Virginia Beach,147
+Chicago,Victoria,265
+Inglewood,San Jacinto,247
+Boynton Beach,Decatur,316
+Rancho Palos Verdes,Bartlett,324
+Keller,Orange,364
+Abilene,Citrus Heights,163
+Citrus Heights,Cleveland,472
+Dearborn,Round Rock,180
+Valdosta,Inglewood,211
+Shawnee,Bellingham,69
+Murfreesboro,Goose Creek,200
+Decatur,Cleveland,361
+Winston-Salem,Kearny,114
+Columbus,Fremont,239
+St. Cloud,Richardson,72
+Indianapolis,Billings,246
+Eden Prairie,Carrollton,298
+Columbus,Stockton,219
+Orem,Cleveland Heights,136
+Rochester,Petaluma,410
+Tacoma,Wilmington,113
+Goose Creek,Greeley,171
+Modesto,Northport,72
+Anaheim,Raleigh,324
+San Francisco,Hanford,471
+Orange,Springfield,130
+Lakeville,San Jacinto,284
+Hagerstown,Boynton Beach,386
+Schertz,Fort Lee,74
+San Clemente,Pomona,222
+West Covina,Blaine,392
+Northport,Buffalo,372
+North Miami,Tucson,208
+Cleveland,Lacey,407
+Brunswick,Stockton,154
+Auburn,Elk Grove,458
+Chicago,Corpus Christi,449
+Rochester,Billings,325
+Jefferson City,Northport,125
+Bowie,Methuen,273
+Kokomo,Billings,455
+Baton Rouge,Surprise,441
+Fort Lee,Elizabethtown,52
+Las Vegas,Lakeville,209
+Hoffman Estates,San Leandro,426
+North Charleston,Milwaukee,65
+Lynchburg,Corpus Christi,356
+Norwalk,Hampton,448
+Laredo,Citrus Heights,471
+Huntington Beach,Denver,65
+Burien,Lynchburg,185
+Sanford,Mobile,228
+Sioux Falls,Roseville,233
+Bloomington,Union City,225
+Macon,Riverside,494
+Jefferson City,Murfreesboro,328
+Huntsville,Boulder,493
+Lakeville,Elizabethtown,274
+Fort Lee,Yonkers,113
+Lubbock,Dayton,84
+Rockford,Rockville,360
+Palm Bay,Dearborn,225
+Broken Arrow,Lawrence,323
+Pompano Beach,North Charleston,226
+Augusta,Elizabethtown,73
+Hampton,West Jordan,132
+Greeley,Winston-Salem,130
+Boston,Rockville,194
+Dubuque,Sarasota,479
+Apple Valley,St. Cloud,296
+Baltimore,Northport,271
+Pompano Beach,Hampton,72
+Lawrence,North Las Vegas,283
+Palmdale,Bartlett,273
+Greensboro,Hanford,323
+Grapevine,Roseville,131
+Westminster,Arcadia,294
+Rancho Santa Margarita,Baltimore,359
+Cupertino,Citrus Heights,356
+Palmdale,Sioux Falls,384
+Albuquerque,Greensboro,61
+College Station,Goodyear,279
+Evansville,Fountain Valley,274
+Lawrence,Clarksville,179
+San Rafael,Fremont,233
+Shawnee,Cleveland,400
+Lynchburg,Shawnee,105
+Abilene,Victoria,261
+Athens,Huntington Beach,90
+Baltimore,Indianapolis,116
+Orem,Schertz,294
+Keller,Philadelphia,478
+Roseville,Lubbock,458
+Santa Ana,Haltom City,127
+Roseville,Murfreesboro,480
+Hoffman Estates,Columbus,117
+Arlington,North Miami,225
+Pomona,West Covina,288
+Mission Viejo,Northport,226
+Arlington,Milwaukee,361
+Bayonne,Waltham,145
+Dearborn,South Bend,329
+Tucson,Greensboro,112
+Cleveland Heights,Bellingham,233
+Waltham,Lynchburg,416
+Gilbert,Jefferson City,53
+Grapevine,Baton Rouge,60
+Surprise,Simi Valley,150
+Methuen,Petaluma,101
+Fontana,Fountain Valley,139
+Schertz,Clarksville,71
+Macon,Rockville,376
+Rancho Santa Margarita,Northport,86
+Lincoln,Cedar Hill,325
+Tucson,Sarasota,299
+Fort Worth,Daly City,184
+Shoreline,Surprise,51
+Decatur,Boise,292
+San Leandro,Lincoln,58
+New Braunfels,Dayton,244
+Goose Creek,Fort Lee,388
+Fargo,Rancho Santa Margarita,61
+Paramount,Clarksville,175
+Detroit,St. Paul,428
+St. Cloud,Norwalk,367
+Hampton,St. Peters,205
+San Jose,Iowa City,479
+New Braunfels,Bellingham,115
+Lincoln,Washington,213
+Dayton,Orem,491
+Alameda,Jefferson City,149
+Murfreesboro,Athens,433
+Laredo,Brunswick,183
+Corpus Christi,Cupertino,410
+Eden Prairie,Hagerstown,383
+Broken Arrow,Auburn,118
+Hoboken,Riverside,258
+Rockville,Round Rock,220
+Abilene,Denver,131
+Rancho Santa Margarita,Winston-Salem,429
+Mobile,Lawrence,209
+New Orleans,Philadelphia,271
+Lincoln,Bloomington,428
+Columbus,Goose Creek,212
+Lynchburg,Centennial,450
+Dubuque,New Braunfels,291
+Alameda,Las Vegas,427
+Tampa,Fargo,220
+Edmonds,New York,452
+Palmdale,Murfreesboro,269
+Atlanta,New Orleans,120
+Norfolk,Spokane,169
+St. Peters,Rancho Palos Verdes,399
+Lacey,Modesto,307
+Kokomo,Palmdale,416
+Palmdale,Lawrence,146
+Huntington Beach,Bloomington,231
+Wilmington,Augusta,66
+Bartlett,North Miami,467
+Alameda,Victoria,483
+Rockford,Greensboro,257
+San Rafael,Elizabethtown,166
+New York,Carrollton,63
+Cedar Hill,North Charleston,403
+Virginia Beach,Carrollton,436
+Lynchburg,Round Rock,255
+Huntington Beach,Kearny,174
+Inglewood,San Diego,259
+Augusta,Stockton,334
+Westminster,Boise,198
+Chico,St. Peters,428
+Jefferson City,San Jacinto,254
+Philadelphia,Cleveland,275
+Baltimore,Rockville,470
+Lakeville,Lawrence,215
+Elizabethtown,Cupertino,356
+Lakeville,Simi Valley,308
+Lynnwood,Lake Elsinore,141
+Escondido,Wilmington,215
+Stockton,Fort Collins,296
+College Station,Kansas City,390
+San Jacinto,Goodyear,305
+Hampton,Shoreline,188
+Sterling Heights,Anaheim,459
+Rockford,West Covina,426
+Yonkers,West Jordan,416
+Hoffman Estates,Fort Collins,416
+Orem,Fort Collins,397
+Lake Havasu City,Haltom City,343
+Reno,Lake Havasu City,248
+Sioux Falls,New Orleans,109
+San Jose,Lauderhill,176
+Palm Bay,West Covina,321
+Lakeville,Kansas City,155
+Granite Bay,Brunswick,240
+Pompano Beach,Wilmington,308
+Union City,Elk Grove,416
+San Francisco,Nashville,483
+San Diego,Shawnee,318
+Goodyear,Clarksville,317
+Scottsdale,Bellingham,160
+Sarasota,Dayton,454
+Greensboro,Milwaukee,496
+Auburn,Turlock,171
+Cleveland,Macon,150
+Salt Lake City,Arlington,359
+Cleveland,Montgomery,88
+Blaine,Centennial,409
+Carlsbad,Boston,136
+Pompano Beach,Petaluma,371
+San Leandro,Alameda,308
+Laredo,Yonkers,427
+Cedar Hill,Eden Prairie,382
+Bellingham,Inglewood,221
+Doral,Coachella,170
+Inglewood,Orem,343
+Indianapolis,Parker,371
+Cleveland,Surprise,344
+Atlanta,Clarksville,146
+Burien,Bartlett,401
+Bloomington,Roseville,252
+Atlanta,Murray,119
+Auburn,Apple Valley,410
+Victorville,Maplewood,403
+Lynchburg,Hampton,497
+Simi Valley,Orem,315
+Tallahassee,San Bernardino,276
+Alameda,Dayton,390
+West Jordan,Scottsdale,418
+New Braunfels,Waltham,373
+Boise,Santa Ana,163
+Tucson,San Clemente,106
+Cleveland Heights,Boulder,359
+Broken Arrow,Abilene,303
+Laredo,Hampton,163
+San Ramon,Tallahassee,227
+Raleigh,Montgomery,122
+Chicago,Tampa,496
+Tampa,Carrollton,245
+Kearny,Fremont,403
+Abilene,New Braunfels,302
+San Rafael,Inglewood,83
+Fountain Valley,San Francisco,310
+Tampa,Detroit,332
+Evansville,Shoreline,138
+Hagerstown,Billings,338
+Reno,Denver,161
+Fremont,Carrollton,51
+Victoria,Scottsdale,61
+San Ramon,Petaluma,251
+Sterling Heights,Lynchburg,378
+Daly City,Granite Bay,212
+Kokomo,Lauderhill,258
+San Leandro,Goodyear,443
+Hampton,Augusta,487
+Clarksville,Hagerstown,289
+Goodyear,Simi Valley,454
+Irvine,St. Paul,117
+Hampton,Riverside,419
+Virginia Beach,Goodyear,104
+Oshkosh,Rancho Santa Margarita,347
+Virginia Beach,Shawnee,150
+Irvine,Arcadia,140
+San Bernardino,Citrus Heights,66
+Rancho Palos Verdes,Shawnee,313
+Rockville,Haltom City,376
+San Francisco,Edmonds,162
+Abilene,Gilbert,403
+Victoria,Rockville,305
+Spokane,Round Rock,133
+Maplewood,Baldwin Park,168
+Greensboro,Round Rock,386
+College Station,Reno,347
+Roseville,Boynton Beach,480
+Paramount,Escondido,242
+Simi Valley,Bayonne,378
+Rogers,Shawnee,413
+Somerville,San Jacinto,344
+Columbus,Eden Prairie,410
+Lakeville,Milwaukee,468
+Norfolk,Fountain Valley,463
+Richardson,North Las Vegas,348
+Dubuque,St. Paul,429
+Arcadia,Detroit,296
+Tampa,Hanford,440
+Lakeville,San Clemente,423
+Milwaukee,Lynnwood,233
