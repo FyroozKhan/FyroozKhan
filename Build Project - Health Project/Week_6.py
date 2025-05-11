@@ -8,47 +8,47 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error
 import matplotlib.pyplot as plt
 
-# Load dataset
-data = pd.read_csv("healthdata.csv")
+# # Load dataset
+# data = pd.read_csv("healthdata.csv")
 
 
-# Define features and target variable
-X = data.drop('charges', axis=1)
-y = data['charges']
+# # Define features and target variable
+# X = data.drop('charges', axis=1)
+# y = data['charges']
 
-# Preprocessing pipeline
-preprocessor = ColumnTransformer(
-    transformers=[
-        ('num', StandardScaler(), ['age', 'bmi', 'children']),
-        ('cat', OneHotEncoder(drop='first'), ['sex', 'smoker', 'region'])
-    ]
-)
+# # Preprocessing pipeline
+# preprocessor = ColumnTransformer(
+#     transformers=[
+#         ('num', StandardScaler(), ['age', 'bmi', 'children']),
+#         ('cat', OneHotEncoder(drop='first'), ['sex', 'smoker', 'region'])
+#     ]
+# )
 
-# Apply preprocessing to features
-X_processed = preprocessor.fit_transform(X)
+# # Apply preprocessing to features
+# X_processed = preprocessor.fit_transform(X)
 
-# Split data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X_processed, y, test_size=0.2, random_state=42)
+# # Split data into training and testing sets
+# X_train, X_test, y_train, y_test = train_test_split(X_processed, y, test_size=0.2, random_state=42)
 
-print(f"Training set size: {X_train.shape}")
-print(f"Testing set size: {X_test.shape}")
+# print(f"Training set size: {X_train.shape}")
+# print(f"Testing set size: {X_test.shape}")
 
-model = LinearRegression()
-model.fit(X_train, y_train)
+# model = LinearRegression()
+# model.fit(X_train, y_train)
 
-# Display model coefficients and intercept
-print("Model Coefficients:", model.coef_)
-print("Model Intercept:", model.intercept_)
+# # Display model coefficients and intercept
+# print("Model Coefficients:", model.coef_)
+# print("Model Intercept:", model.intercept_)
 
-# Make predictions on test set
-y_pred = model.predict(X_test)
+# # Make predictions on test set
+# y_pred = model.predict(X_test)
 
-# Evaluate performance using R² and RMSE
-r2 = r2_score(y_test, y_pred)
-rmse = mean_squared_error(y_test, y_pred, squared=False)
+# # Evaluate performance using R² and RMSE
+# r2 = r2_score(y_test, y_pred)
+# rmse = mean_squared_error(y_test, y_pred, squared=False)
 
-print(f"R² Score: {r2:.3f}")
-print(f"RMSE: ${rmse:,.2f}")
+# print(f"R² Score: {r2:.3f}")
+# print(f"RMSE: ${rmse:,.2f}")
 
 # Plot actual vs predicted charges
 # plt.figure(figsize=(10, 6))
