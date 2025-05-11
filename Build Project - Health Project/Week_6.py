@@ -1,12 +1,15 @@
 
 #  Implementing baseline  Machine Learning Model
-import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error
 import matplotlib.pyplot as plt
+import streamlit as st
+import pandas as pd
+import numpy as np
+import joblib
 
 # # Load dataset
 # data = pd.read_csv("healthdata.csv")
@@ -61,15 +64,9 @@ import matplotlib.pyplot as plt
 
 # Building the Web Application 
 # Streamlit Web App
-import joblib
 
-joblib.dump(model, 'insurance_model.pkl')
-joblib.dump(preprocessor, 'insurance_preprocessor.pkl')
-
-import streamlit as st
-import pandas as pd
-import numpy as np
-import joblib
+# joblib.dump(model, 'insurance_model.pkl')
+# joblib.dump(preprocessor, 'insurance_preprocessor.pkl')
  
 # Load the trained model and preprocessor
 model = joblib.load('insurance_model.pkl')
