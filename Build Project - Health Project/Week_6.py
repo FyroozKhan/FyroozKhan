@@ -9,7 +9,7 @@ from sklearn.metrics import r2_score, mean_squared_error
 import matplotlib.pyplot as plt
 
 # Load dataset
-data = pd.read_csv("C:\GWU\Build_Project\Week5\healthdata.csv")
+data = pd.read_csv("healthdata.csv")
 
 
 # Define features and target variable
