@@ -51,13 +51,13 @@ print(f"R² Score: {r2:.3f}")
 print(f"RMSE: ${rmse:,.2f}")
 
 # Plot actual vs predicted charges
-plt.figure(figsize=(10, 6))
-plt.scatter(y_test, y_pred, alpha=0.6, color='skyblue')
-plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--')  # Reference line (y=x)
-plt.xlabel('Actual Charges')
-plt.ylabel('Predicted Charges')
-plt.title('Actual vs Predicted Charges')
-plt.show()
+# plt.figure(figsize=(10, 6))
+# plt.scatter(y_test, y_pred, alpha=0.6, color='skyblue')
+# plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--')  # Reference line (y=x)
+# plt.xlabel('Actual Charges')
+# plt.ylabel('Predicted Charges')
+# plt.title('Actual vs Predicted Charges')
+# plt.show()
 
 # Building the Web Application 
 # Streamlit Web App
