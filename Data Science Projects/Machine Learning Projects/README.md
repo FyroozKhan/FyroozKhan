@@ -1,6 +1,9 @@
 # Three main homework files
 
 The homeworks are three main projects. </br> 
+
+# Final Project
+
 The Final project was a group project of 3 people </br> </br>
 
 <h3> Final Project proposal: </h3>
