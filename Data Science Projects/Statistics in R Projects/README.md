@@ -1,0 +1,13 @@
+# Fyrooz, Anith, and Steve's Projects for DATS6101
+
+Dataset: GamingStudy_data.csv from https://www.kaggle.com/datasets/divyansh22/online-gaming-anxiety-data/data </br> </br>
+
+<h3> Project 1 Proposal: </h3>
+Video games offer an escape from reality for many, but we don’t know what people are going through psychologically when they play them. Our team has decided to work on an online gaming anxiety dataset to determine if we can find gaming habits related to mental health outcomes. This dataset, found on Kaggle, was scraped from the Center for Open Science's site which was in turn collected as a part of a survey by the original authors: Marian Sauter and Dejan Draschkow. It has 13,464 observations (respondents) from 109 countries.
+This analysis will specifically focus on what gaming habits result in negative mental health outcomes. Our team will show relationships using correlation, descriptive statistics, and visualizations. We have access to categorical data, ordinal data, numeric data, and nominal data. With access to all these types of data, we can perform the necessary analyses on the data set. This does extend research currently being done on finding correlations between duration of video game time and mental health state. Any results we find will be influenced by how the researchers administered the survey. We will clean the data, encode categorical variables, perform exploratory data analysis, and try to answer what, if any of the features in this data are correlated to negative mental health outcomes. We are going to be presenting our findings on Oct 17, 2024, where we will also reach a conclusion about what the data shows. </br> </br>
+
+
+<h3> Project 2 Proposal: </h3>
+Based on the findings of our first project, we determined that people who experience symptoms of generalized anxiety disorder, have a low satisfaction with life, and experience more social phobias are more likely to spend longer amounts of time per week playing video games. We can now extend the research to determine if people with these negative mental health outcomes tend to spend more than a specific number of hours per week playing video games.
+As a reminder, most demographics within our dataset are representative of Caucasian males that are 18 years old, residing in the United States, and mostly playing League of Legends online with other gamers. We are going to be presenting our findings on Thursday, December 5, 2024, where we will also reach a conclusion about what the data shows. Our team’s GitHub can be found here, so our instructor can see how frequently we were working on the data set and collaborating on all aspects of the project. </br>
+
