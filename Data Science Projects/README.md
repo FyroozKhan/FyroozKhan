@@ -2,7 +2,7 @@
 Wrote a blog and made a video on the basic concepts of Probability and Statistics. </br> </br>
 
 <h2> Graduation Projects: </h22>
-<h3> 'Intro to Data Science in R Projects' Folder: </h2> 
+<h3> 'Statistics in R Projects' Folder: </h2> 
 Contains 2 main projects completed under the course DATS6101 . </br> </br>
 
 <h3> 'Data Warehousing Projects' Folder: </h2> 
@@ -10,6 +10,12 @@ Contains 2 main projects completed under the course DATS6102 . </br> </br>
 
 <h3> 'Data Mining Projects' Folder: </h2> 
 Contains 3 main projects completed under the course DATS6103 . </br> </br>
+
+<h3> 'Machine Learning Projects' Folder: </h2> 
+Contains 4 main projects completed under the course DATS6202 . </br> </br>
+
+<h3> 'GIS Projects' Folder: </h2> 
+Contains 4 main projects completed under the course DATS6450 . </br> </br>
 
 
 <h2> Coursera Certifications: </h3>
