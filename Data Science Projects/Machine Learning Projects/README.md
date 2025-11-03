@@ -4,7 +4,7 @@ The homeworks are three main projects. </br>
 
 # Final Project
 
-The Final project was a group project of 3 people </br> </br>
+The Final project was a group project of 3 people </br>
 
 <h3> Final Project proposal: </h3>
 Every year, millions of road accidents occur across the United States, causing tens of thousands of deaths and significant economic damage. According to the National Highway Traffic Safety Administration (NHTSA, 2025), **over 39,000 people die in traffic-related incidents annually**, while organizations such as the AAA Foundation for Traffic Safety estimate the economic cost of crashes at more than $870 billion per year due to emergency services, property damage, medical expenses, and traffic delays.
