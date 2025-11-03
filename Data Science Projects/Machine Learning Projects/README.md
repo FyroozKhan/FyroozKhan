@@ -1,16 +1,15 @@
-# Three main homework folders
+# Three main homework files
 
-Dataset: World_1 and World_2 datasets were provided for the midterm and final term projects </br> 
-For the Final group project, the dataset is from: https://www.kaggle.com/datasets/sazidthe1/data-science-salaries </br> </br>
+The homeworks are three main projects. </br> 
+The Final project was a group project of 3 people </br> </br>
 
 <h3> Final Project proposal: </h3>
-The field of data science is rapidly evolving, with the U.S. Bureau of Labor Statistics projecting significant job growth through 2029 (Ahmad & Hamid, 2023). However, challenges such as workforce fluctuations and the impact of technologies like generative AI are reshaping salary structures. To better understand these dynamics, this proposal aims to analyze data science salaries using a comprehensive dataset from Kaggle.
-As more universities offer data science programs, competition intensifies, influencing salary expectations. The Kaggle Data Science Job Salaries Dataset, containing 6,600 observations and 11 key columns, provides a source of information to analyze these dynamics based on factors like job title, experience level, company size, and employment type. This dataset will enable a comprehensive analysis of salary dynamics within the data science field.
-By addressing SMART questions below, the analysis aims to provide valuable insights for students and professionals navigating a competitive job market in the data science field.
-SMART questions
-1. What is the average salary of data scientists based on their level of experience in the United States?
-2. Has the median salary for entry-level data science positions changed significantly from 2020 to 2024, and by what percentage?
-3. What are the highest-paying job titles in the U.S. compared to other countries?. </br> </br>
+Every year, millions of road accidents occur across the United States, causing tens of thousands of deaths and significant economic damage. According to the National Highway Traffic Safety Administration (NHTSA, 2025), **over 39,000 people die in traffic-related incidents annually**, while organizations such as the AAA Foundation for Traffic Safety estimate the economic cost of crashes at more than $870 billion per year due to emergency services, property damage, medical expenses, and traffic delays.
+
+Among the many factors analyzed in traffic incident reports, **accident severity**, which measures the seriousness of an incident—is particularly important. It determines the scale of response required, the risk to life and infrastructure, and the long-term implications for policy and public safety planning. **Yet, in most real-world systems, severity is only recognized after the fact.**
+
+This leads to a central question:  
+> **Can we predict the severity of an accident in real-time using environmental, temporal, and infrastructural data?**. </br> </br>
 
 
 
